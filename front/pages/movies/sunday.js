@@ -5,6 +5,7 @@ import { Flex, Button } from '@chakra-ui/button';
 import AppLayout from '../../components/AppLayout';
 import ContentsBar from '../../components/ContentsBar';
 import ItemCard from '../../components/ItemCard';
+import WriteButton from '../../components/WriteButton';
 
 const dummyPost = {
   id: 1,
@@ -23,7 +24,7 @@ const dummyPost = {
 const Sunday = () => {
   const [posts, setPosts] = useState([]);
 
-  const createButton = () => {
+  const onClickEnroll = () => {
     setPosts((prev) => [dummyPost, ...prev]);
   }
 
@@ -36,7 +37,8 @@ const Sunday = () => {
       <AppLayout>
         <ContentsBar title="설교영상" btn1="전체" btn2="성경" btn3="주제"/>
           {posts.map(post => <ItemCard post={post}></ItemCard>)}
-        <Button onClick={createButton}>등록</Button>
+        <Button onClick={onClickEnroll}>등록</Button>
+        <WriteButton></WriteButton>
       </AppLayout>
     </>
   );
