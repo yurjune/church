@@ -19,4 +19,21 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+// 게시글 로드
+router.get('/', async (req, res, next) => {
+  try {
+    console.log(req.query);
+    const post = await Post.findOne({
+      where: {
+        id: req.query.id,
+        category: req.query.category,
+      },
+    });
+    res.json(post);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
 module.exports = router;

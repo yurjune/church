@@ -18,8 +18,7 @@
     "mysql2": "^2.3.0",
     "passport": "^0.4.1",
     "sequelize": "^6.6.5",
-    "sequelize-cli": "^6.2.0",
-    "swr": "^1.0.1"
+    "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"

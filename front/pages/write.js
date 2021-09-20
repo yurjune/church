@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  FormControl, Input, Textarea, Button, Select, Box
+  FormControl, Input, Textarea, Button, Select, Flex
 } from "@chakra-ui/react"
 import axios from 'axios';
 import { useRouter } from 'next/router'
@@ -14,6 +14,8 @@ axios.defaults.withCredentials = true;
 const Write = () => {
   const [title, onChangeTitle] = useInput('');
   const [text, onChangeText] = useInput('');
+  const UserDispatch = React.createContext(null);
+
   const categories = ['주일예배', '수요예배', '추천도서'];
   const convertedCategory = {
     '주일예배': 'sunday',
@@ -31,7 +33,7 @@ const Write = () => {
       if (!text) {
         return alert("본문을 입력해 주세요!");
       }
-      const selected = document.getElementById('select-category')
+      const selected = document.getElementById('select-category');
       const selectedCategory = selected.options[selected.selectedIndex].value; // 상태로 안해도 되나?
       const result = await axios.post('/post', {
         title: title,
@@ -46,29 +48,30 @@ const Write = () => {
     }
   };
 
-
   return (
     <>
       <AppLayout>
         <FormControl>
-          <Select
-            id="select-category"
-            placeholder="카테고리"
-            w="180px"
-            size="sm"
-            mb="10px"
-            isRequired
-          >
-            {categories.map((item) => <option key={item} value={item}>{item}</option>)}
-          </Select>
-          <Input
-            display="inline"
-            type="file"
-            multiple
-            w="480px"
-            size="sm"
-            mb="10px"
-            />
+          <Flex>
+            <Select
+              id="select-category"
+              placeholder="카테고리"
+              w="180px"
+              size="sm"
+              mb="10px"
+              isRequired
+            >
+              {categories.map((item) => <option key={item} value={item}>{item}</option>)}
+            </Select>
+            <Input
+              display="inline"
+              type="file"
+              multiple
+              w="480px"
+              size="sm"
+              mb="10px"
+              />
+          </Flex>
           <Input
             type="text"
             value={title}
