@@ -14,7 +14,6 @@ axios.defaults.withCredentials = true;
 const Write = () => {
   const [title, onChangeTitle] = useInput('');
   const [text, onChangeText] = useInput('');
-  const UserDispatch = React.createContext(null);
 
   const categories = ['주일예배', '수요예배', '추천도서'];
   const convertedCategory = {

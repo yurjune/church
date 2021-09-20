@@ -10,7 +10,7 @@ import {
 const Header = () => {
   return (
     <>
-      <Box w={960} m="0 auto" mb="10" h={180} bg="tomato" pos="relative" fontSize="23">
+      <Box w={960} m="0 auto" mb="10" h={180} bg="blue.500" pos="relative" fontSize="23">
         <Box>
           <List pos="absolute" right="3" bottom="14" color="#fff">
             <ListItem float="left" ml="10">
