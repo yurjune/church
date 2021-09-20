@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   FormControl, Input, Textarea, Button, Select, Flex
 } from "@chakra-ui/react"
@@ -60,7 +60,7 @@ const Write = () => {
               mb="10px"
               isRequired
             >
-              {categories.map((item) => <option key={item} value={item}>{item}</option>)}
+              {categories.map((item, index) => <option key={item + index} value={item}>{item}</option>)}
             </Select>
             <Input
               display="inline"

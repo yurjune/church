@@ -36,7 +36,7 @@ const Sunday = () => {
       </Head>
       <AppLayout>
         <ContentsBar title="설교영상" btn1="전체" btn2="성경" btn3="주제"/>
-          {posts.map(post => <ItemCard post={post}></ItemCard>)}
+          {posts.map((post, index) => <ItemCard key={post.content+index} post={post}></ItemCard>)}
         <Button onClick={onClickEnroll}>등록</Button>
         <WriteButton></WriteButton>
       </AppLayout>
