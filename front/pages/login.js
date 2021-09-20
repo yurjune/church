@@ -4,7 +4,7 @@ import {
   useColorMode, useColorModeValue,
 } from '@chakra-ui/react'
 
-import useInput from '../../hooks/useInput';
+import useInput from '../hooks/useInput';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:3060';
