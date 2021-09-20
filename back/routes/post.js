@@ -8,6 +8,7 @@ router.post('/', async (req, res, next) => {
     console.log(req.body);
     const post = await Post.create({
       title: req.body.title,
+      category: req.body.category,
       content: req.body.content,
       UserId: req.body.id,
     });
