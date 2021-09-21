@@ -30,7 +30,14 @@ const LogIn = () => {
         <Flex direction="column" bg={formBackground} p={12} rounded={6}>
           <Heading mb={6} textAlign="center">Log In</Heading>
           <Input placeholder="id" variant="filled" mb={3} type="text" value={id} onChange={onChangeId} />
-          <Input placeholder="password" variant="filled" mb={6} type="password" value={password} onChange={onChangePassword} />
+          <Input
+            placeholder="password"
+            variant="filled"
+            mb={6}
+            type="password"
+            value={password}
+            onChange={onChangePassword}
+          />
           <Button mb={6} onClick={onClickLogIn}>Log In</Button>
           <Button onClick={toggleColorMode}>toggleColorMode</Button>
         </Flex>

@@ -1,10 +1,11 @@
 import React from 'react';
+import AppLayout from '../components/AppLayout';
 
 const Map = () => {
   return (
-    <div>
+    <AppLayout>
       
-    </div>
+    </AppLayout>
   );
 };
 
