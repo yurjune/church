@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Button } from '@chakra-ui/button';
+import { Button, GridItem } from '@chakra-ui/button';
 
 const WriteButton = () => {
   const router = useRouter();

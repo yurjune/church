@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Flex, Heading, Button, Box, Text } from "@chakra-ui/react";
+import { Flex, Heading, Button, Box, Text, GridItem, Grid } from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
 
 const ContentsBar = ({ title, buttonList }) => {
@@ -15,14 +15,14 @@ const ContentsBar = ({ title, buttonList }) => {
 
   return (
     <>
-      <Flex>
+      <GridItem colStart={2} colEnd={3} rowStart={2} rowEnd={3}>
         <Flex h="80px" mt="20px" mb="20px" direction={{ base: "column", md: "row" }}>
           <Text fontSize="30px">{title}</Text>
           <Box ml="auto">
             {buttonList.map(item => <Button key={item} ml="10px">{item}</Button>)}
           </Box>
         </Flex>
-      </Flex>
+      </GridItem>
       {/* { isTablet &&
       <Flex>
         <Flex h="80px" mt="20px">
