@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   FormControl, Input, Textarea, Button, Select, Flex, Box, Image,
 } from "@chakra-ui/react"
@@ -15,6 +15,7 @@ const Write = () => {
   const [title, onChangeTitle] = useInput('');
   const [text, onChangeText] = useInput('');
   const [imageFiles, setImageFiles] = useState([]);
+  const fileRef = useRef();
 
   const categories = ['주일예배', '수요예배', '추천도서'];
   const convertedCategory = {
@@ -22,7 +23,7 @@ const Write = () => {
     '수요예배': 'wednesday',
     '추천도서': 'books',
   };
-  
+
   const router = useRouter();
 
   const onSubmit = async () => {
@@ -54,6 +55,7 @@ const Write = () => {
 
   const onChangeImages = async (e) => {
     try {
+      console.dir(fileRef.current);
       // console.log('e.target.files:', e.target.files);
       const imageFormData = new FormData();
       [].forEach.call(e.target.files, (f) => {
@@ -62,25 +64,27 @@ const Write = () => {
       const result = await axios.post('/post/images', imageFormData);
       // console.log('result.data:', result.data);
       setImageFiles(result.data);
-      // console.log('imageFiles:', imageFiles);
+      console.log('imageFiles:', imageFiles);
     } catch (error) {
       console.error(error);
     }
   };
 
   const onClickRemove = (image) => (e) => {
+    // input dom에서 제거 : state로
+    fileRef.files.filter()
     setImageFiles((prev) => prev.filter(item => item !== image));
   };
 
   return (
     <>
       <AppLayout>
-        <FormControl>
+        <FormControl mt="20px">
           <Flex>
             <Select id="select-category" placeholder="카테고리" w="240px" mr="10px" size="sm" mb="10px" isRequired>
               {categories.map((item, index) => <option key={item + index} value={item}>{item}</option>)}
             </Select>
-            <Input display="inline" type="file" onChange={onChangeImages} multiple size="sm" mb="10px" />
+            <Input ref={fileRef} display="inline" type="file" onChange={onChangeImages} multiple size="sm" mb="10px" />
           </Flex>
           <Flex>
             {imageFiles.map(image => (

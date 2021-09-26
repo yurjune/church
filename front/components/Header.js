@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NextLink from 'next/link';
-import { Flex, Box } from "@chakra-ui/react";
+import { Flex, Box, Image, Button } from "@chakra-ui/react";
 
 const Header = () => {
   const navItem = [
@@ -9,16 +9,17 @@ const Header = () => {
     {name: "커뮤니티", href: "/community/news"},
     {name: "오시는길", href: "/map"},
   ];
+
   return (
     <>
-      <Flex w="100%" h="180px" mb="20px" bg="blue.400">
-        <Flex m="80px 0 0 450px">
-          {navItem.map(item => (
-            <Flex fontSize="22px" color="#fff" pl="30px">
-              <NextLink href={item.href}><a>{item.name}</a></NextLink>
-            </Flex>
-          ))}
-        </Flex>
+      <Flex h="180px" bg="#3CB371" justify="flex-end" align="center">
+        {navItem.map(item => (
+          <Box key={item.name} fontSize="22px" color="#fff" pl="30px">
+            <NextLink href={item.href}>
+              <a>{item.name}</a>
+            </NextLink>
+          </Box>
+        ))}
       </Flex>
     </>
   );

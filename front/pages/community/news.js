@@ -7,7 +7,7 @@ import Sidebar from '../../components/SideBar';
 const News = () => {
   return (
     <AppLayout>
-      <Flex>
+      <Flex mt="20px">
         <Sidebar></Sidebar>
         <MainContent></MainContent>
       </Flex>

@@ -1,17 +1,48 @@
-import React from 'react';
-import { Box, Heading, Stack, Button, SimpleGrid } from "@chakra-ui/react";
+import React, { useEffect } from 'react';
+import { Flex, Heading, Button, Box, Text } from "@chakra-ui/react";
+import { useMediaQuery } from "@chakra-ui/react";
 
-const ContentsBar = ({ title, btn1, btn2, btn3 }) => {
+const ContentsBar = ({ title, buttonList }) => {
+  // const [isDeskTop, isTablet, isMobile] = useMediaQuery([
+  //   "(min-width: 1024px)",
+  //   "(min-width: 768px) and (max-width: 1023px)",
+  //   "(max-width: 767px)",
+  // ]);
+
+  // useEffect(() => {
+  //   console.log(isDeskTop, isTablet, isMobile);
+  // }, [isDeskTop, isTablet, isMobile]);
+
   return (
     <>
-      <Box h="80px" mb="30px">
-        <Heading as="h1" size="xl" isTruncated>{title}</Heading>
-          <Stack direction="row" float="right">
-            <Button>{btn1}</Button>
-            <Button>{btn2}</Button>
-            <Button>{btn3}</Button>
-          </Stack>
-      </Box>
+      <Flex>
+        <Flex h="80px" mt="20px" mb="20px" direction={{ base: "column", md: "row" }}>
+          <Text fontSize="30px">{title}</Text>
+          <Box ml="auto">
+            {buttonList.map(item => <Button key={item} ml="10px">{item}</Button>)}
+          </Box>
+        </Flex>
+      </Flex>
+      {/* { isTablet &&
+      <Flex>
+        <Flex h="80px" mt="20px">
+          <Text fontSize="30px">{title}</Text>
+          <Box ml="auto">
+            {buttonList.map(item => <Button key={item} mr="10px">{item}</Button>)}
+          </Box>
+        </Flex>
+      </Flex>
+      }
+      { isMobile &&
+      <Flex>
+        <Flex h="80px" mt="20px" direction="column">
+          <Text fontSize="30px">{title}</Text>
+          <Box mt="20px">
+            {buttonList.map(item => <Button key={item} mr="10px">{item}</Button>)}
+          </Box>
+        </Flex>
+      </Flex>
+      } */}
     </>
   );
 };

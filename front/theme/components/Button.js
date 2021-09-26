@@ -19,7 +19,7 @@ export default {
     },
     // 4. We can override existing variants
     solid: (props) => ({
-      bg: props.colorMode === "dark" ? "blue.300" : "blue.400",
+      bg: props.colorMode === "dark" ? "blue.300" : "#b8f3af",
     }),
   },
 };

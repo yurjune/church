@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Head from 'next/head'
-import { Flex, Button } from '@chakra-ui/button';
+import Head from 'next/head';
+import { Flex, Button } from '@chakra-ui/react';
 
 import AppLayout from '../../components/AppLayout';
 import ContentsBar from '../../components/ContentsBar';
@@ -28,16 +28,20 @@ const Sunday = () => {
     setPosts((prev) => [dummyPost, ...prev]);
   }
 
+  const buttonList = ['전체', '성경', '주제'];
   return (
     <>
       <Head>
         <title>설교영상</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <AppLayout>
-        <ContentsBar title="설교영상" btn1="전체" btn2="성경" btn3="주제"/>
-          {posts.map((post, index) => <ItemCard key={post.content+index} post={post}></ItemCard>)}
-        <Button onClick={onClickEnroll}>등록</Button>
+        <ContentsBar title="설교영상" buttonList={buttonList}/>
+        <Flex mb="20px">
+          {posts.map((post, index) => (
+              <ItemCard key={post.content+index} post={post} index={index}></ItemCard>
+          ))}
+        </Flex>
+        <Button mr="10px" onClick={onClickEnroll}>등록</Button>
         <WriteButton></WriteButton>
       </AppLayout>
     </>
