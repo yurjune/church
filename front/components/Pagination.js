@@ -47,7 +47,7 @@ const Ma = () => {
           <Icon
             as={IoIosArrowBack}
             color={useColorModeValue("gray.700", "gray.200")}
-            boxSize={4}
+            boxSize={3}
           />
         </PagButton>
         <PagButton>1</PagButton>
@@ -59,7 +59,7 @@ const Ma = () => {
           <Icon
             as={IoIosArrowForward}
             color={useColorModeValue("gray.700", "gray.200")}
-            boxSize={4}
+            boxSize={3}
           />
         </PagButton>
       </Flex>
