@@ -43,7 +43,7 @@ const Content = () => {
   return (
     <>
       <AppLayout>
-        <Flex>
+        <Flex mt="20px">
           <Sidebar content={data}/>
           <MainContent content={data}/>
         </Flex>

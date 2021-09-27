@@ -10,6 +10,7 @@ const path = require('path');
 dotenv.config();
 const indexRouter = require('./routes/index');
 const postRouter = require('./routes/post');
+const postsRouter = require('./routes/posts');
 
 const { sequelize } = require('./models/index'); // db.sequelize
 
@@ -46,6 +47,7 @@ app.use(session({
 
 app.use('/', indexRouter);
 app.use('/post', postRouter);
+app.use('/posts', postsRouter);
 
 app.listen(3060, () => {
   console.log('3060번 포트에서 대기중');

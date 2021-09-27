@@ -12,7 +12,8 @@
   "author": "honey",
   "license": "ISC",
   "dependencies": {
-    "@chakra-ui/react": "^1.6.7",
+    "@chakra-ui/icons": "^1.0.15",
+    "@chakra-ui/react": "^1.6.8",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "axios": "^0.21.4",
@@ -20,6 +21,7 @@
     "next": "^11.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
     "swr": "^1.0.1"
   }
 }
