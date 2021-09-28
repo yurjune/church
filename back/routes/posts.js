@@ -1,5 +1,5 @@
 const express = require('express');
-const { Post, Thumbnail, User } = require('../models');
+const { Post, Thumbnail, User, Image } = require('../models');
 
 const router = express.Router();
 
@@ -15,6 +15,8 @@ router.get('/', async (req, res, next) => {
         model: Thumbnail,
         attributes: ['id'],
       }, {
+        model: Image,
+      },{
         model: User,
         attributes: ['id'],
       }],

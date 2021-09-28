@@ -5,8 +5,10 @@ import { useRouter } from 'next/router';
 import { Box, Flex } from '@chakra-ui/react';
 
 import AppLayout from '../../../components/AppLayout';
-import Sidebar from '../../../components/SideBar';
-import MainContent from '../../../components/MainContent';
+import Aside from '../../../components/Aside';
+import Section from '../../../components/Section';
+import MovieCard from '../../../components/MovieCard';
+import MovieArticle from '../../../components/MovieArticle';
 
 export const useFetch = (category, id) => {
   const fetcher = (url) => axios.get(url, { withCredentials: true }).then((result) => result.data);
@@ -43,9 +45,13 @@ const Content = () => {
   return (
     <>
       <AppLayout>
-        <Flex mt="20px">
-          <Sidebar content={data}/>
-          <MainContent content={data}/>
+        <Flex mt="40px" justify="space-between">
+          <Aside>
+            <MovieCard content={data}></MovieCard>
+          </Aside>
+          <Section>
+            <MovieArticle content={data}></MovieArticle>
+          </Section>
         </Flex>
       </AppLayout>
     </>

@@ -1,10 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
 
-import AppLayout from '../components/AppLayout';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
-import HeadLine from '../components/HeadLine';
-import Verse from '../components/Verse';
+import Verse from '../components/BlackQuote';
 
 const Main = () => {
   return (
@@ -12,11 +11,9 @@ const Main = () => {
       <Head>
         <title>디딤돌교회</title>
       </Head>
-      <AppLayout>
-      </AppLayout>
-      <HeadLine />
-      <Verse />
-      <Footer />
+      <Header></Header>
+      <Verse></Verse>
+      <Footer></Footer>
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Grid, Button, GridItem } from '@chakra-ui/react';
+import { Box, HStack, Grid, Button, GridItem } from '@chakra-ui/react';
 import useSWR from 'swr';
 import axios from "axios";
 
@@ -68,13 +68,15 @@ const Sunday = () => {
       </Head>
       <AppLayout>
         <ContentsBar title="설교영상" buttonList={buttonList}/>
-        <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)", "repeat(4, 1fr)"]} gap={5}>
+        <Grid templateColumns="repeat(auto-fill, minmax(225px, auto))" gap={5}>
           {data && data.map((post, index) => (
             <ItemCard key={post.content+index} post={post} index={index} category={'sunday'}></ItemCard>
           ))}
         </Grid>
-        <Button mr="10px">등록</Button>
-        <WriteButton></WriteButton>
+        <HStack mt="20px">
+          <Button>등록</Button>
+          <WriteButton></WriteButton>
+        </HStack>
         <Pagination></Pagination>
       </AppLayout>
     </>

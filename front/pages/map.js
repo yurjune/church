@@ -1,11 +1,14 @@
 import React from 'react';
-import AppLayout from '../components/AppLayout';
+
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Map = () => {
   return (
-    <AppLayout>
-      
-    </AppLayout>
+    <>
+      <Header></Header>
+      <Footer></Footer>
+    </>
   );
 };
 

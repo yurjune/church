@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react';
-import Link from 'next/link';
 import { Box, Container, Grid, GridItem } from '@chakra-ui/react';
 
-import Router from 'next/router';
 import Header from './Header';
+import Footer from './Footer';
 
 const AppLayout = ({ children }) => {
   return (
@@ -11,6 +10,9 @@ const AppLayout = ({ children }) => {
       <Header></Header>
       <GridItem colStart={2} colEnd={3} rowStart={3} rowEnd={4}>
         {children}
+      </GridItem>
+      <GridItem colStart={1} colEnd={4} rowStart={4} rowEnd={5}>
+        <Footer></Footer>
       </GridItem>
     </Grid>
   );

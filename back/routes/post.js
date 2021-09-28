@@ -54,6 +54,10 @@ router.get('/', async (req, res, next) => {
         id: req.query.id,
         category: req.query.category,
       },
+      include: [{
+        model: Image,
+        attributes: ['src'],
+      }],
     });
     res.json(post);
   } catch (error) {

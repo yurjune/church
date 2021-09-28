@@ -1,14 +1,14 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
 
-const MainContent = ({ content }) => {
+const Section = (props) => {
   return (
     <>
-      <Box w="70%">
-        {content.content}
+      <Box w="65%" mb="40px">
+        {props.children}
       </Box>
     </>
   );
 };
 
-export default MainContent;
+export default Section;

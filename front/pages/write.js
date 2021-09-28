@@ -55,6 +55,7 @@ const Write = () => {
 
   const onChangeImages = async (e) => {
     try {
+      e.preventDefault();
       console.dir(fileRef.current);
       // console.log('e.target.files:', e.target.files);
       const imageFormData = new FormData();
@@ -64,7 +65,7 @@ const Write = () => {
       const result = await axios.post('/post/images', imageFormData);
       // console.log('result.data:', result.data);
       setImageFiles(result.data);
-      console.log('imageFiles:', imageFiles);
+      // console.log('imageFiles:', imageFiles);
     } catch (error) {
       console.error(error);
     }
@@ -72,19 +73,19 @@ const Write = () => {
 
   const onClickRemove = (image) => (e) => {
     // input dom에서 제거 : state로
-    fileRef.files.filter()
-    setImageFiles((prev) => prev.filter(item => item !== image));
+    // fileRef.files.filter()
+    // setImageFiles((prev) => prev.filter(item => item !== image));
   };
 
   return (
     <>
       <AppLayout>
-        <FormControl mt="20px">
+        <FormControl mt="40px">
           <Flex>
             <Select id="select-category" placeholder="카테고리" w="240px" mr="10px" size="sm" mb="10px" isRequired>
               {categories.map((item, index) => <option key={item + index} value={item}>{item}</option>)}
             </Select>
-            <Input ref={fileRef} display="inline" type="file" onChange={onChangeImages} multiple size="sm" mb="10px" />
+            <Input ref={fileRef} type="file" onChange={onChangeImages} multiple size="sm" mb="10px" />
           </Flex>
           <Flex>
             {imageFiles.map(image => (

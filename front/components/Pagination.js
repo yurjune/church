@@ -13,16 +13,16 @@ const Ma = () => {
 
   const PagButton = (props) => {
     const activeStyle = {
-      bg: useColorModeValue("brand.600", "brand.500"),
+      bg: useColorModeValue("first", "brand.500"),
       color: useColorModeValue("white", "gray.200"),
     };
     return (
       <chakra.button
         mx={1}
-        px={4}
-        py={2}
+        px={3}
+        py={1}
         rounded="md"
-        bg={useColorModeValue("#b8f3af", "gray.800")}
+        bg={useColorModeValue("#81c147", "gray.800")}
         color={useColorModeValue("gray.700", "gray.200")}
         opacity={props.disabled && 0.6}
         _hover={!props.disabled && activeStyle}
@@ -36,7 +36,6 @@ const Ma = () => {
   };
   return (
     <Flex
-      bg={useColorModeValue("#F9FAFB", "gray.600")}
       p={30}
       w="full"
       alignItems="center"

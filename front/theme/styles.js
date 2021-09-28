@@ -1,8 +1,10 @@
+import "@fontsource/josefin-sans/400.css";
+
 export default {
   global: {
-    // styles for the `body`
     body: {
-      // fontFamily: ""
+      fontFamily: "Josefin Sans",
+      backgroundColor: "#f5f5dc"
     },
   },
 };
