@@ -78,7 +78,7 @@ const Component = () => {
       justifyContent="center"
     >
       <Flex w="960px" overflow="hidden" pos="relative">
-        <Flex h="500px" w="full" {...carouselStyle}>
+        <Flex h="80%" w="full" {...carouselStyle}>
           {slides.map((slide, sid) => (
             <Box key={`slide-${sid}`} boxSize="full" shadow="md" flex="none">
               <Text

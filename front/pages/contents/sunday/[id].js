@@ -5,8 +5,6 @@ import { useRouter } from 'next/router';
 import { Box, Flex } from '@chakra-ui/react';
 
 import AppLayout from '../../../components/AppLayout';
-import Aside from '../../../components/Aside';
-import Section from '../../../components/Section';
 import MovieCard from '../../../components/MovieCard';
 import MovieArticle from '../../../components/MovieArticle';
 
@@ -45,13 +43,13 @@ const Content = () => {
   return (
     <>
       <AppLayout>
-        <Flex mt="40px" justify="space-between">
-          <Aside>
+        <Flex mt="40px" mb="40px" justify="space-between">
+          <Box w="33%">
             <MovieCard content={data}></MovieCard>
-          </Aside>
-          <Section>
+          </Box>
+          <Box w="65%">
             <MovieArticle content={data}></MovieArticle>
-          </Section>
+          </Box>
         </Flex>
       </AppLayout>
     </>
