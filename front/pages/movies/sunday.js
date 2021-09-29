@@ -12,21 +12,6 @@ import WriteButton from '../../components/WriteButton';
 import Pagination from '../../components/Pagination';
 import router from 'next/router';
 
-
-const dummyPost = {
-  id: 1,
-  content: "말씀으로 승리하라",
-  Thumbnail: {
-    src: "https://via.placeholder.com/300",
-  },
-  Images: {
-    src: "https://via.placeholder.com/300",
-  },
-  User: {
-    id: 1,
-  }
-}
-
 const useFetch = (category, page) => {
   const fetcher = (url) => axios.get(url, { withCredentials: true }).then((result) => result.data);
   const { data, error, mutate } = useSWR(
