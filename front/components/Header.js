@@ -17,11 +17,11 @@ const Header = () => {
   return (
     <Box w="100%" height="180px" bgImage={"url('http://localhost:3060/banner.jpg')"}>
       <Flex maxW="960px" m="0 auto" height="180px" justify="flex-end" align="center">
-        <HStack>
-          <Button variant="menu">디딤돌교회</Button>
+        <HStack display={{ base: "none", md: "block" }}>
+          <Button variant="menu"><Link href="/main">디딤돌교회</Link></Button>
           <NavItem title="설교영상" items={movieItems}></NavItem>
           <NavItem title="커뮤니티" items={communityItems}></NavItem>
-          <Button variant="menu">오시는길</Button>
+          <Button variant="menu"><Link href="/map">오시는길</Link></Button>
         </HStack>
       </Flex>
     </Box>

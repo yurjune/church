@@ -10,7 +10,14 @@ const AppLayout = ({ children }) => {
       <GridItem colStart={1} colEnd={4} rowStart={1} rowEnd={2}>
         <Header></Header>
       </GridItem>
-      <GridItem colStart={2} colEnd={3} rowStart={3} rowEnd={4}>
+      <GridItem 
+        colStart={2} 
+        colEnd={3} 
+        rowStart={3} 
+        rowEnd={4} 
+        px={{ base: "20px", sm: "30px", md: "40px", lg: "0" }}
+        py={{ base: "30px", sm: "40px", md: "40px", lg: "40px" }}
+      >
         {children}
       </GridItem>
       <GridItem colStart={1} colEnd={4} rowStart={4} rowEnd={5}>

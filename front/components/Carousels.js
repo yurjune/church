@@ -72,12 +72,12 @@ const Component = () => {
   return (
     <Flex
       w="full"
-      bg={useColorModeValue("#ffffff", "gray.600")}
-      p={10}
+      bg={useColorModeValue("white", "gray.600")}
+      p={{ base: "20px", sm: "30px" }}
       alignItems="center"
       justifyContent="center"
     >
-      <Flex w="960px" overflow="hidden" pos="relative">
+      <Flex maxW="960px" overflow="hidden" pos="relative">
         <Flex h="80%" w="full" {...carouselStyle}>
           {slides.map((slide, sid) => (
             <Box key={`slide-${sid}`} boxSize="full" shadow="md" flex="none">

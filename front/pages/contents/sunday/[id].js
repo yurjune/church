@@ -43,11 +43,14 @@ const Content = () => {
   return (
     <>
       <AppLayout>
-        <Flex mt="40px" mb="40px" justify="space-between">
-          <Box w="33%">
+        <Flex
+          justify="space-between"
+          direction={{ base: "column", lg: "row" }}
+        >
+          <Box w={{ base: "100%", lg: "33%" }}>
             <MovieCard content={data}></MovieCard>
           </Box>
-          <Box w="65%">
+          <Box mt={{ base: "40px", lg: "0" }} w={{ base: "100%", lg: "65%" }}>
             <MovieArticle content={data}></MovieArticle>
           </Box>
         </Flex>

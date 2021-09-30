@@ -10,7 +10,7 @@ const MovieArticle = ({ content }) => {
           <Image
             src={`http://localhost:3060/${image.src}`}
             maxW="100%"
-            mb="10px"
+            mb="20px"
           >
           </Image>
         ))

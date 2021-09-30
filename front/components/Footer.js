@@ -7,10 +7,10 @@ const Footer = () => {
       <Flex
         w="100%"
         h="180px"
-        bgColor="#212529"
+        bgColor="#282828"
         justify="center"
         align="center"
-        color="#979797"
+        color="grayLetter"
         fontFamily="sans-serif"
         fontSize="12px"
       >

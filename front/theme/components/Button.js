@@ -20,7 +20,7 @@ export default {
     menu: {
       bg: "none",
       color: "white",
-      fontSize: "22px",
+      fontSize: ["18px", "18px", "18px", "22px"],
       fontWeight: "",
       _hover: {
         bg: "first",

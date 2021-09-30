@@ -6,13 +6,11 @@ const ContentsBar = ({ title, buttonList }) => {
     <>
       <GridItem colStart={2} colEnd={3} rowStart={2} rowEnd={3}>
         <Flex
-          mt="40px"
-          mb="20px"
           direction={{ base: "column", sm: "row" }}
           justify="space-between"
         >
           <Heading fontSize="35px">{title}</Heading>
-          <HStack ml={{ base: "0", sm: "auto"}}>
+          <HStack mt={{ base: "20px", sm: "0" }}>
             {buttonList.map(item => <Button key={item}>{item}</Button>)}
           </HStack>
         </Flex>
