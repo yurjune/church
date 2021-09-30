@@ -21,18 +21,28 @@ const ItemCard = ({ post, category }) => {
         cursor="pointer"
       >
         {post.Images.length >= 1
-          ? <Box w="100%" h="0" pb="100%">
-            <Image
-              src={`http://localhost:3060/${post.Images[0]?.src}`}
-            />
+          ? <Box
+              w="100%"
+              h="0"
+              pb="100%"
+              bgImage={`url("http://localhost:3060/${post.Images[0]?.src}")`}
+              backgroundPosition= "center"
+              bgSize="cover"
+              bgRepeat="no-repeat"
+            >
           </Box>
-          : <Box w="100%" h="0" pb="100%">
-            <Image 
-              src={`http://localhost:3060/Frame_1.png`} 
-            />
+          : <Box
+            w="100%"
+            h="0"
+            pb="100%"
+            bgImage={`url("http://localhost:3060/Frame_1.png")`}
+            backgroundPosition= "center"
+            bgSize="cover"
+            bgRepeat="no-repeat"
+          >
           </Box>
         }
-        <Box p="1em 1em 0 1em">
+        <Box p="20px 10px 0 10px">
           <Box mb="5px" fontSize="20px" fontWeight="bold">
             {post.title}
           </Box>
