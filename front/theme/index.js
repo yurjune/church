@@ -13,6 +13,7 @@ const overrides = {
     second: "#81c147",
     third: "#679e35",
     fourth: "#808000",
+    grayLetter: "#778899",
   },
 };
 

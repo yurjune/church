@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import { Box, Square, Image, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Flex, Square, Image } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
-import Link from 'next/router';
 
-const ItemCard = ({ post, index, url, category }) => {
+const ItemCard = ({ post, category }) => {
   const router = useRouter();
   const onClickImage = () => {
     router.push(`/contents/${category}/${post.id}`);
@@ -15,15 +14,33 @@ const ItemCard = ({ post, index, url, category }) => {
 
   return (
     <>
-      <GridItem>
+      <Box
+        mb="20px"
+        textAlign="center"
+        onClick={onClickImage}
+        cursor="pointer"
+      >
         {post.Images.length >= 1
-          ? <Image boxSize="225px" src={`http://localhost:3060/${post.Images[0]?.src}`} mb="20px" onClick={onClickImage} cursor="pointer" />
-          : <Image boxSize="225px" src={`http://localhost:3060/Frame_1.png`} mb="20px" onClick={onClickImage} cursor="pointer"/>
+          ? <Box w="100%" h="0" pb="100%">
+            <Image
+              src={`http://localhost:3060/${post.Images[0]?.src}`}
+            />
+          </Box>
+          : <Box w="100%" h="0" pb="100%">
+            <Image 
+              src={`http://localhost:3060/Frame_1.png`} 
+            />
+          </Box>
         }
-        <Box fontSize="20px" fontWeight="bold" textAlign="center" mb="20px" onClick={onClickImage} cursor="pointer">
-          {post.title}
+        <Box p="1em 1em 0 1em">
+          <Box mb="5px" fontSize="20px" fontWeight="bold">
+            {post.title}
+          </Box>
+          <Box fontSize="14px" color="grayLetter">
+            {post.createdAt.slice(0, 10)}
+          </Box>
         </Box>
-      </GridItem>
+      </Box>
     </>
   );
 };

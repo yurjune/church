@@ -55,7 +55,7 @@ const Sunday = () => {
         <ContentsBar title="설교영상" buttonList={buttonList}/>
         <Grid templateColumns="repeat(auto-fill, minmax(225px, auto))" gap={5}>
           {data && data.map((post, index) => (
-            <ItemCard key={post.content+index} post={post} index={index} category={'sunday'}></ItemCard>
+            <ItemCard key={post.content+index} post={post} category={'sunday'}></ItemCard>
           ))}
         </Grid>
         <HStack mt="20px">
