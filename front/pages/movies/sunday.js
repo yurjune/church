@@ -49,10 +49,10 @@ const Sunday = () => {
   return (
     <>
       <Head>
-        <title>설교영상</title>
+        <title>예배와 말씀</title>
       </Head>
       <AppLayout>
-        <ContentsBar title="설교영상" buttonList={buttonList}/>
+        <ContentsBar title="예배와 말씀" buttonList={buttonList}/>
         <Grid templateColumns="repeat(auto-fill, minmax(225px, auto))" gap={5}>
           {data && data.map((post, index) => (
             <ItemCard key={post.content+index} post={post} category={'sunday'}></ItemCard>
