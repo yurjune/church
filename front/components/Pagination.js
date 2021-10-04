@@ -1,25 +1,25 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { chakra, Flex, Icon } from "@chakra-ui/react";
+import { Box, Flex, Icon } from "@chakra-ui/react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useRouter } from 'next/router';
 
-import { PageButton, ArrowButton, FirstButton, LastButton } from './PageButton';
+import { PageButton, ArrowButton, SideButton } from './PageButton';
 import useFetch from '../hooks/useFetch';
   
-const getTotalPageGroup = (data) => {
+const getTotalPagesGroup = (data) => {
   const totalPosts = data;
   const totalPages = Math.ceil(totalPosts / 12);
-  const pageList = new Array(12).fill().map((value, index) => index + 1);
-  const dividedPageList = [];
+  const pageList = new Array(60).fill().map((value, index) => index + 1);
+  const result = [];
   for (let i = 0; i < pageList.length; i += 5) {
-    dividedPageList.push(pageList.slice(i, i+5));
+    result.push(pageList.slice(i, i + 5));
   }
-  return dividedPageList;
+  return result;
 };
 
-const getPageGroup = (data, currentPage) => {
-  const dividedPageList = getTotalPageGroup(data);
-  const result = dividedPageList.find(element => element.find(value => value === currentPage));
+const getCurrentPageGroup = (data, currentPage) => {
+  const totalPagesGroup = getTotalPagesGroup(data);
+  const result = totalPagesGroup.find(element => element.find(value => value === currentPage));
   return result;
 };
 
@@ -27,14 +27,32 @@ const Pagination = ({ category }) => {
   const router = useRouter();
   const initialPage = parseInt(router.query.page, 10) || 1;
   const [currentPage, setCurrentPage] = useState(initialPage);
-  const [pageGroup, setPageGroup] = useState(getPageGroup(data, currentPage));
+  const [currentPageGroup, setCurrentPageGroup] = useState(getCurrentPageGroup(data, currentPage));
+  const [isFirstPageGroup, setIsFirstPageGroup] = useState(false);
+  const [isLastPageGroup, setIsLastPageGroup] = useState(false);
+
+  const totalPages = getTotalPagesGroup(data);
+  const firstPageGroup = totalPages[0];
+  const firstPage = firstPageGroup[0];
+  const lastPageGroup = totalPages[totalPages.length - 1];
+  const lastPage = lastPageGroup[lastPageGroup.length - 1];
   
   const url = `/posts/total?category=${category}`;
   const { data, error, isLoading } = useFetch(url);
   
   useEffect(() => {
-    console.log(currentPage);
-  }, [currentPage]);
+    if (firstPageGroup[0] === currentPageGroup[0]) {
+      return setIsFirstPageGroup(true);
+    }
+    setIsFirstPageGroup(false);
+  }, [currentPageGroup]);
+  
+  useEffect(() => {
+    if (lastPageGroup[0] === currentPageGroup[0]) {
+      return setIsLastPageGroup(true);
+    }
+    setIsLastPageGroup(false);
+  }, [currentPageGroup]);
   
   if (isLoading) {
     return <div>로딩 중...</div>;
@@ -45,53 +63,36 @@ const Pagination = ({ category }) => {
   }
 
   const onClickButton = (children) => (e) => {
-    router.push(`${router.pathname}?page=${children}`);
     setCurrentPage(children);
-  };
-
-  const onClickPrevArrow = (data) => {
-    const firstPage = pageGroup[0];
-    const prevPageGroup = getPageGroup(data, firstPage - 1);
-    if (!prevPageGroup) {
-      return alert('첫번째입니다.');
-    }
-    setCurrentPage(firstPage - 1);
-    router.push(`${router.pathname}?page=${firstPage - 1}`);
-    setPageGroup(prevPageGroup);
-  };
-
-  const onClickNextArrow = (data) => {
-    const lastPage = pageGroup[pageGroup.length - 1];
-    const nextPageGroup = getPageGroup(data, lastPage + 1);
-    if (!nextPageGroup) {
-      return alert('마지막입니다.');
-    }
-    setCurrentPage(lastPage + 1);
-    router.push(`${router.pathname}?page=${lastPage + 1}`);
-    setPageGroup(nextPageGroup);
+    router.push(`${router.pathname}?page=${children}`);
   };
 
   const onClickFirstButton = () => {
-    const firstPageGroup = getTotalPageGroup(data)[0];
-    const firstPage = firstPageGroup[0];
-    if (currentPage === firstPage) {
-      return;
-    }
     setCurrentPage(firstPage);
+    setCurrentPageGroup(firstPageGroup);
     router.push(`${router.pathname}?page=${firstPage}`);
-    setPageGroup(firstPageGroup);
   };
 
   const onClickLastButton = () => {
-    const total = getTotalPageGroup(data);
-    const lastPageGroup = total[total.length - 1]
-    const lastPage = lastPageGroup[lastPageGroup.length - 1];
-    if (currentPage === lastPage) {
-      return;
-    }
     setCurrentPage(lastPage);
+    setCurrentPageGroup(lastPageGroup);
     router.push(`${router.pathname}?page=${lastPage}`);
-    setPageGroup(lastPageGroup);
+  };
+
+  const onClickPrevArrow = (data) => {
+    const startPage = currentPageGroup[0];
+    const prevPageGroup = getCurrentPageGroup(data, startPage - 1);
+    setCurrentPage(startPage - 1);
+    setCurrentPageGroup(prevPageGroup);
+    router.push(`${router.pathname}?page=${startPage - 1}`);
+  };
+
+  const onClickNextArrow = (data) => {
+    const endPage = currentPageGroup[currentPageGroup.length - 1];
+    const nextPageGroup = getCurrentPageGroup(data, endPage + 1);
+    setCurrentPage(endPage + 1);
+    setCurrentPageGroup(nextPageGroup);
+    router.push(`${router.pathname}?page=${endPage + 1}`);
   };
 
   return (
@@ -102,32 +103,41 @@ const Pagination = ({ category }) => {
       justifyContent="center"
     >
       <Flex>
-        <FirstButton onClickButton={onClickFirstButton}></FirstButton>
-        <ArrowButton currentPage={currentPage} onClickButton={onClickPrevArrow}>
-          <Icon
-            as={IoIosArrowBack}
-            color="gray.700"
-            boxSize={3}
-          />
-        </ArrowButton>
-        {pageGroup.map(value => (
-          <PageButton
-            key={value}
-            currentPage={currentPage}
-            onClickButton={onClickButton}
-          >
-            {value}
-          </PageButton>
-        ))}
-        {/* <DotButton></DotButton> */}
-        <ArrowButton currentPage={currentPage} onClickButton={onClickNextArrow}>
-          <Icon
-            as={IoIosArrowForward}
-            color="gray.700"
-            boxSize={3}
-          />
-        </ArrowButton>
-        <LastButton onClickButton={onClickLastButton}></LastButton>
+        {isFirstPageGroup ? "" : (
+          <>
+            <SideButton onClickButton={onClickFirstButton}>1</SideButton>
+            <ArrowButton currentPage={currentPage} onClickButton={onClickPrevArrow}>
+              <Icon
+                as={IoIosArrowBack}
+                color="gray.700"
+                boxSize={3}
+                />
+            </ArrowButton>
+          </>
+        )}
+        <Box mx={3}>
+          {currentPageGroup.map(value => (
+            <PageButton
+              key={value}
+              currentPage={currentPage}
+              onClickButton={onClickButton}
+              >
+              {value}
+            </PageButton>
+          ))}
+        </Box>
+        {isLastPageGroup ? "" : (
+          <>
+            <ArrowButton currentPage={currentPage} onClickButton={onClickNextArrow}>
+              <Icon
+                as={IoIosArrowForward}
+                color="gray.700"
+                boxSize={3}
+              />
+            </ArrowButton>
+            <SideButton onClickButton={onClickLastButton}>{lastPage}</SideButton>
+          </>
+        )}
       </Flex>
     </Flex>
   );
