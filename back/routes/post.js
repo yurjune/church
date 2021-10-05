@@ -66,11 +66,16 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// 이미지 업로드
-router.post('/images', upload.array('image'), (req, res, next) => {
-  console.log('req.files:', req.files);
-  const files = req.files.map((file) => file.filename);
-  res.json(files);
+// router.post('/images', upload.array('image'), (req, res, next) => {
+//   console.log('req.files:', req.files);
+//   const files = req.files.map((file) => file.filename);
+//   res.json(files);
+// });
+
+router.post('/image', upload.single('image'), (req, res, next) => {
+  console.log(req.file);
+  const fileName = req.file.filename;
+  res.json(fileName);
 });
 
 module.exports = router;

@@ -30,10 +30,10 @@ const Content = () => {
           direction={{ base: "column", lg: "row" }}
         >
           <Box w={{ base: "100%", lg: "33%" }}>
-            <MovieCard content={data}></MovieCard>
+            <MovieCard data={data}></MovieCard>
           </Box>
           <Box mt={{ base: "40px", lg: "0" }} w={{ base: "100%", lg: "65%" }}>
-            <MovieArticle content={data}></MovieArticle>
+            <MovieArticle data={data}></MovieArticle>
           </Box>
         </Flex>
       </AppLayout>
