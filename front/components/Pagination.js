@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { Box, Flex, Icon } from "@chakra-ui/react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useRouter } from 'next/router';
 
 import { PageButton, ArrowButton, SideButton } from './PageButton';
 import useFetch from '../hooks/useFetch';
-  
+
 const getTotalPagesGroup = (data) => {
   const totalPosts = data;
   const totalPages = Math.ceil(totalPosts / 12);
@@ -31,7 +31,7 @@ const Pagination = ({ category }) => {
   const [isFirstPageGroup, setIsFirstPageGroup] = useState(false);
   const [isLastPageGroup, setIsLastPageGroup] = useState(false);
 
-  const totalPages = getTotalPagesGroup(data);
+  const totalPages = useMemo(() => getTotalPagesGroup(data), [data]);
   const firstPageGroup = totalPages[0];
   const firstPage = firstPageGroup[0];
   const lastPageGroup = totalPages[totalPages.length - 1];

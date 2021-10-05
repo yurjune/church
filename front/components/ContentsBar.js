@@ -9,7 +9,7 @@ const ContentsBar = ({ title, buttonList }) => {
           direction={{ base: "column", sm: "row" }}
           justify="space-between"
         >
-          <Heading fontSize="35px">{title}</Heading>
+          <Heading as="h2" size="lg">{title}</Heading>
           <HStack mt={{ base: "20px", sm: "0" }}>
             {buttonList.map(item => <Button key={item}>{item}</Button>)}
           </HStack>

@@ -49,7 +49,7 @@ const NavItem = ({ title, items }) => {
           transition={{}}
         >
           {items.map(item => (
-            <MenuItem _focus={{ bg: "second" }}>
+            <MenuItem key={item.name} _focus={{ bg: "second" }}>
               <Link href={item.href}>{item.name}</Link>
             </MenuItem>
           ))}

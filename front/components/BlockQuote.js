@@ -1,7 +1,7 @@
-import { Flex, Box } from '@chakra-ui/react';
+import { Flex, Box, Image } from '@chakra-ui/react';
 import React from 'react';
 
-const BlackQuote = () => {
+const BlockQuote = () => {
   return (
     <>
       <Flex
@@ -23,4 +23,4 @@ const BlackQuote = () => {
   );
 };
 
-export default BlackQuote;
+export default BlockQuote;

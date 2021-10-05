@@ -7,7 +7,7 @@ export default {
   global: {
     body: {
       fontFamily: "Nanum Gothic, Nanum Gothic Coding, Noto Sans KR",
-      backgroundColor: "#f5f5dc"
+      // backgroundColor: "#f5f5dc"
     },
   },
 };

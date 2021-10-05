@@ -16,7 +16,6 @@ const Sunday = () => {
   const { page } = router.query;
   const url = `/posts?category=${category}&page=${page || 1}`
   const { data, error, isLoading } = useFetch(url);
-  
   if (isLoading) {
     return <div>로딩 중...</div>;
   }
@@ -42,7 +41,7 @@ const Sunday = () => {
           <Button>등록</Button>
           <WriteButton></WriteButton>
         </HStack>
-        <Pagination></Pagination>
+        <Pagination category={category}></Pagination>
       </AppLayout>
     </>
   );

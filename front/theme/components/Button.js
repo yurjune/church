@@ -1,5 +1,6 @@
 export default {
   baseStyle: {
+    fontWeight: "",
   },
   sizes: {
   },
@@ -10,12 +11,6 @@ export default {
         bg: "first",
         color: "white",
       },
-      // fontSize: "15px",
-      // paddingX: "15px",
-      // // height: "35px",
-      // // paddingY: "10px",
-      // textAlign: "center",
-      // lineHeight: "30px",
     },
     menu: {
       bg: "none",
@@ -26,6 +21,6 @@ export default {
         bg: "first",
         color: "white",
       },
-    }
+    },
   },
 };
