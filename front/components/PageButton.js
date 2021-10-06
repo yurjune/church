@@ -45,20 +45,3 @@ export const ArrowButton = (props) => {
     </chakra.button>
   );
 };
-
-export const SideButton = (props) => {
-  return (
-    <chakra.button
-      mx={1}
-      px={2}
-      py={1}
-      rounded="md"
-      bg="second"
-      color="gray.700"
-      _hover={activeStyle}
-      onClick={props.onClickButton}
-    >
-      {props.children}
-    </chakra.button>
-  );
-};
