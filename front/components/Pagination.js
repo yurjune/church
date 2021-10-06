@@ -8,7 +8,7 @@ import useFetch from '../hooks/useFetch';
 
 const getTotalPages = (totalPosts) => {
   const totalPages = totalPosts && Math.ceil(totalPosts / 12);
-  const pageList = new Array(totalPages).fill().map((value, index) => index + 1);
+  const pageList = new Array(30).fill().map((value, index) => index + 1);
   const result = [];
   for (let i = 0; i < pageList.length; i += 5) {
     result.push(pageList.slice(i, i + 5));

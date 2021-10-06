@@ -56,7 +56,7 @@ const Write = () => {
   return (
     <>
       <AppLayout>
-        <FormControl mt="40px">
+        <FormControl mt="20px">
           <Flex>
             <Select
               w="240px"
@@ -84,7 +84,7 @@ const Write = () => {
             setContent={setContent}
             setImageFiles={setImageFiles}
           />
-          <Button mb="50px" float="right" onClick={onSubmit}>제출</Button>
+          <Button variant="main" m="10px 0 50px 0" float="right" onClick={onSubmit}>제출</Button>
         </FormControl>
       </AppLayout>
     </>

@@ -38,7 +38,6 @@ const Sunday = () => {
           ))}
         </Grid>
         <HStack mt="20px">
-          <Button>등록</Button>
           <WriteButton></WriteButton>
         </HStack>
         <Pagination category={category}></Pagination>

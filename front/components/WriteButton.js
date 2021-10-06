@@ -10,7 +10,7 @@ const WriteButton = () => {
   };
 
   return (
-    <Button onClick={onClickWrite}>글쓰기</Button>
+    <Button variant="main" onClick={onClickWrite}>글쓰기</Button>
   );
 };
 

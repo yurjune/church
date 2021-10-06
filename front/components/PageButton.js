@@ -14,9 +14,9 @@ export const PageButton = (props) => {
 
   return (
     <chakra.button
-      mx={1}
-      px={2}
-      py={1}
+      mx="2px"
+      px="8px"
+      py="2px"
       rounded="md"
       bg="second"
       color="gray.700"
@@ -32,9 +32,9 @@ export const PageButton = (props) => {
 export const ArrowButton = (props) => {
   return (
     <chakra.button
-      mx={1}
-      px={2}
-      py={1}
+      mx="2px"
+      px="8px"
+      py="2px"
       rounded="md"
       bg="second"
       color="gray.700"
