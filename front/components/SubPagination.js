@@ -45,35 +45,38 @@ const SubPagination = ({ data }) => {
       align="center"
       justify="center"
     >
-      <Flex>
-        {firstPageGroup[0] === currentPageGroup[0] ? "" : (
-          <>
-            <PageButton onClickButton={onClickButton}>{firstPage}</PageButton>
-            <ArrowButton onClickButton={onClickPrevArrow}>
-              <Icon as={IoIosArrowBack} boxSize={3} />
-            </ArrowButton>
-          </>
-        )}
-        <Box mx={3}>
-          {currentPageGroup.map(value => (
-            <PageButton
-              key={value}
-              currentPage={currentPage}
-              onClickButton={onClickButton}
-            >
-              {value}
-            </PageButton>
-          ))}
-        </Box>
-        {lastPageGroup[0] === currentPageGroup[0] ? "" : (
-          <>
-            <ArrowButton onClickButton={onClickNextArrow}>
-              <Icon as={IoIosArrowForward} boxSize={3} />
-            </ArrowButton>
-            <PageButton onClickButton={onClickButton}>{lastPage}</PageButton>
-          </>
-        )}
-      </Flex>
+      {currentPageGroup
+        ? (<Flex>
+          {firstPageGroup[0] === currentPageGroup[0] ? "" : (
+            <>
+              <PageButton onClickButton={onClickButton}>{firstPage}</PageButton>
+              <ArrowButton onClickButton={onClickPrevArrow}>
+                <Icon as={IoIosArrowBack} boxSize={3} />
+              </ArrowButton>
+            </>
+          )}
+          <Box mx={3}>
+            {currentPageGroup.map(value => (
+              <PageButton
+                key={value}
+                currentPage={currentPage}
+                onClickButton={onClickButton}
+              >
+                {value}
+              </PageButton>
+            ))}
+          </Box>
+          {lastPageGroup[0] === currentPageGroup[0] ? "" : (
+            <>
+              <ArrowButton onClickButton={onClickNextArrow}>
+                <Icon as={IoIosArrowForward} boxSize={3} />
+              </ArrowButton>
+              <PageButton onClickButton={onClickButton}>{lastPage}</PageButton>
+            </>
+          )}
+        </Flex>)
+        : "없는 페이지입니다"
+      }
     </Flex>
   );
 };
