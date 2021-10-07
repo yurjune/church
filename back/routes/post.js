@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const { Post, Image } = require('../models');
+const { Post, Image, Thumbnail } = require('../models');
 
 const router = express.Router();
 
@@ -22,7 +22,6 @@ const upload = multer({
 // 게시글 작성
 router.post('/', async (req, res, next) => {
   try {
-    console.log(req.body);
     const post = await Post.create({
       title: req.body.title,
       category: req.body.category,
@@ -37,6 +36,10 @@ router.post('/', async (req, res, next) => {
         const image = await Image.create({ src: req.body.image[0] });
         await post.addImages(image);
       }
+    }
+    if (req.body.thumbnail) {
+      const thumbnail = await Thumbnail.create({ src: req.body.thumbnail });
+      await post.addThumbnails(thumbnail);
     }
     res.json(post);
   } catch (error) {
@@ -57,7 +60,7 @@ router.get('/', async (req, res, next) => {
       include: [{
         model: Image,
         attributes: ['src'],
-      }],
+      },],
     });
     res.json(post);
   } catch (error) {
@@ -66,11 +69,11 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// router.post('/images', upload.array('image'), (req, res, next) => {
-//   console.log('req.files:', req.files);
-//   const files = req.files.map((file) => file.filename);
-//   res.json(files);
-// });
+router.post('/thumbnail', upload.single('image'), (req, res, next) => {
+  console.log(req.file);
+  const fileName = req.file.filename;
+  res.json(fileName);
+});
 
 router.post('/image', upload.single('image'), (req, res, next) => {
   console.log(req.file);

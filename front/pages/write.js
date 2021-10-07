@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
-  FormControl, Input, Textarea, Button, Select, Flex, Box, Image,
-} from "@chakra-ui/react"
+  FormControl, Input, Button, Select, Flex
+} from "@chakra-ui/react";
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
@@ -16,6 +16,7 @@ const Write = () => {
   const [title, onChangeTitle] = useInput('');
   const [content, setContent] = useState('');
   const [imageFiles, setImageFiles] = useState([]);
+  const [thumbnail, setThumbnail] = useState('');
   const fileRef = useRef();
   const router = useRouter();
 
@@ -45,9 +46,24 @@ const Write = () => {
         category: selectedCategory,
         content,
         image: imageFiles,
+        thumbnail,
       });
       console.log(result);
       router.push(`contents/${convertedCategory[result.data.category]}/${result.data.id}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const onChangeImage = async (e) => {
+    try {
+      console.log('e.target.files:', e.target.files);
+      const formData = new FormData();
+      [].forEach.call(e.target.files, (f) => {
+        formData.append('image', f);
+      });
+      const result = await axios.post('/post/thumbnail', formData);
+      setThumbnail(result.data);
     } catch (error) {
       console.error(error);
     }
@@ -60,8 +76,7 @@ const Write = () => {
           <Flex>
             <Select
               w="240px"
-              mr="10px"
-              mb="10px"
+              m="0 10px 10px 0"
               id="select-category"
               placeholder="카테고리"
               size="sm"
@@ -69,7 +84,7 @@ const Write = () => {
             >
               {categories.map((item, index) => <option key={item + index} value={item}>{item}</option>)}
             </Select>
-            <Input ref={fileRef} type="file" size="sm" mb="10px" />
+            <Input ref={fileRef} type="file" size="sm" mb="10px" onChange={onChangeImage} />
           </Flex>
           <Input
             mb="10px"

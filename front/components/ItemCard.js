@@ -8,9 +8,9 @@ const ItemCard = ({ post, category }) => {
     router.push(`/contents/${category}/${post.id}`);
   }
 
-  useEffect(() => {
-    // console.log(post);
-  });
+  // useEffect(() => {
+  //   console.log(post);
+  // });
 
   return (
     <>
@@ -20,16 +20,16 @@ const ItemCard = ({ post, category }) => {
         onClick={onClickImage}
         cursor="pointer"
       >
-        {post.Images.length >= 1
+        {post.Thumbnails.length >= 1
           ? <Box
-              w="100%"
-              h="0"
-              pb="100%"
-              bgImage={`url("http://localhost:3060/${post.Images[0]?.src}")`}
-              backgroundPosition= "center"
-              bgSize="cover"
-              bgRepeat="no-repeat"
-            >
+            w="100%"
+            h="0"
+            pb="100%"
+            bgImage={`url("http://localhost:3060/${post.Thumbnails[0]?.src}")`}
+            backgroundPosition= "center"
+            bgSize="cover"
+            bgRepeat="no-repeat"
+          >
           </Box>
           : <Box
             w="100%"
@@ -43,7 +43,7 @@ const ItemCard = ({ post, category }) => {
           </Box>
         }
         <Box p="20px 10px 0 10px">
-          <Box mb="5px" fontSize="20px" fontWeight="bold">
+          <Box mb="5px" fontSize="18px" fontWeight="bold">
             {post.title}
           </Box>
           <Box fontSize="14px" color="grayLetter">
