@@ -1,40 +1,55 @@
-import React from 'react';
-import { Box, Flex, Text, Divider, Button, Icon, HStack } from '@chakra-ui/react';
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { Box, Flex, Text, Divider } from '@chakra-ui/react';
+import axios from 'axios';
+
+import MovieCardButton from './MovieCardButton';
+// import useFetch from '../hooks/useFetch';
+
+axios.defaults.baseURL = 'http://localhost:3060';
+axios.defaults.withCredentials = true;
 
 const MovieCard = ({ data }) => {
+  const router = useRouter();
+
+  const deletePost = async () => {
+    try {
+      const isDelete = confirm('정말로 삭제하시겠습니까?');
+      if (isDelete) {
+        await axios.delete(`/post/${data.id}`);
+        alert('게시글이 삭제되었습니다!');
+        return router.push('/movies/sunday');
+      }
+      return;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const movePost = (data, go) => async (e) => {
+    const prev = go;
+    const url = `/post/${prev}?category=${data.category}&id=${data.id}`;
+    const result = await axios.get(url);
+    const cardData = result.data;
+    return router.push(`${cardData.id}`);
+  };
+
   return (
     <>
       <Flex fontSize="17px" direction="column">
         <Box>
           <Text fontSize="30px">{data.category}</Text>
           <Divider mt="10px" mb="20px"></Divider>
-          <Text ml="2px" mb="15px">제목: {data.title}</Text>
-          <Text ml="2px" mb="15px">일시: {data.createdAt.substring(0, 10)}</Text>
-          <Text ml="2px" mb="15px">작성자: {data.createdAt.substring(0, 10)}</Text>
+            <Text ml="2px" mb="15px">제목: {data.title}</Text>
+            <Text ml="2px" mb="15px">일시: {data.createdAt.substring(0, 10)}</Text>
+            <Text ml="2px" mb="15px">작성자: {data.User.id}</Text>
           <Divider mt="10px" mb="20px"></Divider>
         </Box>
-        <HStack>
-          <Button size="sm">
-            <Icon
-              as={IoIosArrowBack}
-              boxSize={3}
-            />
-          </Button>
-          <Button size="sm">
-            <Icon
-              as={HamburgerIcon}
-              boxSize={3}
-            />
-          </Button>
-          <Button size="sm">
-            <Icon
-              as={IoIosArrowForward}
-              boxSize={3}
-            />
-          </Button>
-        </HStack>
+        <MovieCardButton
+          data={data}
+          deletePost={deletePost}
+          movePost={movePost}
+        />
       </Flex>
     </>
   );

@@ -16,6 +16,7 @@ const Sunday = () => {
   const { page } = router.query;
   const url = `/posts?category=${category}&page=${page || 1}`
   const { data, error, isLoading } = useFetch(url);
+
   if (isLoading) {
     return <div>로딩 중...</div>;
   }
@@ -23,7 +24,6 @@ const Sunday = () => {
     console.error(error);
     return <div>게시글을 불러오는 중 문제가 발생했습니다.</div>;
   }
-
   const buttonList = ['전체', '성경', '주제'];
   return (
     <>

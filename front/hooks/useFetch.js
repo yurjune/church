@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true;
 
 const useFetch = (address) => {
   const fetcher = (url) => axios.get(url).then((result) => result.data);
-  const { data, error, mutate } = useSWR(address, fetcher);
+  const { data, error } = useSWR(address, fetcher);
   return {
     data,
     error,

@@ -1,7 +1,8 @@
 const express = require('express');
+const { Op } = require('sequelize');
 const multer = require('multer');
 const path = require('path');
-const { Post, Image, Thumbnail } = require('../models');
+const { Post, User, Image, Thumbnail } = require('../models');
 
 const router = express.Router();
 
@@ -51,17 +52,76 @@ router.post('/', async (req, res, next) => {
 // 게시글 로드
 router.get('/', async (req, res, next) => {
   try {
-    console.log(req.query);
     const post = await Post.findOne({
       where: {
         id: req.query.id,
         category: req.query.category,
       },
       include: [{
-        model: Image,
-        attributes: ['src'],
+        model: User,
+        attributes: ['id'],
       },],
     });
+    res.json(post);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
+router.delete('/:postId', async (req, res, next) => {
+  try {
+    const post = await Post.findOne({
+      where: { id: req.params.postId },
+    });
+    if (!post) {
+      return res.status(403).send('게시글이 존재하지 않습니다.');
+    }
+    const result = await Post.destroy({
+      where: { id: req.params.postId },
+    });
+    res.json(result);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
+router.get('/prev', async (req, res, next) => {
+  try {
+    const post = await Post.findOne({
+      where: {
+        category: req.query.category,
+        id: { [Op.lt]: parseInt(req.query.id, 10) },
+      },
+      limit: 1,
+      order: [['createdAt' , 'DESC']],
+      attributes: ['id'],
+    });
+    if (!post) {
+      res.status(403).send('게시글 없음');
+    }
+    res.json(post);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
+router.get('/next', async (req, res, next) => {
+  try {
+    const post = await Post.findOne({
+      where: {
+        category: req.query.category,
+        id: { [Op.gt]: parseInt(req.query.id, 10) },
+      },
+      limit: 1,
+      order: [['createdAt' , 'ASC']],
+      attributes: ['id'],
+    });
+    if (!post) {
+      res.status(403).send('게시글 없음');
+    }
     res.json(post);
   } catch (error) {
     console.log(error);

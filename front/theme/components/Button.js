@@ -21,6 +21,22 @@ export default {
       px: "14px",
       h: "36px",
     },
+    delete: {
+      bg: "warning",
+      _hover: {
+        color: "white",
+      },
+      px: "14px",
+      h: "36px",
+    },
+    modify: {
+      bg: "blue",
+      _hover: {
+        color: "white",
+      },
+      px: "14px",
+      h: "36px",
+    },
     menu: {
       bg: "none",
       _hover: {

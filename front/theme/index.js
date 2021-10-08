@@ -16,6 +16,8 @@ const overrides = {
     white: "#ffffff",
     grayLetter: "#808080",
     charcole: "#282828",
+    warning: "#FF4646",
+    blue: "#0081cc",
   },
 };
 

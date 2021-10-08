@@ -1,23 +1,22 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Flex, Icon } from "@chakra-ui/react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { PageButton, ArrowButton } from './PageButton';
 
-import usePagination from './usePagination';
+import usePagination from '../hooks/usePagination';
 
 const SubPagination = ({ data }) => {
   const router = useRouter();
-  const initialPage = parseInt(router.query.page, 10) || 1;
-  const [currentPage, setCurrentPage] = useState(initialPage);
-
   const {
+    currentPage,
+    setCurrentPage,
     currentPageGroup,
     firstPageGroup,
     lastPageGroup,
     firstPage,
     lastPage,
-  } = usePagination(data, currentPage);
+  } = usePagination(data);
 
   const movePage = (page) => {
     setCurrentPage(page);
