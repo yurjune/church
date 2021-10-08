@@ -24,6 +24,7 @@ const Sunday = () => {
     console.error(error);
     return <div>게시글을 불러오는 중 문제가 발생했습니다.</div>;
   }
+
   const buttonList = ['전체', '성경', '주제'];
   return (
     <>
@@ -34,13 +35,13 @@ const Sunday = () => {
         <ContentsBar title="주일예배" buttonList={buttonList}/>
         <Grid templateColumns="repeat(auto-fill, minmax(225px, auto))" gap={5}>
           {data && data.map((post, index) => (
-            <ItemCard key={post.content+index} post={post} category={'sunday'}></ItemCard>
+            <ItemCard key={post.content+index} post={post} category="주일예배"></ItemCard>
           ))}
         </Grid>
         <HStack mt="20px">
           <WriteButton></WriteButton>
         </HStack>
-        <Pagination category={category}></Pagination>
+        <Pagination category="주일예배"></Pagination>
       </AppLayout>
     </>
   );

@@ -4,7 +4,7 @@ import { Flex, HStack, Button, Icon } from '@chakra-ui/react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
-const MovieCardButton = ({ data, deletePost, movePost }) => {
+const MovieCardButton = ({ data, url, deletePost, movePost }) => {
   const router = useRouter();
 
   return (
@@ -16,7 +16,7 @@ const MovieCardButton = ({ data, deletePost, movePost }) => {
         <Button size="sm" onClick={movePost(data, 'prev')}>
           <Icon as={IoIosArrowBack} boxSize={3} />
         </Button>
-        <Button size="sm" onClick={() => router.push('/movies/sunday')}>
+        <Button size="sm" onClick={() => router.push(url)}>
           <Icon as={HamburgerIcon} boxSize={3} />
         </Button>
         <Button size="sm" onClick={movePost(data, 'next')}>
@@ -24,7 +24,13 @@ const MovieCardButton = ({ data, deletePost, movePost }) => {
         </Button>
       </HStack>
       <HStack>
-        <Button size="sm" variant="modify">수정</Button>
+        <Button
+          size="sm"
+          variant="modify"
+          onClick={() => router.push(`/edit?id=${data.id}`)}
+        >
+          수정
+        </Button>
         <Button size="sm" variant="delete" onClick={deletePost}>삭제</Button>
       </HStack>
     </Flex>

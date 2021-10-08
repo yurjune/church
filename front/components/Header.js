@@ -5,17 +5,17 @@ import "@fontsource/noto-sans-kr";
 
 import NavItem from './NavItem';
 
-const Header = () => {
-  const movieItems = [
-    {name: "주일예배", href: "/movies/sunday"},
-    {name: "수요예배", href: "#"},
-  ];
-  const communityItems = [
-    {name: "교회소식", href: "/community/news"},
-    {name: "성경통독표", href: "#"},
-    {name: "오시는길", href: "/community/map"},
-  ];
+const movieList = [
+  '주일예배',
+  '수요예배',
+];
+const communityList = [
+  '교회소식',
+  '성경통독표',
+  '오시는길',
+];
 
+const Header = () => {
   return (
     <Box
       w="100%"
@@ -27,8 +27,8 @@ const Header = () => {
       <Flex maxW="960px" m="0 auto" height="150px" justify="flex-end" align="center">
         <HStack fontFamily="Noto Sans KR" display={{ base: "none", md: "block" }}>
           <Button variant="menu"><Link href="/">디딤돌교회</Link></Button>
-          <NavItem title="예배와 말씀" items={movieItems}></NavItem>
-          <NavItem title="커뮤니티" items={communityItems}></NavItem>
+          <NavItem title="예배와 말씀" menu={movieList}></NavItem>
+          <NavItem title="커뮤니티" menu={communityList}></NavItem>
           <Button variant="menu"><Link href="/#">교회학교</Link></Button>
         </HStack>
       </Flex>

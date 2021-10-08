@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 import { Box, Flex, Square, Image } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
 
+import { categoryToContents } from '../utils/categoryConverter';
+
 const ItemCard = ({ post, category }) => {
   const router = useRouter();
-  const onClickImage = () => {
-    router.push(`/contents/${category}/${post.id}`);
-  }
+  const url = categoryToContents(category);
 
-  // useEffect(() => {
-  //   console.log(post);
-  // });
+  const onClickImage = () => {
+    router.push(`${url}/${post.id}`);
+  };
 
   return (
     <>

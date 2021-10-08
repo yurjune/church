@@ -4,6 +4,7 @@ import { Box, Flex, Text, Divider } from '@chakra-ui/react';
 import axios from 'axios';
 
 import MovieCardButton from './MovieCardButton';
+import { categoryToUrl } from '../utils/categoryConverter';
 // import useFetch from '../hooks/useFetch';
 
 axios.defaults.baseURL = 'http://localhost:3060';
@@ -11,6 +12,7 @@ axios.defaults.withCredentials = true;
 
 const MovieCard = ({ data }) => {
   const router = useRouter();
+  const url = categoryToUrl(data.category);
 
   const deletePost = async () => {
     try {
@@ -18,7 +20,7 @@ const MovieCard = ({ data }) => {
       if (isDelete) {
         await axios.delete(`/post/${data.id}`);
         alert('게시글이 삭제되었습니다!');
-        return router.push('/movies/sunday');
+        return router.push(url);
       }
       return;
     } catch (error) {
@@ -47,6 +49,7 @@ const MovieCard = ({ data }) => {
         </Box>
         <MovieCardButton
           data={data}
+          url={url}
           deletePost={deletePost}
           movePost={movePost}
         />

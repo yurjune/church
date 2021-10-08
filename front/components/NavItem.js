@@ -1,29 +1,20 @@
 import React, { useRef } from 'react';
 import Link from 'next/link';
-import { Flex, Box, Button, HStack, useDisclosure } from "@chakra-ui/react";
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuIcon,
-  MenuCommand,
-  MenuDivider,
-} from "@chakra-ui/react"
+import { Button, useDisclosure } from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 
-const NavItem = ({ title, items }) => {
+import { categoryToUrl } from '../utils/categoryConverter';
+
+const NavItem = ({ title, menu }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btn = useRef();
 
-  const onRef = (e) => {
-    // console.dir(btn.current);
-    if (!(e.pageY >= btn.current.offsetTop + btn.current.clientHeight)) {
-      return onClose();
-    }
-  };
+  // const onRef = (e) => {
+  //   // console.dir(btn.current);
+  //   if (!(e.pageY >= btn.current.offsetTop + btn.current.clientHeight)) {
+  //     return onClose();
+  //   }
+  // };
 
   return (
     <>
@@ -48,9 +39,9 @@ const NavItem = ({ title, items }) => {
           onMouseLeave={onClose}
           transition={{}}
         >
-          {items.map(item => (
-            <MenuItem key={item.name} _focus={{ bg: "second" }}>
-              <Link href={item.href}>{item.name}</Link>
+          {menu.map(item => (
+            <MenuItem key={item} _focus={{ bg: "second" }}>
+              <Link href={categoryToUrl(item)}>{item}</Link>
             </MenuItem>
           ))}
         </MenuList>
