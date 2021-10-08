@@ -69,6 +69,36 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+// 수정할 게시글 로드
+router.get('/:postId', async (req, res, next) => {
+  try {
+    const post = await Post.findOne({
+      where: { id: req.params.postId },
+      include: [{
+        model: Image,
+        attributes: ['src'],
+      }],
+    });
+    if (!post) {
+      return res.status(403).send('게시글이 존재하지 않습니다.');
+    }
+    console.log('post: ', post);
+    res.json(post);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
+// router.patch('/:postId', async (req, res, next) => {
+//   try {
+//     res.json();
+//   } catch (error) {
+//     console.log(error);
+//     next(error);
+//   }
+// });
+
 router.delete('/:postId', async (req, res, next) => {
   try {
     const post = await Post.findOne({

@@ -5,11 +5,11 @@ import "@fontsource/noto-sans-kr";
 
 import NavItem from './NavItem';
 
-const movieList = [
+export const movieList = [
   '주일예배',
   '수요예배',
 ];
-const communityList = [
+export const communityList = [
   '교회소식',
   '성경통독표',
   '오시는길',

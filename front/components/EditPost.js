@@ -1,18 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Box, Input, Button, Select, Flex } from "@chakra-ui/react";
+
+import QuillEditor from './QuillEditor';
+import AppLayout from '../components/AppLayout';
 import useWrite from '../hooks/useWrite';
 
-import QuillEditor from '../components/QuillEditor';
-import AppLayout from '../components/AppLayout';
-
-const Write = () => {
+const EditPost = ({ data }) => {
   const {
     title,
     onChangeTitle,
+    setTitle,
     setContent,
     setImageFiles,
     categories,
-    onClickWrite,
+    onClickEdit,
     onChangeThumbnail,
   } = useWrite();
 
@@ -42,16 +43,18 @@ const Write = () => {
           isRequired
         />
         <QuillEditor
-          isEdit={false}
+          data={data}
+          isEdit={true}
+          setTitle={setTitle}
           setContent={setContent}
           setImageFiles={setImageFiles}
         />
-        <Button variant="main" m="10px 0 50px 0" float="right" onClick={onClickWrite}>
-          작성
+        <Button variant="modify" m="10px 0 50px 0" float="right" onClick={onClickEdit}>
+          수정
         </Button>
       </Box>
     </AppLayout>
   );
 };
 
-export default Write;
+export default EditPost;

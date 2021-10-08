@@ -34,29 +34,30 @@ const ReactQuill = dynamic(
   },
 );
 
-export default function Editor(props) {
+const QuillEditor = (props) => {
   const [value, setValue] = useState("");
+  const [isLoaded, setIsLoaded] = useState(false);
   const quillRef = useRef(null);  // ReactQuill component
   const quill = quillRef.current?.getEditor();  // Quill instance
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     console.log('quillRef:', quillRef.current);
-  //     console.log('quill:', quill);
-  //   }, 2000);
-  //   return () => clearTimeout(timer);
-  // }, [quillRef, quill]);
+  useEffect(() => { // 수정 모드일 때
+    if (props.isEdit && !isLoaded && quill) {
+      setIsLoaded(true);
+      console.log(props.isEdit);
+      props.setTitle(props.data.title);
+      quill.root.innerHTML = props.data.content;
+      // console.log(props.data.Images.src);
+    }
+  }, [quill]);
 
   useEffect(() => {
     const html = quill?.root.innerHTML;
-    console.log(html);
     props.setContent(html);
   }, [value, quill]);
 
   const imageHandler = () => {
     const formData = new FormData();  
     const input = document.createElement('input');  
-  
     input.setAttribute('type', 'file');  
     input.setAttribute('accept', 'image/*');  
     input.click();  
@@ -109,13 +110,17 @@ export default function Editor(props) {
   }), []);
 
   return (
-    <ReactQuill
-      forwardedRef={quillRef}
-      theme="snow"
-      value={value}
-      onChange={setValue}
-      formats={formats}
-      modules={modules}
-    />
+    <>
+      <ReactQuill
+        forwardedRef={quillRef}
+        theme="snow"
+        value={value}
+        onChange={setValue}
+        formats={formats}
+        modules={modules}
+      />
+    </>
   );
 }
+
+export default QuillEditor;
