@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Button } from '@chakra-ui/button';
+import { Button, HStack } from '@chakra-ui/react';
 
 const WriteButton = () => {
   const router = useRouter();
@@ -10,13 +10,15 @@ const WriteButton = () => {
   };
 
   return (
-    <Button 
-      variant="main"
-      size="cs"
-      onClick={onClickWrite}
-    >
-      글쓰기
-    </Button>
+    <HStack>
+      <Button 
+        variant="main"
+        size="cs"
+        onClick={onClickWrite}
+      >
+        글쓰기
+      </Button>
+    </HStack>
   );
 };
 

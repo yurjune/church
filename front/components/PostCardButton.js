@@ -4,7 +4,7 @@ import { Flex, HStack, Button, Icon } from '@chakra-ui/react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
-const MovieCardButton = ({ data, url, deletePost, movePost }) => {
+const PostCardButton = ({ data, url, deletePost, movePost }) => {
   const router = useRouter();
 
   return (
@@ -37,4 +37,4 @@ const MovieCardButton = ({ data, url, deletePost, movePost }) => {
   )
 }
 
-export default MovieCardButton;
+export default PostCardButton;

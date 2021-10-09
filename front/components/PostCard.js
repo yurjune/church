@@ -3,14 +3,14 @@ import { useRouter } from 'next/router';
 import { Box, Flex, Text, Divider } from '@chakra-ui/react';
 import axios from 'axios';
 
-import MovieCardButton from './MovieCardButton';
+import PostCardButton from './PostCardButton';
 import { categoryToUrl } from '../utils/categoryConverter';
 // import useFetch from '../hooks/useFetch';
 
 axios.defaults.baseURL = 'http://localhost:3060';
 axios.defaults.withCredentials = true;
 
-const MovieCard = ({ data }) => {
+const PostCard = ({ data }) => {
   const router = useRouter();
   const url = categoryToUrl(data.category);
 
@@ -22,7 +22,6 @@ const MovieCard = ({ data }) => {
         alert('게시글이 삭제되었습니다!');
         return router.push(url);
       }
-      return;
     } catch (error) {
       console.error(error);
     }
@@ -47,7 +46,7 @@ const MovieCard = ({ data }) => {
             <Text ml="2px" mb="15px">작성자: {data.User.id}</Text>
           <Divider mt="10px" mb="20px"></Divider>
         </Box>
-        <MovieCardButton
+        <PostCardButton
           data={data}
           url={url}
           deletePost={deletePost}
@@ -58,4 +57,4 @@ const MovieCard = ({ data }) => {
   );
 };
 
-export default MovieCard;
+export default PostCard;

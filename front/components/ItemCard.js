@@ -1,21 +1,19 @@
-import React, { useEffect } from 'react';
-import { Box, Flex, Square, Image } from "@chakra-ui/react";
+import React from 'react';
+import { Box, Grid } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
 
 import { categoryToContents } from '../utils/categoryConverter';
 
-const ItemCard = ({ post, category }) => {
+const ItemCard = ({ post }) => {
   const router = useRouter();
-  const url = categoryToContents(category);
 
   const onClickImage = () => {
-    router.push(`${url}/${post.id}`);
+    router.push(`${categoryToContents(post.category)}/${post.id}`);
   };
 
   return (
     <>
       <Box
-        mb="20px"
         textAlign="center"
         onClick={onClickImage}
         cursor="pointer"
@@ -26,7 +24,7 @@ const ItemCard = ({ post, category }) => {
             h="0"
             pb="100%"
             bgImage={`url("http://localhost:3060/${post.Thumbnails[0]?.src}")`}
-            backgroundPosition= "center"
+            backgroundPosition="center"
             bgSize="cover"
             bgRepeat="no-repeat"
           >
@@ -36,7 +34,7 @@ const ItemCard = ({ post, category }) => {
             h="0"
             pb="100%"
             bgImage={`url("http://localhost:3060/Frame_1.png")`}
-            backgroundPosition= "center"
+            backgroundPosition="center"
             bgSize="cover"
             bgRepeat="no-repeat"
           >
@@ -46,9 +44,9 @@ const ItemCard = ({ post, category }) => {
           <Box
             mb="3px"
             fontWeight="semibold"
-            overflow= "hidden"
-            whiteSpace= "nowrap"
-            textOverflow= "ellipsis"
+            overflow="hidden"
+            whiteSpace="nowrap"
+            textOverflow="ellipsis"
           >
             {post.title}
           </Box>

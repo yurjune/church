@@ -1,10 +1,9 @@
 import React from 'react';
-import AppLayout from '../../components/AppLayout';
+import ContentsListPage from '../../components/ContentsListPage';
 
 const Wednesday = () => {
   return (
-    <AppLayout>
-    </AppLayout>
+    <ContentsListPage category="수요예배"></ContentsListPage>
   );
 };
 

@@ -39,7 +39,6 @@ const SubPagination = ({ data }) => {
 
   return (
     <Flex
-      p={30}
       w="full"
       align="center"
       justify="center"

@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { Box, Container, Grid, GridItem } from '@chakra-ui/react';
+import React from 'react';
+import { Grid, GridItem } from '@chakra-ui/react';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -13,14 +13,14 @@ const AppLayout = ({ children }) => {
       <GridItem 
         colStart={2} 
         colEnd={3} 
-        rowStart={3} 
-        rowEnd={4} 
+        rowStart={2} 
+        rowEnd={3} 
         px={{ base: "20px", sm: "30px", md: "40px", lg: "0" }}
-        py={{ base: "30px", sm: "40px", md: "40px", lg: "40px" }}
+        py={{ base: "20px", sm: "30px", md: "40px", lg: "40px" }}
       >
         {children}
       </GridItem>
-      <GridItem colStart={1} colEnd={4} rowStart={4} rowEnd={5}>
+      <GridItem colStart={1} colEnd={4} rowStart={3} rowEnd={4}>
         <Footer></Footer>
       </GridItem>
     </Grid>
