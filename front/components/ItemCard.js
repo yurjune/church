@@ -43,11 +43,17 @@ const ItemCard = ({ post, category }) => {
           </Box>
         }
         <Box p="20px 10px 0 10px">
-          <Box mb="5px" fontSize="18px" fontWeight="bold">
+          <Box
+            mb="3px"
+            fontWeight="semibold"
+            overflow= "hidden"
+            whiteSpace= "nowrap"
+            textOverflow= "ellipsis"
+          >
             {post.title}
           </Box>
           <Box fontSize="14px" color="grayLetter">
-            {post.createdAt.slice(0, 10)}
+            {`${post.createdAt.slice(0, 10)}`}
           </Box>
         </Box>
       </Box>

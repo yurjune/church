@@ -12,7 +12,8 @@ const Footer = () => {
         color="grayLetter"
         fontSize="12px"
         px={{ base: "20px", sm: "30px", md: "40px", lg: "0" }}
-        py="30px"
+        pt="10px"
+        pb="30px"
         justify={{ base: "center", md: "flex-start" }}
         align={{ base: "center", md: "flex-start" }}
         textAlign="center"

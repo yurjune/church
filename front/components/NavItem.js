@@ -37,7 +37,6 @@ const NavItem = ({ title, menu }) => {
           width="10px"
           onMouseEnter={onOpen}
           onMouseLeave={onClose}
-          transition={{}}
         >
           {menu.map(item => (
             <MenuItem key={item} _focus={{ bg: "second" }}>

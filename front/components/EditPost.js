@@ -49,7 +49,13 @@ const EditPost = ({ data }) => {
           setContent={setContent}
           setImageFiles={setImageFiles}
         />
-        <Button variant="modify" m="10px 0 50px 0" float="right" onClick={onClickEdit}>
+        <Button
+          m="10px 0 50px 0"
+          variant="modify"
+          size="cs"
+          float="right"
+          onClick={onClickEdit}
+        >
           수정
         </Button>
       </Box>

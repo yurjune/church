@@ -3,6 +3,10 @@ export default {
     fontWeight: "",
   },
   sizes: {
+    cs: {
+      h: "35px",
+      px: "12px"
+    }
   },
   variants: {
     solid: {
@@ -18,24 +22,19 @@ export default {
         bg: "first",
         color: "white",
       },
-      px: "14px",
-      h: "36px",
+      fontSize: "16px",
     },
     delete: {
       bg: "warning",
       _hover: {
         color: "white",
       },
-      px: "14px",
-      h: "36px",
     },
     modify: {
       bg: "blue",
       _hover: {
         color: "white",
       },
-      px: "14px",
-      h: "36px",
     },
     menu: {
       bg: "none",
@@ -44,7 +43,7 @@ export default {
         color: "white",
       },
       color: "white",
-      fontSize: ["18px", "18px", "18px", "22px"],
+      fontSize: ["20px", "20px", "20px", "22px"],
     },
     pagination: {
       mx: "2px",

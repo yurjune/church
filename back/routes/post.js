@@ -69,54 +69,6 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// 수정할 게시글 로드
-router.get('/:postId', async (req, res, next) => {
-  try {
-    const post = await Post.findOne({
-      where: { id: req.params.postId },
-      include: [{
-        model: Image,
-        attributes: ['src'],
-      }],
-    });
-    if (!post) {
-      return res.status(403).send('게시글이 존재하지 않습니다.');
-    }
-    console.log('post: ', post);
-    res.json(post);
-  } catch (error) {
-    console.log(error);
-    next(error);
-  }
-});
-
-// router.patch('/:postId', async (req, res, next) => {
-//   try {
-//     res.json();
-//   } catch (error) {
-//     console.log(error);
-//     next(error);
-//   }
-// });
-
-router.delete('/:postId', async (req, res, next) => {
-  try {
-    const post = await Post.findOne({
-      where: { id: req.params.postId },
-    });
-    if (!post) {
-      return res.status(403).send('게시글이 존재하지 않습니다.');
-    }
-    const result = await Post.destroy({
-      where: { id: req.params.postId },
-    });
-    res.json(result);
-  } catch (error) {
-    console.log(error);
-    next(error);
-  }
-});
-
 router.get('/prev', async (req, res, next) => {
   try {
     const post = await Post.findOne({
@@ -169,6 +121,54 @@ router.post('/image', upload.single('image'), (req, res, next) => {
   console.log(req.file);
   const fileName = req.file.filename;
   res.json(fileName);
+});
+
+// 수정할 게시글 로드
+router.get('/:postId', async (req, res, next) => {
+  try {
+    const post = await Post.findOne({
+      where: { id: req.params.postId },
+      include: [{
+        model: Image,
+        attributes: ['src'],
+      }],
+    });
+    if (!post) {
+      return res.status(403).send('게시글이 존재하지 않습니다.');
+    }
+    console.log('post: ', post);
+    res.json(post);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
+// router.patch('/:postId', async (req, res, next) => {
+//   try {
+//     res.json();
+//   } catch (error) {
+//     console.log(error);
+//     next(error);
+//   }
+// });
+
+router.delete('/:postId', async (req, res, next) => {
+  try {
+    const post = await Post.findOne({
+      where: { id: req.params.postId },
+    });
+    if (!post) {
+      return res.status(403).send('게시글이 존재하지 않습니다.');
+    }
+    const result = await Post.destroy({
+      where: { id: req.params.postId },
+    });
+    res.json(result);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 });
 
 module.exports = router;

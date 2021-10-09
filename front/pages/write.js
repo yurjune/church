@@ -46,7 +46,13 @@ const Write = () => {
           setContent={setContent}
           setImageFiles={setImageFiles}
         />
-        <Button variant="main" m="10px 0 50px 0" float="right" onClick={onClickWrite}>
+        <Button
+          m="10px 0 50px 0"
+          variant="main"
+          size="cs"
+          float="right"
+          onClick={onClickWrite}
+        >
           작성
         </Button>
       </Box>

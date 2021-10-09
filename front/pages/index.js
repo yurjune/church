@@ -17,7 +17,7 @@ function Home() {
       </Head>
       <Header></Header>
       <MainImage></MainImage>
-      <BlockQuote></BlockQuote>
+      {/* <BlockQuote></BlockQuote> */}
       <Footer></Footer>
     </>
   );
