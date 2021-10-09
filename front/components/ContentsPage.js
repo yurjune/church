@@ -25,7 +25,7 @@ const Content = ({ category, id }) => {
         direction={{ base: "column", lg: "row" }}
       >
         <Box
-          w={{ base: "100%", lg: "33%" }}
+          w={{ base: "100%", lg: "32%" }}
         >
           <PostCard data={data} />
         </Box>

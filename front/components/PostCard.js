@@ -41,9 +41,9 @@ const PostCard = ({ data }) => {
         <Box>
           <Text fontSize="30px">{data.category}</Text>
           <Divider mt="10px" mb="20px"></Divider>
-            <Text ml="2px" mb="15px">제목: {data.title}</Text>
-            <Text ml="2px" mb="15px">일시: {data.createdAt.substring(0, 10)}</Text>
-            <Text ml="2px" mb="15px">작성자: {data.User.id}</Text>
+          <Text ml="2px" mb="15px">제목: {data.title}</Text>
+          <Text ml="2px" mb="15px">일시: {data.createdAt.substring(0, 10)}</Text>
+          <Text ml="2px" mb="15px">작성자: {data.User.id}</Text>
           <Divider mt="10px" mb="20px"></Divider>
         </Box>
         <PostCardButton

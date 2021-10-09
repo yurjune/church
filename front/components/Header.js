@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Flex, Box, Button, HStack, Input } from "@chakra-ui/react";
-
-import "@fontsource/noto-sans-kr";
+import { Flex, Box, Button, HStack } from "@chakra-ui/react";
 
 import NavItem from './NavItem';
 import SearchBar from './SearchBar';
@@ -30,7 +28,7 @@ const MiniHeader = () => {
       <Box
         ml="10px"
         mr="20px"
-        height="40px"
+        height="100%"
         lineHeight="40px"
         color="white"
       >
@@ -41,7 +39,7 @@ const MiniHeader = () => {
           DidimdolCh
         </Box>
       </Box>
-      <SearchBar></SearchBar>
+      <SearchBar />
     </Flex>
   );
 };
@@ -59,12 +57,12 @@ const Header = () => {
         <Flex 
           maxW="960px"
           m="0 auto"
-          height="150px"
+          height="100%"
           justify="flex-end"
           pos="relative"
         >
           <Box pos="absolute" top="5px">
-            <SearchBar></SearchBar>
+            <SearchBar />
           </Box>
           <HStack
             pos="absolute"
@@ -83,7 +81,7 @@ const Header = () => {
           </HStack>
         </Flex>
       </Box>
-      <MiniHeader></MiniHeader>
+      <MiniHeader />
     </>
   );
 };
