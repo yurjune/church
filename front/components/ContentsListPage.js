@@ -34,7 +34,7 @@ const ContentsListPage = ({ category }) => {
         <Box mb="20px">
           <ContentsBar category={category} buttonList={buttonList}></ContentsBar>
         </Box>
-        <Box mb="50px">
+        <Box mb="50px" px={{ base: "20px", sm: "0", md: "0" }}>
           <ItemList data={data}></ItemList>
         </Box>
         <Box mb="30px">

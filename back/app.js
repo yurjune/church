@@ -31,6 +31,7 @@ app.use(cors({
 
 app.use(morgan('dev'));
 app.use('/', express.static(path.join(__dirname, 'uploads')));
+app.use('/pictures', express.static(path.join(__dirname, 'pictures')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));

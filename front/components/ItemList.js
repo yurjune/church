@@ -6,7 +6,7 @@ import ItemCard from './ItemCard';
 const ItemList = ({ data }) => {
   return (
     <Grid
-      templateColumns="repeat(auto-fill, minmax(225px, auto))"
+      templateColumns="repeat(auto-fill, minmax(220px, 1fr))"
       columnGap={5}
       rowGap={6}
     >
@@ -15,7 +15,7 @@ const ItemList = ({ data }) => {
           <ItemCard
             key={post.title + index}
             post={post}
-            >
+          >
           </ItemCard>
         </GridItem>
       ))}

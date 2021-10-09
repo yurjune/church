@@ -24,7 +24,7 @@ const MiniHeader = () => {
       width="100%"
       height="40px"
       justify="space-between"
-      bgImage={"url('http://localhost:3060/연두배경.png')"}
+      bgImage={"url('http://localhost:3060/pictures/연두배경.png')"}
       bgSize="contain"
     >
       <Box
@@ -53,7 +53,7 @@ const Header = () => {
         display={{ base: "none", md: "block" }}
         width="100%"
         height="150px"
-        bgImage={"url('http://localhost:3060/연두배경.png')"}
+        bgImage={"url('http://localhost:3060/pictures/연두배경.png')"}
         bgSize="contain"
       >
         <Flex 

@@ -8,7 +8,7 @@ const MainImage = () => {
         bgColor="#ffffff"
       >
         <Box maxW="960px" m="0 auto">
-          <Image src="http://localhost:3060/didimdol.jpg"></Image>
+          <Image src="http://localhost:3060/pictures/didimdol.jpg"></Image>
         </Box>
       </Box>
     </>
