@@ -34,16 +34,17 @@ const DrawerButton = () => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerCloseButton />
+          <DrawerCloseButton 
+            pt="14px"
+          />
           <DrawerHeader
-            py="9px"
-            bg="second"
+            // py="9px"
             fontWeight="normal"
           >
             Didimdol Church
           </DrawerHeader>
           <DrawerBody
-            pt="0"
+            // pt="0"
           >
             <DrawerAccordian></DrawerAccordian>
           </DrawerBody>
