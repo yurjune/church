@@ -14,7 +14,7 @@ export const categoryToUrl = (category) => {
   if (category === '오시는길') {
     return '/community/map';
   }
-  return;
+  return '/#';
 };
 
 export const categoryToContents = (category) => {
@@ -27,5 +27,5 @@ export const categoryToContents = (category) => {
   if (category === '교회소식') {
     return '/contents/news';
   }
-  return;
+  return '/#';
 };

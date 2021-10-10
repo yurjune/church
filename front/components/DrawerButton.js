@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Button, useDisclosure, IconButton, Input } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
-
 import {
   Drawer,
   DrawerBody,
@@ -11,6 +10,7 @@ import {
   DrawerContent,
   DrawerCloseButton,
 } from "@chakra-ui/react";
+import DrawerAccordian from './DrawerAccordian';
 
 const DrawerButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -35,18 +35,18 @@ const DrawerButton = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
-
-          <DrawerBody>
-            <Input placeholder="Type here..." />
+          <DrawerHeader
+            py="9px"
+            bg="second"
+            fontWeight="normal"
+          >
+            Didimdol Church
+          </DrawerHeader>
+          <DrawerBody
+            pt="0"
+          >
+            <DrawerAccordian></DrawerAccordian>
           </DrawerBody>
-
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
-          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </Box>

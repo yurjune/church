@@ -10,7 +10,7 @@ const BlockQuote = () => {
         direction="column"
         justify="center"
         align="center"
-        bgColor="third"
+        bgColor="second"
         color="#ffffff"
         textAlign="center"
       >

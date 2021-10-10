@@ -1,9 +1,8 @@
 const express = require('express');
+const router = express.Router();
 const { Op } = require('sequelize');
 
 const { Post, Thumbnail, User, Image } = require('../models');
-
-const router = express.Router();
 
 router.get('/', async (req, res, next) => {
   try {
@@ -34,7 +33,10 @@ router.get('/total', async (req, res, next) => {
     const result = await Post.count({
       where: { category: req.query.category },
     });
-    res.json(result);
+    if (!result) {
+      return res.json(1);
+    }
+    return res.json(result);
   } catch (error) {
     console.error(error);
     next(error);

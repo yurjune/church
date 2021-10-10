@@ -9,9 +9,9 @@ const overrides = {
     Button,
   },
   colors: {
-    first: "#407927",
-    second: "#81c147",
-    third: "#679e35",
+    first: "#469424",
+    second: "#9DD84B",
+    third: "#9DD84B",
     fourth: "#808000",
     white: "#ffffff",
     grayLetter: "#808080",

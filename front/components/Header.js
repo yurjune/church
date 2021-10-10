@@ -5,6 +5,12 @@ import { Flex, Box, Button, HStack } from "@chakra-ui/react";
 import NavItem from './NavItem';
 import SearchBar from './SearchBar';
 
+export const menuList = [
+  '디딤돌교회',
+  '예배와 말씀',
+  '커뮤니티',
+  '교회학교'
+];
 export const movieList = [
   '주일예배',
   '수요예배',
@@ -13,6 +19,11 @@ export const communityList = [
   '교회소식',
   '성경통독표',
   '오시는길',
+];
+export const schoolList = [
+  '주일학교',
+  '중고등부',
+  '청년부',
 ];
 
 const MiniHeader = () => {
@@ -75,9 +86,7 @@ const Header = () => {
             </Button>
             <NavItem title="예배와 말씀" menu={movieList}></NavItem>
             <NavItem title="커뮤니티" menu={communityList}></NavItem>
-            <Button variant="menu">
-              <Link href="/school">교회학교</Link>
-            </Button>
+            <NavItem title="교회학교" menu={schoolList}></NavItem>
           </HStack>
         </Flex>
       </Box>
