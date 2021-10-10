@@ -11,12 +11,8 @@ const ItemList = ({ data }) => {
       rowGap={6}
     >
       {data && data.map((post, index) => (
-        <GridItem>
-          <ItemCard
-            key={post.title + index}
-            post={post}
-          >
-          </ItemCard>
+        <GridItem key={post.title + index}>
+          <ItemCard post={post}></ItemCard>
         </GridItem>
       ))}
     </Grid>

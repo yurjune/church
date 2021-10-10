@@ -1,8 +1,20 @@
-import React from 'react';
-import { Box, Grid } from "@chakra-ui/react";
+import React, { useMemo } from 'react';
+import { Box } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
 
 import { categoryToContents } from '../utils/categoryConverter';
+
+const getCardImage = (min, max) => () => {
+  console.log('getCardImage');
+  const cardImage = [
+    `url("http://localhost:3060/pictures/강아지.jfif")`,
+    `url("http://localhost:3060/pictures/토끼.jfif")`,
+    `url("http://localhost:3060/pictures/고양이.png")`,
+    `url("http://localhost:3060/pictures/수달.jpg")`,
+  ];
+  const pick = cardImage[Math.floor(Math.random() * (max - min + 1)) + min];
+  return pick;
+};
 
 const ItemCard = ({ post }) => {
   const router = useRouter();
@@ -30,7 +42,7 @@ const ItemCard = ({ post }) => {
         : <Box
           h="0"
           pb="100%"
-          bgImage={`url("http://localhost:3060/pictures/갱얼쥐.jfif")`}
+          bgImage={getCardImage(0, 3)}
           backgroundPosition="center"
           bgSize="cover"
           bgRepeat="no-repeat"

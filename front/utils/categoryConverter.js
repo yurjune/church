@@ -9,7 +9,7 @@ export const categoryToUrl = (category) => {
     return '/community/news';
   }
   if (category === '성경통독표') {
-    return '/#';
+    return '/community/read';
   }
   if (category === '오시는길') {
     return '/community/map';

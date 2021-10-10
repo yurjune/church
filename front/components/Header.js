@@ -76,7 +76,7 @@ const Header = () => {
             <NavItem title="예배와 말씀" menu={movieList}></NavItem>
             <NavItem title="커뮤니티" menu={communityList}></NavItem>
             <Button variant="menu">
-              <Link href="/#">교회학교</Link>
+              <Link href="/school">교회학교</Link>
             </Button>
           </HStack>
         </Flex>

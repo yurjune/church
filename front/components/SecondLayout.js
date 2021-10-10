@@ -9,7 +9,9 @@ const SecondLayout = ({ children }) => {
       minH="100vh"
       direction="column"
     >
-      <Header></Header>
+      <Box mb="30px">
+        <Header></Header>
+      </Box>
       <Box>
         {children}
       </Box>
