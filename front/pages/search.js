@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
+import AppLayout from '../components/AppLayout';
 import SimplePage from '../components/SimplePage';
 import SearchPage from '../components/SearchPage';
 import useFetch from '../hooks/useFetch';
@@ -22,9 +23,11 @@ const Search = () => {
   }
 
   return (
-    <SimplePage title={message}>
-      <SearchPage data={data}></SearchPage>
-    </SimplePage>
+    <AppLayout>
+      <SimplePage title={message}>
+        <SearchPage data={data}></SearchPage>
+      </SimplePage>
+    </AppLayout>
   );
 };
 

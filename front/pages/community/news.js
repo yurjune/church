@@ -1,11 +1,18 @@
 import React from 'react';
-import { Flex } from '@chakra-ui/react';
-
+import Head from 'next/head';
+import AppLayout from '../../components/AppLayout';
 import ContentsTablePage from '../../components/ContentsTablePage';
 
 const News = () => {
   return (
-    <ContentsTablePage category="교회소식"></ContentsTablePage>
+    <>
+      <Head>
+        <title>교회소식</title>
+      </Head>
+      <AppLayout>
+        <ContentsTablePage category="교회소식"></ContentsTablePage>
+      </AppLayout>
+    </>
   );
 };
 

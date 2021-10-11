@@ -19,24 +19,22 @@ const Content = ({ category, id }) => {
   }
 
   return (
-    <AppLayout>
-      <Flex
-        justify="space-between"
-        direction={{ base: "column", lg: "row" }}
+    <Flex
+      justify="space-between"
+      direction={{ base: "column", lg: "row" }}
+    >
+      <Box
+        w={{ base: "100%", lg: "27%" }}
       >
-        <Box
-          w={{ base: "100%", lg: "27%" }}
-        >
-          <PostCard data={data} />
-        </Box>
-        <Box
-          mt={{ base: "40px", lg: "0" }}
-          w={{ base: "100%", lg: "70%" }}
-        >
-          <PostArticle data={data} />
-        </Box>
-      </Flex>
-    </AppLayout>
+        <PostCard data={data} />
+      </Box>
+      <Box
+        mt={{ base: "40px", lg: "0" }}
+        w={{ base: "100%", lg: "70%" }}
+      >
+        <PostArticle data={data} />
+      </Box>
+    </Flex>
   );
 };
 

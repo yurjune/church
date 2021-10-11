@@ -31,23 +31,18 @@ const ContentsTablePage = ({ category }) => {
   };
   return (
     <>
-      <Head>
-        <title>{category}</title>
-      </Head>
-      <AppLayout>
-        <Box mb="20px">
-          <TitleBar title={category}></TitleBar>
-        </Box>
-        <Box mb="40px">
-          <ContentsTable data={data} tableStyle={tableStyle} />
-        </Box>
-        <Box mb="30px">
-          <WriteButton></WriteButton>
-        </Box>
-        <Box>
-          <Pagination category={category}></Pagination>
-        </Box>
-      </AppLayout>
+      <Box mb="20px">
+        <TitleBar title={category}></TitleBar>
+      </Box>
+      <Box mb="40px">
+        <ContentsTable data={data} tableStyle={tableStyle} />
+      </Box>
+      <Box mb="30px">
+        <WriteButton></WriteButton>
+      </Box>
+      <Box>
+        <Pagination category={category}></Pagination>
+      </Box>
     </>
   );
 };

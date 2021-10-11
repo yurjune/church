@@ -67,8 +67,11 @@ router.get('/search', async (req, res, next) => {
         }],
       },
       order: [['createdAt' , 'DESC']],
+      include: [{
+        model: User,
+        attributes: ['id'],
+      }],
     });
-    console.log(result);
     if (result.length >= 1) {
       return res.json(result);
     }

@@ -1,16 +1,18 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import AppLayout from '../../../components/AppLayout';
+import Content from "../../../components/Content";
 
-import ContentsPage from "../../../components/ContentsPage";
-
-const Content = () => {
+const Sunday = () => {
   const router = useRouter();
   const category = "주일예배";
   const { id } = router.query;
 
   return (
-    <ContentsPage category={category} id={id} />
+    <AppLayout>
+      <Content category={category} id={id} />
+    </AppLayout>
   );
 };
 
-export default Content;
+export default Sunday;

@@ -1,6 +1,8 @@
 import React from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useFetch from '../hooks/useFetch';
+import AppLayout from '../components/AppLayout';
 import EditPost from '../components/EditPost';
 
 const Edit = () => {
@@ -17,7 +19,14 @@ const Edit = () => {
   }
 
   return (
-    <EditPost data={data}></EditPost>
+    <>
+      <Head>
+        <title>수정</title>
+      </Head>
+      <AppLayout>
+        <EditPost data={data}></EditPost>
+      </AppLayout>
+    </>
   );
 };
 

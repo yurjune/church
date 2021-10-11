@@ -12,7 +12,6 @@ import {
   TableCaption,
 } from "@chakra-ui/react";
 import { categoryToContents } from '../utils/categoryConverter';
-import useDayjs from '../hooks/useDayjs';
 
 const noWrap = {
   overflow: "hidden",
@@ -46,7 +45,7 @@ const DesktopTable = ({ data, tableStyle }) => {
               <Td {...noWrap} {...title}>
                 <Link href={`${categoryToContents(item.category)}/${item.id}`}>{item.title}</Link>
               </Td>
-              <Td isNumeric {...noWrap}>{useDayjs(item.createdAt)}</Td>
+              <Td isNumeric {...noWrap}>{item.createdAt.slice(5, 10)}</Td>
             </Tr>
           ))}
         </Tbody>
