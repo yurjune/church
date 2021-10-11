@@ -1,12 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Box } from '@chakra-ui/react';
-
-import ContentsBar from './ContentsBar';
-import ItemList from './ItemList';
-import WriteButton from './WriteButton';
-import Pagination from './Pagination';
 import useFetch from '../hooks/useFetch';
+import ContentsList from './ContentsList';
 
 const ContentsListPage = ({ category }) => {
   const router = useRouter();
@@ -22,22 +17,8 @@ const ContentsListPage = ({ category }) => {
     return <div>게시글을 불러오는 중 문제가 발생했습니다.</div>;
   }
 
-  const buttonList = ['전체', '성경', '주제'];
   return (
-    <>
-      <Box mb="20px">
-        <ContentsBar category={category} buttonList={buttonList}></ContentsBar>
-      </Box>
-      <Box mb="50px" px={{ base: "20px", sm: "0", md: "0" }}>
-        <ItemList data={data}></ItemList>
-      </Box>
-      <Box mb="30px">
-        <WriteButton></WriteButton>
-      </Box>
-      <Box>
-        <Pagination category={category}></Pagination>
-      </Box>
-    </>
+    <ContentsList data={data} category={category}></ContentsList>
   );
 };
 

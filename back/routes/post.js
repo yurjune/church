@@ -69,6 +69,26 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/latest', async (req, res, next) => {
+  try {
+    const post = await Post.findOne({
+      where: {
+        category: req.query.category,
+      },
+      limit: 1,
+      order: [['createdAt' , 'DESC']],
+      include: [{
+        model: User,
+        attributes: ['id'],
+      },],
+    });
+    res.json(post);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
 router.get('/prev', async (req, res, next) => {
   try {
     const post = await Post.findOne({
