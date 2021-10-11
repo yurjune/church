@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { HStack, Button, useDisclosure } from "@chakra-ui/react";
 import {
   Menu,
@@ -19,6 +20,11 @@ import { categoryToUrl } from '../utils/categoryConverter';
 const NavMenu = ({ title, menu }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btn = useRef();
+  const router = useRouter();
+
+  const onClickBtn = () => {
+    router.push(categoryToUrl(title));
+  };
 
   // const onRef = (e) => {
   //   // console.dir(btn.current);
@@ -39,6 +45,7 @@ const NavMenu = ({ title, menu }) => {
         onMouseLeave={onClose}
         ref={btn}
         _focus="none"
+        onClick={onClickBtn}
         // onMouseLeave={onRef}
       >
         {title}

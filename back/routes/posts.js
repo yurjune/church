@@ -6,8 +6,16 @@ const { Post, Thumbnail, User, Image } = require('../models');
 
 router.get('/', async (req, res, next) => {
   try {
+    const where = {};
+    if (req.query.category === "예배와 말씀") {
+      where.category = {
+        [Op.or]: ['주일예배', '수요예배'],
+      }
+    } else {
+      where.category = req.query.category;
+    }
     const results = await Post.findAll({
-      where: { category: req.query.category },
+      where,
       limit: 12,
       offset: 12 * (req.query.page - 1),
       order: [
@@ -58,6 +66,7 @@ router.get('/search', async (req, res, next) => {
           },
         }],
       },
+      order: [['createdAt' , 'DESC']],
     });
     console.log(result);
     if (result.length >= 1) {

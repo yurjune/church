@@ -1,4 +1,13 @@
 export const categoryToUrl = (category) => {
+  if (category === '예배와 말씀') {
+    return '/movies';
+  }
+  if (category === '커뮤니티') {
+    return '/community/news';
+  }
+  if (category === '교회학교') {
+    return '/#';
+  }
   if (category === '주일예배') {
     return '/movies/sunday';
   }
