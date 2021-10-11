@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Flex } from "@chakra-ui/react";
 
-import ContentsListTable from './ContentsListTable';
+import ContentsTable from './ContentsTable';
 
 const tableStyle = {
   variant: "striped",
@@ -18,7 +18,7 @@ const TableItem = ({ data }) => {
         </Flex>
       )
       : (
-        <ContentsListTable data={data} tableStyle={tableStyle} />
+        <ContentsTable data={data} tableStyle={tableStyle} />
       )}
     </>
   );

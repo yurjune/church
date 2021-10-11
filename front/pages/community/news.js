@@ -1,11 +1,11 @@
 import React from 'react';
 import { Flex } from '@chakra-ui/react';
 
-import SimpleListPage from '../../components/SimpleListPage';
+import ContentsTablePage from '../../components/ContentsTablePage';
 
 const News = () => {
   return (
-    <SimpleListPage category="교회소식"></SimpleListPage>
+    <ContentsTablePage category="교회소식"></ContentsTablePage>
   );
 };
 
