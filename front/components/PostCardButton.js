@@ -3,9 +3,16 @@ import { useRouter } from 'next/router';
 import { Flex, HStack, Button, Icon } from '@chakra-ui/react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { categoryToUrl } from '../utils/categoryConverter';
+import usePost from '../hooks/usePost';
 
-const PostCardButton = ({ data, url, deletePost, movePost }) => {
+const PostCardButton = ({ data }) => {
   const router = useRouter();
+  const url = categoryToUrl(data.category);
+  const {
+    deletePost,
+    movePost,
+  } = usePost(data);
 
   return (
     <Flex
@@ -26,7 +33,6 @@ const PostCardButton = ({ data, url, deletePost, movePost }) => {
       <HStack>
         <Button
           size="sm"
-          variant="modify"
           onClick={() => router.push(`/edit?id=${data.id}`)}
         >
           수정

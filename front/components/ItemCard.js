@@ -3,6 +3,7 @@ import { Box } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
 
 import { categoryToContents } from '../utils/categoryConverter';
+import useDayjs from '../hooks/useDayjs';
 
 const getCardImage = (min, max) => () => {
   console.log('getCardImage');
@@ -60,7 +61,7 @@ const ItemCard = ({ post }) => {
           {post.title}
         </Box>
         <Box fontSize="14px" color="grayLetter">
-          {`${post.createdAt.slice(0, 10)}`}
+          {useDayjs(post.createdAt)}
         </Box>
       </Box>
     </Box>
