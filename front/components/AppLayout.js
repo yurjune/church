@@ -19,7 +19,8 @@ const AppLayout = ({ children }) => {
         colEnd={3} 
         rowStart={2} 
         rowEnd={3} 
-        py={["30px", "30px", "40px", "40px"]}
+        pt={["20px", "20px", "40px", "40px"]}
+        pb={["30px", "30px", "40px", "40px"]}
         px={["20px", "30px", "40px", "0"]}
       >
         {children}

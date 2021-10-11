@@ -48,6 +48,7 @@ const NavMenu = ({ title, menu }) => {
         rounded="md"
         onMouseEnter={onOpen}
         onMouseLeave={onClose}
+        minW="180px"
       >
         {menu.map(item => (
           <MenuItem

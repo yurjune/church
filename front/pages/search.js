@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import SimplePage from '../components/SimplePage';
-import SearchTable from '../components/SearchTable';
+import SearchPage from '../components/SearchPage';
 import useFetch from '../hooks/useFetch';
 
 const Search = () => {
@@ -23,7 +23,7 @@ const Search = () => {
 
   return (
     <SimplePage title={message}>
-      <SearchTable data={data}></SearchTable>
+      <SearchPage data={data}></SearchPage>
     </SimplePage>
   );
 };

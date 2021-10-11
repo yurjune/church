@@ -35,16 +35,26 @@ const PostCard = ({ data }) => {
     return router.push(`${cardData.id}`);
   };
 
+  const titleStyle = {
+    fontSize: { base: "25px", md: "25px" },
+    mb: { base: "15px", md: "20px" },
+  }
+  const textStyle = {
+    ml: "2px",
+    mb: { base: "10px", md: "15px" },
+    fontSize: "17px"
+  };
   return (
     <>
-      <Flex fontSize="17px" direction="column">
+      <Flex direction="column">
         <Box>
-          <Text fontSize="30px">{data.category}</Text>
-          <Divider mt="10px" mb="20px"></Divider>
-          <Text ml="2px" mb="15px">제목: {data.title}</Text>
-          <Text ml="2px" mb="15px">일시: {data.createdAt.substring(0, 10)}</Text>
-          <Text ml="2px" mb="15px">작성자: {data.User.id}</Text>
-          <Divider mt="10px" mb="20px"></Divider>
+          <Text {...titleStyle}>
+            {data.category}
+          </Text>
+          <Text {...textStyle}>제목: {data.title}</Text>
+          <Text {...textStyle}>일시: {data.createdAt.substring(0, 10)}</Text>
+          {/* <Text {...textStyle}>작성자: {data.User.id}</Text> */}
+          <Divider my="20px"></Divider>
         </Box>
         <PostCardButton
           data={data}
