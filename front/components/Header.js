@@ -5,6 +5,7 @@ import { Flex, Box, Button, HStack } from "@chakra-ui/react";
 import SearchBar from './SearchBar';
 import Navigation from './Navigation';
 import PopoverNav from './PopoverNav';
+import { layoutWidth } from './AppLayout';
 
 export const menuList = [
   '디딤돌교회',
@@ -67,7 +68,7 @@ const DesktopHeader = () => {
     >
       <Flex 
         pos="relative"
-        maxW="960px"
+        maxW={layoutWidth}
         m="0 auto"
         height="100%"
         justify="flex-end"

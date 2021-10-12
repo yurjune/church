@@ -1,11 +1,12 @@
 import { Box, Flex } from '@chakra-ui/layout';
 import React from 'react';
+import { layoutWidth } from './AppLayout';
 
 const Footer = () => {
   return (
     <Box w="100%" h="150px" bgColor="charcole">
       <Flex
-        maxW="960px"
+        maxW={layoutWidth}
         h="100%"
         m="0 auto"
         direction="column"

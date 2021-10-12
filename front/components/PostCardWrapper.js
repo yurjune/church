@@ -15,7 +15,7 @@ const PostCardWrapper = ({ children, data }) => {
         {children}
       </Box>
       <Box
-        w={{ base: "100%", lg: "65%" }}
+        w={{ base: "100%", lg: "67%" }}
       >
         <PostArticle data={data} />
       </Box>

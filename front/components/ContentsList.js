@@ -16,7 +16,10 @@ const ContentsList = ({ data, category }) => {
           buttonList={buttonList}
         />
       </Box>
-      <Box mb="50px" px={{ base: "20px", sm: "0", md: "0" }}>
+      <Box
+        px={{ base: "20px", sm: "0", md: "0" }}
+        mb="50px"
+      >
         <ItemList data={data}></ItemList>
       </Box>
       <Box mb="30px">
