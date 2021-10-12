@@ -30,7 +30,7 @@ const useWrite = () => {
         return alert("카테고리를 선택해 주세요!");
       }
       const result = await axios.post('/post', {
-        id: 1,
+        userId: 1,
         title,
         category: selectedCategory,
         content,

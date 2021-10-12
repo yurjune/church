@@ -17,7 +17,7 @@ const upload = multer({
       done(null, basename + '_' + new Date().getTime() + ext);
     }
   }),
-  limits: { fileSize: 20 * 1024 * 1024 },
+  limits: { fileSize: 5 * 1024 * 1024 },  // 5MB
 });
 
 router.post('/thumbnail', upload.single('image'), (req, res, next) => {
@@ -39,7 +39,7 @@ router.post('/', async (req, res, next) => {
       title: req.body.title,
       category: req.body.category,
       content: req.body.content,
-      UserId: req.body.id,
+      UserId: req.body.userId,
     });
     if (req.body.image.length >= 1) {  // 이미지 첨부된 경우
       if (req.body.image.length >= 2) {
@@ -52,7 +52,7 @@ router.post('/', async (req, res, next) => {
     }
     if (req.body.thumbnail) {
       const thumbnail = await Thumbnail.create({ src: req.body.thumbnail });
-      await post.addThumbnails(thumbnail);
+      await post.setThumbnail(thumbnail);
     }
     res.json(post);
   } catch (error) {
@@ -166,6 +166,7 @@ router.get('/:postId', async (req, res, next) => {
   }
 });
 
+// 게시글 수정
 router.patch('/:postId', async (req, res, next) => {
   try {
     await Post.update({
@@ -192,7 +193,7 @@ router.patch('/:postId', async (req, res, next) => {
     if (req.body.thumbnail) {
       await Thumbnail.destroy({ where: { postId: req.params.postId } });
       const thumbnail = await Thumbnail.create({ src: req.body.thumbnail });
-      await post.addThumbnails(thumbnail);
+      await post.setThumbnail(thumbnail);
     }
     res.json(post);
   } catch (error) {

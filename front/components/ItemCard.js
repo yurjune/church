@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { Box } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
 import { categoryToContents } from '../utils/categoryConverter';
@@ -28,11 +28,11 @@ const ItemCard = ({ post }) => {
       onClick={onClickImage}
       cursor="pointer"
     >
-      {post.Thumbnails.length >= 1
+      {post.Thumbnail
         ? <Box
           h="0"
           pb="100%"
-          bgImage={`url("http://localhost:3060/${post.Thumbnails[0]?.src}")`}
+          bgImage={`url("http://localhost:3060/${post.Thumbnail?.src}")`}
           backgroundPosition="center"
           bgSize="cover"
           bgRepeat="no-repeat"
