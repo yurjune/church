@@ -5,16 +5,16 @@ import PostArticle from './PostArticle';
 const PostCardWrapper = ({ children, data }) => {
   return (
     <Flex
-      justify="space-between"
+      justify={{ base: "flex-start", lg: "space-between" }}
       direction={{ base: "column", lg: "row" }}
     >
       <Box
         w={{ base: "100%", lg: "30%" }}
+        mb={{ base: "50px", lg: "0" }}
       >
         {children}
       </Box>
       <Box
-        mt={{ base: "40px", lg: "0" }}
         w={{ base: "100%", lg: "65%" }}
       >
         <PostArticle data={data} />

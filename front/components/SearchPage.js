@@ -5,10 +5,8 @@ import ContentsTable from './ContentsTable';
 
 const tableStyle = {
   variant: "striped",
-  colorScheme: "green",
-  size: "md",
+  colorScheme: "linkedin",
 }
-
 const TableItem = ({ data }) => {
   return (
     <>

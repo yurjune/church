@@ -29,6 +29,10 @@ const News = () => {
     return <div>게시글을 불러오는 중 문제가 발생했습니다.</div>;
   }
 
+  const tableStyle = {
+    variant: "striped",
+    colorScheme: "blackAlpha",
+  };
   return (
     <>
       <Head>
@@ -37,10 +41,11 @@ const News = () => {
       <AppLayout>
         <PostCardWrapper data={newData}>
           <PostCardInfo data={newData}></PostCardInfo>
+          <Divider mt="20px"></Divider>
         </PostCardWrapper>
         <Divider mt="80px" />
         <Box mb="40px">
-          <ContentsTable data={data} />
+          <ContentsTable data={data} tableStyle={tableStyle} />
         </Box>
         <Box mb="30px">
           <WriteButton></WriteButton>

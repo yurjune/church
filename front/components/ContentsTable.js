@@ -20,21 +20,19 @@ const noWrap = {
 }
 
 const DesktopTable = ({ data, tableStyle }) => {
-  const title = {
-    maxWidth: "0",  // 레이아웃 탈영방지
-    width: "100%"   // 제목영역 크기조절
-  }
+  // const title = {
+  //   maxWidth: "0",  // 레이아웃 탈영방지
+  //   width: "100%"   // 제목영역 크기조절
+  // }
   return (
     <Box display={{ base: 'none', md: 'block'}}>
-      <Table
-        {...tableStyle}
-        >
+      <Table {...tableStyle}>
         <Thead>
           <Tr>
             <Th {...noWrap}>카테고리</Th>
             <Th {...noWrap}>작성자</Th>
-            <Th {...noWrap}>제목</Th>
-            <Th isNumeric {...noWrap}>작성일시</Th>
+            <Th>제목</Th>
+            <Th {...noWrap} isNumeric>일시</Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -42,10 +40,10 @@ const DesktopTable = ({ data, tableStyle }) => {
             <Tr key={item.title + index} >
               <Td {...noWrap}>{item.category}</Td>
               <Td {...noWrap}>{item.User.id}</Td>
-              <Td {...noWrap} {...title}>
+              <Td>
                 <Link href={`${categoryToContents(item.category)}/${item.id}`}>{item.title}</Link>
               </Td>
-              <Td isNumeric {...noWrap}>{item.createdAt.slice(5, 10)}</Td>
+              <Td {...noWrap} isNumeric>{item.createdAt.slice(5, 10)}</Td>
             </Tr>
           ))}
         </Tbody>
@@ -55,26 +53,24 @@ const DesktopTable = ({ data, tableStyle }) => {
 };
 
 const MobileTable = ({ data, tableStyle }) => {
-  const title = {
-    maxWidth: "0",
-    width: "80%",
-  }
+  // const title = {
+  //   maxWidth: "0",
+  //   width: "80%",
+  // }
   return (
     <Box display={{ base: 'block', md: 'none'}}>
-      <Table
-        {...tableStyle}
-        >
+      <Table {...tableStyle}>
         <Thead>
           <Tr>
             <Th {...noWrap}>카테고리</Th>
-            <Th {...noWrap}>제목</Th>
+            <Th>제목</Th>
           </Tr>
         </Thead>
         <Tbody>
           {data.length >= 1 && data.map((item, index) => (
             <Tr key={item.title + index} >
               <Td {...noWrap}>{item.category}</Td>
-              <Td {...noWrap} {...title}>
+              <Td>
                 <Link href={`${categoryToContents(item.category)}/${item.id}`}>{item.title}</Link>
               </Td>
             </Tr>
