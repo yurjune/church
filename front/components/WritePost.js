@@ -27,7 +27,12 @@ const WritePost = () => {
         >
           {categories.map((item, index) => <option key={item + index} value={item}>{item}</option>)}
         </Select>
-        <Input type="file" size="sm" mb="10px" onChange={onChangeThumbnail} />
+        <Input
+          mb="10px"
+          size="sm"
+          type="file"
+          onChange={onChangeThumbnail}
+        />
       </Flex>
       <Input
         mb="10px"

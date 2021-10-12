@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Box, Input, Button, Select, Flex } from "@chakra-ui/react";
 import useWrite from '../hooks/useWrite';
 import QuillEditor from './QuillEditor';
 
 const EditPost = ({ data }) => {
+  const thumbnailRef = useRef();
   const {
     title,
     onChangeTitle,
@@ -28,7 +29,13 @@ const EditPost = ({ data }) => {
         >
           {categories.map((item, index) => <option key={item + index} value={item}>{item}</option>)}
         </Select>
-        <Input type="file" size="sm" mb="10px" onChange={onChangeThumbnail} />
+        <Input
+          mb="10px"
+          size="sm"
+          type="file"
+          onChange={onChangeThumbnail}
+          ref={thumbnailRef}
+        />
       </Flex>
       <Input
         mb="10px"
@@ -45,6 +52,7 @@ const EditPost = ({ data }) => {
         setTitle={setTitle}
         setContent={setContent}
         setImageFiles={setImageFiles}
+        thumbnailRef={thumbnailRef}
       />
       <Button
         m="10px 0 50px 0"

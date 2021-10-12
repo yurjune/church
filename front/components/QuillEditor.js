@@ -27,12 +27,12 @@ const QuillEditor = (props) => {
   const quillRef = useRef(null);  // ReactQuill component
   const quill = quillRef.current?.getEditor();  // Quill instance
 
-  useEffect(() => { // 수정 모드일 때
-    if (props.isEdit && quill) {
-      props.setTitle(props.data.title);
-      quill.root.innerHTML = props.data.content;
-    }
-  }, [props.data, quill]);
+  useEffect(() => { // 수정 모드 일때
+    if (!props.isEdit || !quill) return;
+    props.setTitle(props.data.title);
+    quill.root.innerHTML = props.data.content;
+    console.dir(props.thumbnailRef.current.files);
+  }, [props.isEdit, quill, props.data]);
 
   useEffect(() => {
     const html = quill?.root.innerHTML;

@@ -54,8 +54,8 @@ const useWrite = () => {
       if (!selectedCategory) {
         return alert("카테고리를 선택해 주세요!");
       }
-      const result = await axios.patch('/post', {
-        id: 1,
+      const result = await axios.patch(`/post/${router.query.id}`, {
+        userId: 1,
         title,
         category: selectedCategory,
         content,
