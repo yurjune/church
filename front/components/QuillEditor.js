@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import dynamic from 'next/dynamic';
+let ReactQuill = typeof window === 'object' ? require('react-quill') : () => false;
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:3060';
@@ -22,33 +22,17 @@ const formats = [
   'video',
 ];
 
-const ReactQuill = dynamic(
-  /* When next/dynamic wraps the component, it doesn't seem forwarding ref to the internal component. 
-  If I wrapped ReactQuill component with ref renamed to forwardedRef, it seemed working. */
-  async () => {
-    const { default: RQ } = await import("react-quill");
-    return ({ forwardedRef, ...props }) => <RQ ref={forwardedRef} {...props} />;
-  }, {
-    ssr: false,
-    loading: () => <p>Loading ...</p>,
-  },
-);
-
 const QuillEditor = (props) => {
   const [value, setValue] = useState("");
-  const [isLoaded, setIsLoaded] = useState(false);
   const quillRef = useRef(null);  // ReactQuill component
   const quill = quillRef.current?.getEditor();  // Quill instance
 
   useEffect(() => { // 수정 모드일 때
-    if (props.isEdit && !isLoaded && quill) {
-      setIsLoaded(true);
-      console.log(props.isEdit);
+    if (props.isEdit && quill) {
       props.setTitle(props.data.title);
       quill.root.innerHTML = props.data.content;
-      // console.log(props.data.Images.src);
     }
-  }, [quill]);
+  }, [props.data, quill]);
 
   useEffect(() => {
     const html = quill?.root.innerHTML;
@@ -111,14 +95,16 @@ const QuillEditor = (props) => {
 
   return (
     <>
-      <ReactQuill
-        forwardedRef={quillRef}
-        theme="snow"
-        value={value}
-        onChange={setValue}
-        formats={formats}
-        modules={modules}
-      />
+      {ReactQuill && (
+        <ReactQuill
+          ref={quillRef}
+          theme="snow"
+          value={value}
+          onChange={setValue}
+          formats={formats}
+          modules={modules}
+        />
+      )}
     </>
   );
 }

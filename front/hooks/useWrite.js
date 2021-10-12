@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import useInput from '../hooks/useInput';
-
 import { categoryToContents } from '../utils/categoryConverter';
 
 axios.defaults.baseURL = 'http://localhost:3060';

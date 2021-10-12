@@ -3,15 +3,14 @@ import { Box, Input, Button, Select, Flex } from "@chakra-ui/react";
 import useWrite from '../hooks/useWrite';
 import QuillEditor from './QuillEditor';
 
-const EditPost = ({ data }) => {
+const WritePost = () => {
   const {
     title,
     onChangeTitle,
-    setTitle,
     setContent,
     setImageFiles,
     categories,
-    onClickEdit,
+    onClickWrite,
     onChangeThumbnail,
   } = useWrite();
 
@@ -40,23 +39,21 @@ const EditPost = ({ data }) => {
         isRequired
       />
       <QuillEditor
-        data={data}
-        isEdit={true}
-        setTitle={setTitle}
+        isEdit={false}
         setContent={setContent}
         setImageFiles={setImageFiles}
       />
       <Button
         m="10px 0 50px 0"
-        variant="modify"
+        variant="main"
         size="cs"
         float="right"
-        onClick={onClickEdit}
+        onClick={onClickWrite}
       >
-        수정
+        작성
       </Button>
     </Box>
   );
 };
 
-export default EditPost;
+export default WritePost;
