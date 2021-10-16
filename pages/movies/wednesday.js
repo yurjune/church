@@ -3,29 +3,34 @@ import Head from 'next/head';
 import { createClient } from 'contentful';
 import AppLayout from '../../components/AppLayout';
 import ContentsListPage from '../../components/ContentsListPage';
+import useTime from '../../hooks/useTime';
 
 export const getStaticProps = async () => {
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
   });
-  const res = await client.getEntries({
+  const pictures = await client.getEntries({
     content_type: 'picture',
   });
-  const article = await client.getEntries({
+  const articles = await client.getEntries({
     content_type: 'article',
   });
   return {
     props: {
-      picture: res.items,
-      article: article.items,
+      pictures: pictures.items,
+      articles: articles.items,
     }
   }
 }
 
-const Sunday = ({ picture, article }) => {
-  const header = picture.find(item => item.fields.picture.fields.title === "header")
+const Wednesday = ({ pictures, articles }) => {
+  const header = pictures.find(item => item.fields.picture.fields.title === "header")
     .fields.picture.fields.file.url;
+  const dummyThumbnail = pictures.find(item => item.fields.picture.fields.title === "thumbnail-1")
+    .fields.picture.fields.file.url;
+  const wednesdayArticles = articles.filter(article => article.fields.category === '수요예배');
+  const sortedArticles = useTime(wednesdayArticles);
   return (
     <>
       <Head>
@@ -36,11 +41,12 @@ const Sunday = ({ picture, article }) => {
       >
         <ContentsListPage
           category="수요예배"
-          article={article}
+          articles={sortedArticles}
+          dummyThumbnail={dummyThumbnail}
         />
       </AppLayout>
     </>
   );
 };
 
-export default Sunday;
+export default Wednesday;

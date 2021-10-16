@@ -1,9 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 
-const getTotalPages = (totalPosts) => {
-  const totalPages = totalPosts && Math.ceil(totalPosts / 12);
-  const pageList = new Array(17).fill().map((value, index) => index + 1);
+const getTotalPages = (articles) => {
+  const totalPosts = articles.length;
+  const totalPages = Math.ceil(totalPosts / 12);
+  const pageList = new Array(totalPages).fill().map((value, index) => index + 1);
   const result = [];
   for (let i = 0; i < pageList.length; i += 5) {
     result.push(pageList.slice(i, i + 5));
@@ -16,12 +17,12 @@ const getCurrentPageGroup = (currentPage, totalPages) => {
   return result;
 };
 
-const usePagination = (data) => {
+const usePagination = (articles) => {
   const router = useRouter();
   const initialPage = parseInt(router.query.page, 10) || 1;
   const [currentPage, setCurrentPage] = useState(initialPage);
 
-  const totalPages = useMemo(() => getTotalPages(data), [data]);
+  const totalPages = useMemo(() => getTotalPages(articles), [articles]);
   const memorizedCurrentPageGroup = useMemo(() => getCurrentPageGroup(currentPage, totalPages), [currentPage, totalPages]);
   const [currentPageGroup, setCurrentPageGroup] = useState(memorizedCurrentPageGroup);
 

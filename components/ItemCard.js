@@ -3,10 +3,10 @@ import { Box } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
 import { categoryToContents } from '../utils/categoryConverter';
 
-const ItemCard = ({ post }) => {
+const ItemCard = ({ post, dummyThumbnail }) => {
   const router = useRouter();
   const { title, category } = post.fields;
-  const thumbnail = post.fields.thumbnail.fields.file.url;
+  const thumbnail = post.fields.thumbnail?.fields.file.url;
   const { id, createdAt } = post.sys;
 
   const onClickImage = () => {
@@ -32,6 +32,7 @@ const ItemCard = ({ post }) => {
           h="0"
           pb="100%"
           backgroundPosition="center"
+          bgImage={`url("http:${dummyThumbnail}")`}
           bgSize="cover"
           bgRepeat="no-repeat"
         />

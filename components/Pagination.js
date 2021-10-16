@@ -1,22 +1,81 @@
-import React from "react";
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { Box, Flex, Icon } from "@chakra-ui/react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { PageButton, ArrowButton } from './PageButton';
 
-import useFetch from '../hooks/useFetch';
-import SubPagination from "./SubPagination";
+import usePagination from '../hooks/usePagination';
 
-const Pagination = ({ category }) => {
-  const url = `/posts/total?category=${category}`;
-  const { data, error, isLoading } = useFetch(url);
+const Pagination = ({ articles }) => {
+  const router = useRouter();
+  const {
+    currentPage,
+    setCurrentPage,
+    currentPageGroup,
+    firstPageGroup,
+    lastPageGroup,
+    firstPage,
+    lastPage,
+  } = usePagination(articles);
 
-  if (isLoading) {
-    return <div>로딩 중...</div>;
-  }
-  if (error) {
-    console.error(error);
-    return <div>로딩 실패</div>;
-  }
+  const movePage = (page) => {
+    setCurrentPage(page);
+    router.push(`${router.pathname}?page=${page}`);
+  };
+
+  const onClickButton = (children) => (e) => {
+    movePage(children);
+  };
+
+  const onClickPrevArrow = () => {
+    const startPage = currentPageGroup[0];
+    movePage(startPage - 1);
+  };
+
+  const onClickNextArrow = () => {
+    const endPage = currentPageGroup[currentPageGroup.length - 1];
+    movePage(endPage + 1);
+  };
 
   return (
-    <SubPagination data={data}></SubPagination>
+    <Flex
+      w="full"
+      align="center"
+      justify="center"
+    >
+      {currentPageGroup
+        ? (<Flex>
+          {firstPageGroup[0] === currentPageGroup[0] ? "" : (
+            <>
+              <PageButton onClickButton={onClickButton}>{firstPage}</PageButton>
+              <ArrowButton onClickButton={onClickPrevArrow}>
+                <Icon as={IoIosArrowBack} boxSize={3} />
+              </ArrowButton>
+            </>
+          )}
+          <Box mx={3}>
+            {currentPageGroup.map(value => (
+              <PageButton
+                key={value}
+                currentPage={currentPage}
+                onClickButton={onClickButton}
+              >
+                {value}
+              </PageButton>
+            ))}
+          </Box>
+          {lastPageGroup[0] === currentPageGroup[0] ? "" : (
+            <>
+              <ArrowButton onClickButton={onClickNextArrow}>
+                <Icon as={IoIosArrowForward} boxSize={3} />
+              </ArrowButton>
+              <PageButton onClickButton={onClickButton}>{lastPage}</PageButton>
+            </>
+          )}
+        </Flex>)
+        : "없는 페이지입니다"
+      }
+    </Flex>
   );
 };
 
