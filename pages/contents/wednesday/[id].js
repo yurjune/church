@@ -9,10 +9,10 @@ const client = createClient({
 });
 
 export const getStaticPaths = async () => {
-  const res = await client.getEntries({ 
+  const articles = await client.getEntries({ 
     content_type: "article" 
   });
-  const paths = res.items.map(item => {
+  const paths = articles.items.map(item => {
     return {
       params: { id: item.sys.id }
     }
@@ -24,26 +24,25 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const { items: pic } = await client.getEntries({
+  const pictures = await client.getEntries({
     content_type: 'picture',
   });
-  const { items } = await client.getEntries({
+  const articles = await client.getEntries({
     content_type: 'article',
     'sys.id': params.id,
   });
   return {
     props: {
-      picture: pic,
-      article: items[0]
+      pictures: pictures.items,
+      article: articles.items[0]
     }
   }
 }
 
-const Sunday = ({ article, picture }) => {
+const Wednesday = ({ pictures, article }) => {
   const category = "수요예배";
-  const header = picture.find(item => item.fields.picture.fields.title === "header")
-  .fields.picture.fields.file.url;
-  console.log(article);
+  const header = pictures.find(item => item.fields.picture.fields.title === "header")
+    .fields.picture.fields.file.url;
   return (
     <AppLayout header={header}>
       <ContentPage
@@ -54,4 +53,4 @@ const Sunday = ({ article, picture }) => {
   );
 };
 
-export default Sunday;
+export default Wednesday;

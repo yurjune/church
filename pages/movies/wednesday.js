@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { createClient } from 'contentful';
 import AppLayout from '../../components/AppLayout';
 import ContentsListPage from '../../components/ContentsListPage';
-import useTime from '../../hooks/useTime';
+import { sortArticles } from '../../hooks/useArticle';
 
 export const getStaticProps = async () => {
   const client = createClient({
@@ -30,7 +30,7 @@ const Wednesday = ({ pictures, articles }) => {
   const dummyThumbnail = pictures.find(item => item.fields.picture.fields.title === "thumbnail-1")
     .fields.picture.fields.file.url;
   const wednesdayArticles = articles.filter(article => article.fields.category === '수요예배');
-  const sortedArticles = useTime(wednesdayArticles);
+  const sortedArticles = sortArticles(wednesdayArticles);
   return (
     <>
       <Head>

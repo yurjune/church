@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Text, Divider } from '@chakra-ui/react';
 
 const PostCardInfo = ({ article }) => {
-  console.log(article);
   const { category, title } = article.fields;
   const { createdAt } = article.sys;
   const titleStyle = {

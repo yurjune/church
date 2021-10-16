@@ -19,7 +19,7 @@ const noWrap = {
   textOverflow: "ellipsis",
 }
 
-const DesktopTable = ({ data, tableStyle }) => {
+const DesktopTable = ({ articles, tableStyle }) => {
   // const title = {
   //   maxWidth: "0",  // 레이아웃 탈영방지
   //   width: "100%"   // 제목영역 크기조절
@@ -30,20 +30,18 @@ const DesktopTable = ({ data, tableStyle }) => {
         <Thead>
           <Tr>
             <Th {...noWrap}>카테고리</Th>
-            <Th {...noWrap}>작성자</Th>
             <Th>제목</Th>
             <Th {...noWrap} isNumeric>일시</Th>
           </Tr>
         </Thead>
         <Tbody>
-          {data.length >= 1 && data.map((item, index) => (
-            <Tr key={item.title + index} >
-              <Td {...noWrap}>{item.category}</Td>
-              <Td {...noWrap}>{item.User.id}</Td>
+          {articles.length >= 1 && articles.map(article => (
+            <Tr key={article.sys.id} >
+              <Td {...noWrap}>{article.fields.category}</Td>
               <Td>
-                <Link href={`${categoryToContents(item.category)}/${item.id}`}>{item.title}</Link>
+                <Link href={`${categoryToContents(article.fields.category)}/${article.sys.id}`}>{article.fields.title}</Link>
               </Td>
-              <Td {...noWrap} isNumeric>{item.createdAt.slice(5, 10)}</Td>
+              <Td {...noWrap} isNumeric>{article.sys.createdAt.slice(5, 10)}</Td>
             </Tr>
           ))}
         </Tbody>
@@ -52,7 +50,7 @@ const DesktopTable = ({ data, tableStyle }) => {
   );
 };
 
-const MobileTable = ({ data, tableStyle }) => {
+const MobileTable = ({ articles, tableStyle }) => {
   // const title = {
   //   maxWidth: "0",
   //   width: "80%",
@@ -67,11 +65,11 @@ const MobileTable = ({ data, tableStyle }) => {
           </Tr>
         </Thead>
         <Tbody>
-          {data.length >= 1 && data.map((item, index) => (
-            <Tr key={item.title + index} >
-              <Td {...noWrap}>{item.category}</Td>
+          {articles.length >= 1 && articles.map(article => (
+            <Tr key={article.sys.id} >
+              <Td {...noWrap}>{article.fields.category}</Td>
               <Td>
-                <Link href={`${categoryToContents(item.category)}/${item.id}`}>{item.title}</Link>
+                <Link href={`${categoryToContents(article.fields.category)}/${article.sys.id}`}>{article.fields.title}</Link>
               </Td>
             </Tr>
           ))}
@@ -81,11 +79,11 @@ const MobileTable = ({ data, tableStyle }) => {
   );
 };
 
-const ContentsTable = ({ data, tableStyle }) => {
+const ContentsTable = ({ articles, tableStyle }) => {
   return (
     <>
-      <DesktopTable data={data} tableStyle={tableStyle}></DesktopTable>
-      <MobileTable data={data} tableStyle={tableStyle}></MobileTable>
+      <DesktopTable articles={articles} tableStyle={tableStyle} />
+      <MobileTable articles={articles} tableStyle={tableStyle} />
     </>
   )
 }
