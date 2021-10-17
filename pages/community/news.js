@@ -38,8 +38,8 @@ const News = ({ pictures, articles }) => {
   const router = useRouter();
   const page = router.query.page || 1;
   const header = pictures.find(item => item.fields.picture.fields.title === "header")
-  .fields.picture.fields.file.url;
-  const newsArticles = articles.filter(article => article.fields.category === '주일예배');
+    .fields.picture.fields.file.url;
+  const newsArticles = articles.filter(article => article.fields.category === "교회소식");
   const sortedArticles = sortArticles(newsArticles);
   const limitedArticles = getLimitedArticles(sortedArticles, page);
   const firstArticle = sortedArticles[0];

@@ -29,7 +29,7 @@ const Wednesday = ({ pictures, articles }) => {
     .fields.picture.fields.file.url;
   const dummyThumbnail = pictures.find(item => item.fields.picture.fields.title === "thumbnail-1")
     .fields.picture.fields.file.url;
-  const wednesdayArticles = articles.filter(article => article.fields.category === '수요예배');
+  const wednesdayArticles = articles.filter(article => article.fields.category === "수요예배");
   const sortedArticles = sortArticles(wednesdayArticles);
   return (
     <>

@@ -20,16 +20,17 @@ const noWrap = {
 }
 
 const DesktopTable = ({ articles, tableStyle }) => {
-  // const title = {
-  //   maxWidth: "0",  // 레이아웃 탈영방지
-  //   width: "100%"   // 제목영역 크기조절
-  // }
+  const title = {
+    maxWidth: "0",  // 레이아웃 탈영방지
+    width: "60%"   // 제목영역 크기조절
+  }
   return (
     <Box display={{ base: 'none', md: 'block'}}>
       <Table {...tableStyle}>
         <Thead>
           <Tr>
             <Th {...noWrap}>카테고리</Th>
+            <Th>작성자</Th>
             <Th>제목</Th>
             <Th {...noWrap} isNumeric>일시</Th>
           </Tr>
@@ -38,7 +39,8 @@ const DesktopTable = ({ articles, tableStyle }) => {
           {articles.length >= 1 && articles.map(article => (
             <Tr key={article.sys.id} >
               <Td {...noWrap}>{article.fields.category}</Td>
-              <Td>
+              <Td {...noWrap}>디딤돌</Td>
+              <Td {...title}>
                 <Link href={`${categoryToContents(article.fields.category)}/${article.sys.id}`}>{article.fields.title}</Link>
               </Td>
               <Td {...noWrap} isNumeric>{article.sys.createdAt.slice(5, 10)}</Td>
@@ -51,10 +53,10 @@ const DesktopTable = ({ articles, tableStyle }) => {
 };
 
 const MobileTable = ({ articles, tableStyle }) => {
-  // const title = {
-  //   maxWidth: "0",
-  //   width: "80%",
-  // }
+  const title = {
+    maxWidth: "0",
+    width: "70%",
+  }
   return (
     <Box display={{ base: 'block', md: 'none'}}>
       <Table {...tableStyle}>
@@ -68,7 +70,7 @@ const MobileTable = ({ articles, tableStyle }) => {
           {articles.length >= 1 && articles.map(article => (
             <Tr key={article.sys.id} >
               <Td {...noWrap}>{article.fields.category}</Td>
-              <Td>
+              <Td {...title}>
                 <Link href={`${categoryToContents(article.fields.category)}/${article.sys.id}`}>{article.fields.title}</Link>
               </Td>
             </Tr>
