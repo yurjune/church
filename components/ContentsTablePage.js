@@ -21,9 +21,7 @@ const ContentsTablePage = ({ articles, category }) => {
           <Box mb="40px">
             <ContentsTable articles={articles} tableStyle={tableStyle} />
           </Box>
-          <Box>
-            <Pagination articles={articles} category={category} />
-          </Box>
+          <Pagination articles={articles} category={category} />
         </>)
         : <Working />
       }

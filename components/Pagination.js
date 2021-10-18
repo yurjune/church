@@ -20,7 +20,10 @@ const Pagination = ({ articles }) => {
 
   const movePage = (page) => {
     setCurrentPage(page);
-    router.push(`${router.pathname}?page=${page}`);
+    if (router.query.v) {
+      return router.push(`${router.pathname}?page=${page}&v=${router.query.v}`);
+    }
+    return router.push(`${router.pathname}?page=${page}`);
   };
 
   const onClickButton = (children) => (e) => {

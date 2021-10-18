@@ -21,13 +21,11 @@ const ContentsListPage = ({ category, articles, dummyThumbnail }) => {
             px={{ base: "20px", sm: "0", md: "0" }}
             mb="50px"
           >
-          <ItemList articles={articles} dummyThumbnail={dummyThumbnail} />
+            <ItemList articles={articles} dummyThumbnail={dummyThumbnail} />
           </Box>
-          <Box>
-            <Pagination articles={articles} />
-          </Box>
+          <Pagination articles={articles} />
         </>)
-        : <Working></Working>
+        : <Working />
       }
     </>
   );

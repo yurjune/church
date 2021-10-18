@@ -1,9 +1,11 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 
+export const postNumberPerOnePage = 2;
+
 const getTotalPages = (articles) => {
   const totalPosts = articles.length;
-  const totalPages = Math.ceil(totalPosts / 12);
+  const totalPages = Math.ceil(totalPosts / postNumberPerOnePage);
   const pageList = new Array(totalPages).fill().map((value, index) => index + 1);
   const result = [];
   for (let i = 0; i < pageList.length; i += 5) {

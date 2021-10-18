@@ -1,8 +1,15 @@
 import React from 'react';
 import { Box, Flex, Divider, Link } from '@chakra-ui/react'
 import { Collapse } from '@chakra-ui/transition';
+import { categoryToUrl } from '../utils/categoryConverter';
 
-const BibleTagList = ({ isOpen }) => {
+const bibleList = [
+  { '창세기': '창세기' },
+  { '출애굽기': '출애굽기' },
+  { '레위기': '레위기' },
+];
+
+const TagList = ({ category, isOpen }) => {
   return (
     <Collapse in={isOpen}>
       <Box
@@ -16,15 +23,18 @@ const BibleTagList = ({ isOpen }) => {
         <Box>성경별</Box>
         <Divider my="20px" />
         <Flex justify="space-between">
-          <Link>사사기</Link>
-          <Link>고린도전서</Link>
-          <Link>룻기</Link>
-          <Link>아가서</Link>
-          <Link>마태복음</Link>
+          {bibleList.map(item => (
+            <Link
+              key={Object.keys(item)}
+              href={`${categoryToUrl(category)}?v=${Object.values(item)}`}
+            >
+              {Object.keys(item)}
+            </Link>
+          ))}
         </Flex>
       </Box>
     </Collapse>
   );
 };
 
-export default BibleTagList;
+export default TagList;

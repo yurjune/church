@@ -32,8 +32,9 @@ const PostArticle = ({ article }) => {
       <Box>{documentToReactComponents(paragraph, option)}</Box>
       <Divider mt="50px" mb="20px" />
         <Box mb="15px" fontSize="18px">태그</Box>
-          {tag && tag.map(item => (
+          {tag && tag.map((item, index) => (
             <Link
+              key={item + index}
               href="#"
               mr="10px"
               fontSize="15px"

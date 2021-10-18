@@ -21,7 +21,7 @@ const ContentsBar = ({ category }) => {
           />
         </HStack>
       </Flex>
-      <TagList isOpen={isOpen} />
+      <TagList category={category} isOpen={isOpen} />
       <Divider mt="20px" />
     </Box>
   );
