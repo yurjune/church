@@ -15,7 +15,7 @@ const ContentsListPage = ({ category, articles, dummyThumbnail }) => {
             <ContentsBar
               category={category}
               buttonList={buttonList}
-              />
+            />
           </Box>
           <Box
             px={{ base: "20px", sm: "0", md: "0" }}

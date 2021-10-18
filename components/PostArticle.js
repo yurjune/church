@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text, Divider, Link } from '@chakra-ui/react';
 import Image from 'next/image';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
@@ -13,7 +13,9 @@ const option = {
         width={node.data.target.fields.file.details.image.width}
       />)
     },
-    [BLOCKS.PARAGRAPH]: (node, children) => <Box mb="5px">{children}</Box>,
+    [BLOCKS.DOCUMENT]: (node, children) => (
+      <Box fontSize="17px" lineHeight="190%">{children}</Box>
+    ),
   },
   renderText: text => {
     return text.split('\n').reduce((children, textSegment, index) => {
@@ -23,10 +25,22 @@ const option = {
 }
 
 const PostArticle = ({ article }) => {
-  const { paragraph } = article.fields;
-  console.log(paragraph);
+  const { paragraph, tag } = article.fields;
+  console.log(article);
   return (
-    <Box>{documentToReactComponents(paragraph, option)}</Box>
+    <Box>
+      <Box>{documentToReactComponents(paragraph, option)}</Box>
+      <Divider mt="50px" mb="20px" />
+        <Box mb="15px" fontSize="18px">태그</Box>
+          {tag && tag.map(item => (
+            <Link
+              href="#"
+              mr="10px"
+              fontSize="15px"
+              color="grayLetter"
+            >{item},</Link>
+          ))}
+    </Box>
   );
 };
 

@@ -1,7 +1,12 @@
 import React from 'react';
-import { Flex, Heading, Button, Box, HStack, Divider } from "@chakra-ui/react";
+import { Flex, Heading, Box, HStack, Divider } from "@chakra-ui/react";
+import { useDisclosure } from '@chakra-ui/hooks';
+import TagButton from './TagButton';
+import TagList from './TagList';
 
-const ContentsBar = ({ category, buttonList }) => {
+const ContentsBar = ({ category }) => {
+  const { isOpen, onClose, onToggle } = useDisclosure();
+
   return (
     <Box>
       <Flex
@@ -10,11 +15,13 @@ const ContentsBar = ({ category, buttonList }) => {
       >
         <Heading as="h2" size="lg">{category}</Heading>
         <HStack mt={{ base: "20px", sm: "0" }}>
-          {buttonList.map(item => (
-            <Button key={item} variant="main" size="cs">{item}</Button>
-          ))}
+          <TagButton
+            close={onClose}
+            toggle={onToggle}
+          />
         </HStack>
       </Flex>
+      <TagList isOpen={isOpen} />
       <Divider mt="20px" />
     </Box>
   );
