@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Flex, HStack, Button, Icon } from '@chakra-ui/react';
+import { Flex, HStack, Button, Icon, Divider } from '@chakra-ui/react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { categoryToUrl, categoryToContents } from '../utils/categoryConverter';
@@ -30,22 +30,25 @@ const PostCardButton = ({ article, articles }) => {
   };
 
   return (
-    <Flex
-      direction={{ base: "row", lg: "column"}}
-      justify="space-between"
-    >
-      <HStack mb={{ base: "0", lg: "15px" }}>
-        <Button size="sm" onClick={movePrev}>
-          <Icon as={IoIosArrowBack} boxSize={3} />
-        </Button>
-        <Button size="sm" onClick={() => router.push(url)}>
-          <Icon as={HamburgerIcon} boxSize={3} />
-        </Button>
-        <Button size="sm" onClick={moveNext}>
-          <Icon as={IoIosArrowForward} boxSize={3} />
-        </Button>
-      </HStack>
-    </Flex>
+    <>
+      <Divider my="20px" />
+      <Flex
+        direction={{ base: "row", lg: "column"}}
+        justify="space-between"
+      >
+        <HStack mb={{ base: "0", lg: "15px" }}>
+          <Button size="sm" onClick={movePrev}>
+            <Icon as={IoIosArrowBack} boxSize={3} />
+          </Button>
+          <Button size="sm" onClick={() => router.push(url)}>
+            <Icon as={HamburgerIcon} boxSize={3} />
+          </Button>
+          <Button size="sm" onClick={moveNext}>
+            <Icon as={IoIosArrowForward} boxSize={3} />
+          </Button>
+        </HStack>
+      </Flex>
+    </>
   )
 }
 

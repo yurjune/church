@@ -1,13 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Box, Divider } from '@chakra-ui/react';
 import { createClient } from 'contentful';
 import AppLayout from '../../components/AppLayout';
-import PostCardWrapper from '../../components/PostCardWrapper';
-import PostCardInfo from '../../components/PostCardInfo';
-import ContentsTable from '../../components/ContentsTable';
-import Pagination from '../../components/Pagination';
+import NewsPage from '../../components/NewsPage';
 import { sortArticles, getLimitedArticles } from '../../hooks/useArticle';
 
 export const getStaticProps = async () => {
@@ -29,11 +25,6 @@ export const getStaticProps = async () => {
   }
 }
 
-const tableStyle = {
-  variant: "striped",
-  colorScheme: "blackAlpha",
-};
-
 const News = ({ pictures, articles }) => {
   const router = useRouter();
   const page = router.query.page || 1;
@@ -51,18 +42,11 @@ const News = ({ pictures, articles }) => {
       <AppLayout
         header={header}
       >
-        <Box mb="140px">
-          <PostCardWrapper article={firstArticle}>
-            <PostCardInfo article={firstArticle} />
-          </PostCardWrapper>
-        </Box>
-        <Divider />
-        <Box mb="40px">
-          <ContentsTable articles={limitedArticles} tableStyle={tableStyle} />
-        </Box>
-        <Box>
-          <Pagination articles={sortedArticles} category="교회소식" />
-        </Box>
+        <NewsPage
+          firstArticle={firstArticle}
+          limitedArticles={limitedArticles}
+          sortedArticles={sortedArticles}
+        />
       </AppLayout>
     </>
   );
