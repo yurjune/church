@@ -7,19 +7,22 @@ const tableStyle = {
   variant: "striped",
   colorScheme: "linkedin",
 }
-const TableItem = ({ data }) => {
+const SearchPage = ({ articles }) => {
   return (
     <>
-      {typeof data == 'string' ? (
-        <Flex justify="center">
-          <Box>{data}</Box>
-        </Flex>
+      {articles.length >= 1 ? (
+        <ContentsTable articles={articles} tableStyle={tableStyle} />
       )
       : (
-        <ContentsTable data={data} tableStyle={tableStyle} />
+        <Flex
+          mt="40px"
+          justify="center"
+        >
+          <Box>검색 결과가 없습니다.</Box>
+        </Flex>
       )}
     </>
   );
 };
 
-export default TableItem;
+export default SearchPage;

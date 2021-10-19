@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 
-export const postNumberPerOnePage = 2;
+export const postNumberPerOnePage = 12;
 
 const getTotalPages = (articles) => {
   const totalPosts = articles.length;

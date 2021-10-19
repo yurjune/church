@@ -9,20 +9,20 @@ export const getStaticProps = async () => {
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
   });
-  const res = await client.getEntries({
+  const pictures = await client.getEntries({
     content_type: 'picture',
   });
   return {
     props: {
-      picture: res.items,
+      pictures: pictures.items,
     }
   }
 }
 
-function Home({ picture }) {
-  const header = picture.find(item => item.fields.picture.fields.title === "header")
+function Home({ pictures }) {
+  const header = pictures.find(item => item.fields.picture.fields.title === "header")
     .fields.picture.fields.file.url;
-  const mainImage = picture.find(item => item.fields.picture.fields.title === "mainImage")
+  const mainImage = pictures.find(item => item.fields.picture.fields.title === "mainImage")
     .fields.picture.fields.file.url;
   return (
     <>

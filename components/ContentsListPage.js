@@ -11,7 +11,7 @@ const ContentsListPage = ({ category, articles, dummyThumbnail }) => {
     <>
       {articles.length >= 1 ?
         (<>
-          <Box mb="20px">
+          <Box mb="30px">
             <ContentsBar
               category={category}
               buttonList={buttonList}

@@ -3,6 +3,7 @@ import { Box, Text, Divider, Link } from '@chakra-ui/react';
 import Image from 'next/image';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { categoryToUrl } from '../utils/categoryConverter';
 
 const option = {
   renderNode: {
@@ -14,7 +15,7 @@ const option = {
       />)
     },
     [BLOCKS.DOCUMENT]: (node, children) => (
-      <Box fontSize="17px" lineHeight="190%">{children}</Box>
+      <Box fontSize="17px" lineHeight="180%">{children}</Box>
     ),
   },
   renderText: text => {
@@ -25,17 +26,17 @@ const option = {
 }
 
 const PostArticle = ({ article }) => {
-  const { paragraph, tag } = article.fields;
+  const { paragraph, tag, category } = article.fields;
   console.log(article);
   return (
     <Box>
       <Box>{documentToReactComponents(paragraph, option)}</Box>
       <Divider mt="50px" mb="20px" />
-        <Box mb="15px" fontSize="18px">태그</Box>
+        <Box mb="15px" fontSize="16px">태그</Box>
           {tag && tag.map((item, index) => (
             <Link
               key={item + index}
-              href="#"
+              href={`${categoryToUrl(category)}?v=${item}`}
               mr="10px"
               fontSize="15px"
               color="grayLetter"
