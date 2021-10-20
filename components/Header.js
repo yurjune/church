@@ -57,7 +57,7 @@ const MobileHeader = ({ header }) => {
   );
 };
 
-const DesktopHeader = ({ header }) => {
+const DesktopHeader = ({ header, logo }) => {
   return (
     <Box
       display={{ base: "none", md: "block" }}
@@ -81,16 +81,27 @@ const DesktopHeader = ({ header }) => {
           <Navigation></Navigation>
           {/* <PopoverNav></PopoverNav> */}
         </Box>
+        <Box
+          pos="absolute"
+          top="30px"
+          left="0"
+        >
+          <Image
+            src={`https:${logo}`}
+            width="100px"
+            height="80px"
+          />
+        </Box>
       </Flex>
     </Box>
   );
 };
 
-const Header = ({ header }) => {
+const Header = ({ header, logo }) => {
   return (
     <>
       <MobileHeader header={header} />
-      <DesktopHeader header={header} />
+      <DesktopHeader header={header} logo={logo} />
     </>
   )
 }

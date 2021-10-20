@@ -1,22 +1,41 @@
 import React from 'react';
-import { Box, Text, Divider, Link } from '@chakra-ui/react';
-import Image from 'next/image';
-import { BLOCKS } from '@contentful/rich-text-types';
+import { Box, AspectRatio } from '@chakra-ui/react';
+import NextImage from 'next/image';
+import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { categoryToUrl } from '../utils/categoryConverter';
 
 const option = {
   renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
-      return (<Image
-        src={`https:${node.data.target.fields.file.url}`}
-        height={node.data.target.fields.file.details.image.height}
-        width={node.data.target.fields.file.details.image.width}
-      />)
-    },
     [BLOCKS.DOCUMENT]: (node, children) => (
       <Box fontSize="17px" lineHeight="180%">{children}</Box>
     ),
+    [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
+      // console.log(node)
+      const fields = node.data.target.fields;
+      if (fields.file.details.image) {
+        return (<NextImage
+          src={`https:${fields.file.url}`}
+          width={fields.file.details.image.width}
+          height={fields.file.details.image.height}
+        />)
+      }
+    },
+    [INLINES.HYPERLINK] : (node, children) => {
+      console.log('node:', node);
+      if (node.data.uri.indexOf("youtube.com") !== -1) {
+        return (
+          <AspectRatio ratio={16 / 9}>
+            <iframe
+              src={node.data.uri}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </AspectRatio>
+        )
+      }
+    },
   },
   renderText: text => {
     return text.split('\n').reduce((children, textSegment, index) => {
@@ -27,7 +46,7 @@ const option = {
 
 const PostArticle = ({ children, article }) => {
   const { paragraph } = article.fields;
-  console.log(article);
+  // console.log(paragraph);
   return (
     <Box>
       <Box>{documentToReactComponents(paragraph, option)}</Box>

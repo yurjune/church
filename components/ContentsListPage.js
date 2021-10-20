@@ -3,7 +3,7 @@ import { Box } from '@chakra-ui/react';
 import ContentsBar from './ContentsBar';
 import ItemList from './ItemList';
 import Pagination from './Pagination';
-import Working from './Working';
+import NoPost from './NoPost';
 
 const buttonList = ['전체', '성경', '주제'];
 const ContentsListPage = ({ category, articles, dummyThumbnail }) => {
@@ -25,8 +25,7 @@ const ContentsListPage = ({ category, articles, dummyThumbnail }) => {
           </Box>
           <Pagination articles={articles} />
         </>)
-        : <Working />
-      }
+        : <NoPost />}
     </>
   );
 };

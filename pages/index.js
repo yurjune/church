@@ -24,6 +24,9 @@ function Home({ pictures }) {
     .fields.picture.fields.file.url;
   const mainImage = pictures.find(item => item.fields.picture.fields.title === "mainImage")
     .fields.picture.fields.file.url;
+  const logo = pictures.find(item => item.fields.picture.fields.title === "로고")
+    .fields.picture.fields.file.url;
+  console.log(pictures)
   return (
     <>
       <Head>
@@ -31,6 +34,8 @@ function Home({ pictures }) {
       </Head>
       <SecondLayout
         header={header}
+        logo={logo}
+        pictures={pictures}
       >
         <MainImage mainImage={mainImage} />
       </SecondLayout>

@@ -32,14 +32,18 @@ const Search = ({ pictures, articles }) => {
   const header = pictures.find(item => item.fields.picture.fields.title === "header")
     .fields.picture.fields.file.url;
   const searchResult = articles.filter(article => (
-    article.fields.title.includes(keyword)
-    // article.fields.title.includes(keyword) || article.fields.paragraph.content.forEach(item => (
-    //   item.content.forEach(post => (
-    //     post.value.includes(keyword)
-    //   ))
-    // ))
+    article.fields.title.includes(keyword) 
   ));
-  const sortedArticles = sortArticles(searchResult);
+  const a = articles.filter((article, aidx) => {
+    return article.fields.paragraph.content.some((item, bidx) => {
+      return item.content.some((post, cidx) => {
+        return post.value.includes(keyword)
+      })
+    })
+  })
+  const b = searchResult.concat(a);
+  // 알골랴, fulltextsearch
+  const sortedArticles = sortArticles(b);
   return (
     <AppLayout
       header={header}

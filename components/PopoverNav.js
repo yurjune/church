@@ -76,10 +76,12 @@ const PopoverNavMenu = ({ title, menu }) => {
 const PopoverNav = () => {
   return (
     <HStack>
-      <Button variant="menu"><Link href="/">{menuList[0]}</Link></Button>
-      <PopoverNavMenu title={menuList[1]} menu={movieList}></PopoverNavMenu>
-      <PopoverNavMenu title={menuList[2]} menu={communityList}></PopoverNavMenu>
-      <PopoverNavMenu title={menuList[3]} menu={schoolList}></PopoverNavMenu>
+      <Button variant="menu">
+        <Link href="/">{menuList[0]}</Link>
+      </Button>
+      <PopoverNavMenu title={menuList[1]} menu={movieList} />
+      <PopoverNavMenu title={menuList[2]} menu={communityList} />
+      <PopoverNavMenu title={menuList[3]} menu={schoolList} />
     </HStack>
   );
 }

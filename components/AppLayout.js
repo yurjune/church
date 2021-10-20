@@ -4,7 +4,7 @@ import { Grid, GridItem } from '@chakra-ui/react';
 import Header from './Header';
 import Footer from './Footer';
 
-export const layoutWidth = "1100px";
+export const layoutWidth = "960px";
 
 const AppLayout = ({ children, header }) => {
   return (
@@ -21,7 +21,7 @@ const AppLayout = ({ children, header }) => {
         colEnd={3} 
         rowStart={2} 
         rowEnd={3} 
-        pt={["40px", "40px", "60px", "60px"]}
+        pt={["30px", "30px", "40px", "40px"]}
         pb={["60px", "60px", "80px", "80px"]}
         px={["20px", "30px", "40px", "20px"]}
       >

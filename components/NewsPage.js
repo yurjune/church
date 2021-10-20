@@ -4,6 +4,7 @@ import PostCard from './PostCard';
 import PostArticle from './PostArticle';
 import ContentsTable from './ContentsTable';
 import Pagination from './Pagination';
+import NoPost from './NoPost';
 
 const tableStyle = {
   variant: "striped",
@@ -13,27 +14,31 @@ const tableStyle = {
 const NewsPage = ({ firstArticle, sortedArticles, limitedArticles }) => {
   return (
     <>
-      <Box mb="140px">
-        <Flex
-          justify={{ base: "flex-start", lg: "space-between" }}
-          direction={{ base: "column", lg: "row" }}
-        >
-          <Box
-            w={{ base: "100%", lg: "30%" }}
-            mb={{ base: "40px", lg: "0" }}
-          >
-            <PostCard article={firstArticle} />
+      {firstArticle ?
+        (<>
+          <Box mb="140px">
+            <Flex
+              justify={{ base: "flex-start", lg: "space-between" }}
+              direction={{ base: "column", lg: "row" }}
+            >
+              <Box
+                w={{ base: "100%", lg: "30%" }}
+                mb={{ base: "40px", lg: "0" }}
+              >
+                <PostCard article={firstArticle} />
+              </Box>
+              <Box w={{ base: "100%", lg: "67%" }}>
+                <PostArticle article={firstArticle} />
+              </Box>
+            </Flex>
           </Box>
-          <Box w={{ base: "100%", lg: "67%" }}>
-            <PostArticle article={firstArticle} />
+          <Divider />
+          <Box mb="40px">
+            <ContentsTable articles={limitedArticles} tableStyle={tableStyle} />
           </Box>
-        </Flex>
-      </Box>
-      <Divider />
-      <Box mb="40px">
-        <ContentsTable articles={limitedArticles} tableStyle={tableStyle} />
-      </Box>
-      <Pagination articles={sortedArticles} category="교회소식" />
+          <Pagination articles={sortedArticles} category="교회소식" />
+        </>)
+      : <NoPost />}
     </>
   );
 };
