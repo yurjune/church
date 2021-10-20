@@ -4,7 +4,7 @@ import { createClient } from 'contentful';
 import AppLayout from '../components/AppLayout';
 import SimplePage from '../components/SimplePage';
 import SearchPage from '../components/SearchPage';
-import { sortArticles } from '../hooks/useArticle';
+import { sortArticles, searchArticles } from '../hooks/useArticle';
 
 export const getStaticProps = async () => {
   const client = createClient({
@@ -29,19 +29,9 @@ const Search = ({ pictures, articles }) => {
   const router = useRouter();
   const keyword = router.query.s;
   const message = `'${keyword}' 에 대한 검색 결과 입니다.`;
-  const searchResult = articles.filter(article => (
-    article.fields.title.includes(keyword) 
-  ));
-  const a = articles.filter((article, aidx) => {
-    return article.fields.paragraph.content.some((item, bidx) => {
-      return item.content.some((post, cidx) => {
-        return post.value.includes(keyword)
-      })
-    })
-  })
-  const b = searchResult.concat(a);
-  // 알골랴, fulltextsearch
-  const sortedArticles = sortArticles(b);
+  // 검색기능: 알골랴, fulltextsearch
+  const searchResult = searchArticles(articles, keyword);
+  const sortedArticles = sortArticles(searchResult);
   return (
     <AppLayout pictures={pictures}>
       <SimplePage title={message}>

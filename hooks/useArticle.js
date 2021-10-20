@@ -28,3 +28,17 @@ export const getLimitedArticles = (articles, currentPage) => {
   const limitedArticles = articles.slice(num - postNumberPerOnePage, num);
   return limitedArticles;
 };
+
+// 게시글 검색
+export const searchArticles = (articles, keyword) => {
+  const searchResult = articles.filter(article => (
+    article.fields.title.includes(keyword) || (
+      article.fields.paragraph.content.some(item => {
+        return item.content.some(post => {
+          return post.value?.includes(keyword);
+        });
+      })
+    )
+  ));
+  return searchResult;
+};
