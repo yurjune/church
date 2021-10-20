@@ -29,8 +29,6 @@ const Search = ({ pictures, articles }) => {
   const router = useRouter();
   const keyword = router.query.s;
   const message = `'${keyword}' 에 대한 검색 결과 입니다.`;
-  const header = pictures.find(item => item.fields.picture.fields.title === "header")
-    .fields.picture.fields.file.url;
   const searchResult = articles.filter(article => (
     article.fields.title.includes(keyword) 
   ));
@@ -45,11 +43,9 @@ const Search = ({ pictures, articles }) => {
   // 알골랴, fulltextsearch
   const sortedArticles = sortArticles(b);
   return (
-    <AppLayout
-      header={header}
-    >
+    <AppLayout pictures={pictures}>
       <SimplePage title={message}>
-        <SearchPage articles={sortedArticles}></SearchPage>
+        <SearchPage articles={sortedArticles} />
       </SimplePage>
     </AppLayout>
   );

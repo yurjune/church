@@ -27,10 +27,6 @@ export const getStaticProps = async () => {
 
 const Sunday = ({ pictures, articles }) => {
   const router = useRouter();
-  const header = pictures.find(item => item.fields.picture.fields.title === "header")
-    .fields.picture.fields.file.url;
-  const dummyThumbnail = pictures.find(item => item.fields.picture.fields.title === "thumbnail-1")
-    .fields.picture.fields.file.url;
   const sundayArticles = articles.filter(article => article.fields.category === "주일예배");
   const sortedArticles = sortArticles(sundayArticles, router.query.v);
   return (
@@ -38,13 +34,11 @@ const Sunday = ({ pictures, articles }) => {
       <Head>
         <title>주일예배</title>
       </Head>
-      <AppLayout
-        header={header}
-      >
+      <AppLayout pictures={pictures}>
         <ContentsListPage
           category="주일예배"
           articles={sortedArticles}
-          dummyThumbnail={dummyThumbnail}
+          pictures={pictures}
         />
       </AppLayout>
     </>

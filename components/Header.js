@@ -77,19 +77,15 @@ const DesktopHeader = ({ header, logo }) => {
         <Box pos="absolute" top="5px">
           <SearchBar />
         </Box>
-        <Box pos="absolute" top="65px">
-          <Navigation></Navigation>
-          {/* <PopoverNav></PopoverNav> */}
+        <Box pos="absolute" bottom="50px">
+          <Navigation />
+          {/* <PopoverNav /> */}
         </Box>
-        <Box
-          pos="absolute"
-          top="30px"
-          left="0"
-        >
+        <Box pos="absolute" left="10px" bottom="50px">
           <Image
             src={`https:${logo}`}
-            width="100px"
-            height="80px"
+            width="95px"
+            height="70px"
           />
         </Box>
       </Flex>
@@ -97,7 +93,11 @@ const DesktopHeader = ({ header, logo }) => {
   );
 };
 
-const Header = ({ header, logo }) => {
+const Header = ({ pictures }) => {
+  const header = pictures.find(item => item.fields.picture.fields.title === "header")
+    .fields.picture.fields.file.url;
+  const logo = pictures.find(item => item.fields.picture.fields.title === "로고")
+    .fields.picture.fields.file.url;
   return (
     <>
       <MobileHeader header={header} />

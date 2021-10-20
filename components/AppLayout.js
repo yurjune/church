@@ -6,7 +6,7 @@ import Footer from './Footer';
 
 export const layoutWidth = "960px";
 
-const AppLayout = ({ children, header }) => {
+const AppLayout = ({ children, pictures }) => {
   return (
     <Grid
       templateColumns={`1fr minmax(auto, ${layoutWidth}) 1fr`}
@@ -14,7 +14,7 @@ const AppLayout = ({ children, header }) => {
       minH="100vh"
     >
       <GridItem colStart={1} colEnd={4} rowStart={1} rowEnd={2}>
-        <Header header={header} />
+        <Header pictures={pictures} />
       </GridItem>
       <GridItem 
         colStart={2} 
@@ -23,7 +23,7 @@ const AppLayout = ({ children, header }) => {
         rowEnd={3} 
         pt={["30px", "30px", "40px", "40px"]}
         pb={["60px", "60px", "80px", "80px"]}
-        px={["20px", "30px", "40px", "20px"]}
+        px={["20px", "30px", "20px", "10px"]}
       >
         {children}
       </GridItem>

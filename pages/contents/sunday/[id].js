@@ -45,13 +45,10 @@ export const getStaticProps = async ({ params }) => {
 }
 
 const Sunday = ({ pictures, article, articles }) => {
-  const header = pictures.find(item => item.fields.picture.fields.title === "header")
-    .fields.picture.fields.file.url;
   const sundayArticles = articles.filter(article => article.fields.category === "주일예배");
   const sortedArticles = sortArticles(sundayArticles);
-
   return (
-    <AppLayout header={header}>
+    <AppLayout pictures={pictures}>
       <ContentPage
         category="주일예배"
         article={article}

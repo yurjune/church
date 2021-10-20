@@ -3,11 +3,13 @@ import { Box } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
 import { categoryToContents } from '../utils/categoryConverter';
 
-const ItemCard = ({ article, dummyThumbnail }) => {
+const ItemCard = ({ article, pictures }) => {
   const router = useRouter();
   const { title, category } = article.fields;
-  const thumbnail = article.fields.thumbnail?.fields.file.url;
   const { id, createdAt } = article.sys;
+  const thumbnail = article.fields.thumbnail?.fields.file.url;
+  const dummyThumbnail = pictures.find(item => item.fields.picture.fields.title === "thumbnail-1")
+    .fields.picture.fields.file.url;
 
   const onClickImage = () => {
     router.push(`${categoryToContents(category)}/${id}`);

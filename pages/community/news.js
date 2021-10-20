@@ -28,8 +28,6 @@ export const getStaticProps = async () => {
 const News = ({ pictures, articles }) => {
   const router = useRouter();
   const page = router.query.page || 1;
-  const header = pictures.find(item => item.fields.picture.fields.title === "header")
-    .fields.picture.fields.file.url;
   const newsArticles = articles.filter(article => article.fields.category === "교회소식");
   const sortedArticles = sortArticles(newsArticles);
   const limitedArticles = getLimitedArticles(sortedArticles, page);
@@ -39,9 +37,7 @@ const News = ({ pictures, articles }) => {
       <Head>
         <title>교회소식</title>
       </Head>
-      <AppLayout
-        header={header}
-      >
+      <AppLayout pictures={pictures}>
         <NewsPage
           firstArticle={firstArticle}
           limitedArticles={limitedArticles}

@@ -4,7 +4,7 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import ItemCard from './ItemCard';
 import { getLimitedArticles } from '../hooks/useArticle';
 
-const ItemList = ({ articles, dummyThumbnail }) => {
+const ItemList = ({ articles, pictures }) => {
   const router = useRouter();
   const page = router.query.page || 1;
   const limitedArticles = getLimitedArticles(articles, page);
@@ -16,7 +16,7 @@ const ItemList = ({ articles, dummyThumbnail }) => {
     >
       {limitedArticles.map(article => (
         <GridItem key={article.sys.id}>
-          <ItemCard article={article} dummyThumbnail={dummyThumbnail} />
+          <ItemCard article={article} pictures={pictures} />
         </GridItem>
       ))}
     </Grid>

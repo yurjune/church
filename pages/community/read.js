@@ -20,17 +20,15 @@ export const getStaticProps = async () => {
 }
 
 const Read = ({ pictures }) => {
-  const header = pictures.find(item => item.fields.picture.fields.title === "header")
-    .fields.picture.fields.file.url;
   const pic = pictures.find(item => item.fields.picture.fields.title === "readBible")
     .fields.picture.fields.file.url;
   return (
     <>
       <AppLayout
-        header={header}
+        pictures={pictures}
       >
         <SimplePage title="성경통독표">
-          <Image src={"http://" + pic}></Image>
+          <Image src={"http://" + pic} />
         </SimplePage>
       </AppLayout>
     </>

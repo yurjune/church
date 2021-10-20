@@ -6,7 +6,7 @@ import Pagination from './Pagination';
 import NoPost from './NoPost';
 
 const buttonList = ['전체', '성경', '주제'];
-const ContentsListPage = ({ category, articles, dummyThumbnail }) => {
+const ContentsListPage = ({ category, articles, pictures }) => {
   return (
     <>
       {articles.length >= 1 ?
@@ -21,7 +21,7 @@ const ContentsListPage = ({ category, articles, dummyThumbnail }) => {
             px={{ base: "20px", sm: "0", md: "0" }}
             mb="50px"
           >
-            <ItemList articles={articles} dummyThumbnail={dummyThumbnail} />
+            <ItemList articles={articles} pictures={pictures} />
           </Box>
           <Pagination articles={articles} />
         </>)

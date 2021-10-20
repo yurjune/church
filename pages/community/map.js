@@ -19,10 +19,8 @@ export const getStaticProps = async () => {
 }
 
 const Map = ({ pictures }) => {
-  const header = pictures.find(item => item.fields.picture.fields.title === "header")
-    .fields.picture.fields.file.url;
   return (
-    <SecondLayout header={header}>
+    <SecondLayout pictures={pictures}>
       <Working />
     </SecondLayout>
   );
