@@ -17,6 +17,7 @@ const Footer = () => {
         justify= "flex-start"
         align={{ base: "center", md: "flex-start" }}
         textAlign="center"
+        fontFamily="Nanum Gothic"
       >
         <Box mb="20px">© 2021 DIDIMDOL CHURCH. ALL RIGHT RESERVED</Box>
         <Box>경기도 의왕시 보우상가</Box>

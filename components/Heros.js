@@ -2,7 +2,6 @@ import React from "react";
 import {
   chakra,
   Box,
-  useColorModeValue,
   Flex,
   Button,
   HStack,
@@ -13,58 +12,66 @@ const newWidth = layoutWidth * 2 / 3;
 
 function Heros(){
   return (
-    <Flex px={4} py={10} mx="auto">
-      <Box w="full" mx="auto" w={newWidth}>
+    <Flex px={4} pt={4} pb={10} mx="auto" fontFamily="Gowun Dodum">
+      <Box w={newWidth} mx="auto" textAlign="center">
         <chakra.p
           mb={2}
-          fontSize="sm"
+          fontSize="md"
           // fontWeight="semibold"
-          letterSpacing="wide"
           color="gray.400"
-          textTransform="uppercase"
         >
-          디딤돌교회 안내
+          의왕디딤돌교회 소개
         </chakra.p>
         <chakra.h1
-          mb={3}
+          mb={8}
           fontSize={{ base: "2xl", md: "3xl" }}
           fontWeight="bold"
           lineHeight="shorter"
           color="gray.900"
           lineHeight="150%"
         >
-          너희가 서로 사랑하면 이로써 모든 사람이<br/> 너희가 내 제자인 줄 알리라 (요 13:15)
+          "너희가 서로 사랑하면 이로써 모든 사람이 너희가 내 제자인 줄 알리라"<br/> (요 13:15)
         </chakra.h1>
         <chakra.p
-          mb={5}
+          mb={10}
           color="gray.500"
           fontSize={{ md: "lg" }}
           lineHeight="160%"
         >
-          디딤돌교회는 예수님을 모르는 분들에게 복음을 전하려 세워진 교회입니다<br/>
-          : 말씀중심, 이웃사랑(&복음), 만인제사장(만찬예배중심)<br/>
-          이미 신앙생활을 잘하고 계시는 분들께서는 자신을 더 필요로 하는 교회에서 섬기실 것을 부탁드립니다
+          디딤돌교회는 하나님을 주체적으로 섬기며 예수님을 모르시는 분들에게 복된 소식을 전하기 위해 세워진 교회입니다
         </chakra.p>
-        <HStack>
+        <chakra.p
+          mb={5}
+          // color="gray.500"
+          fontSize={{ md: "lg" }}
+          lineHeight="160%"
+        >
+          <strong>성경중심: 하나님 말씀이 가치관과 삶의 중심이 되는 교회<br/></strong>
+          Church where God's Word becomes the center of values and life<br/><br/>
+
+          <strong>이웃사랑: 나의 이웃과 성도 간에 사랑이 넘치는 교회<br/></strong>
+          Church full of love between my neighbor and the saints<br/><br/>
+
+          <strong>만인제사장: 모든 성도가 하나님을 섬기고 경배드리는 교회<br/></strong>
+          Church where all saints serve and worship God<br/><br/>
+        </chakra.p>
+        <HStack
+          justify="center"
+        >
           <Button
             as="a"
-            w={{ base: "full", sm: "auto" }}
-            variant="solid"
             colorScheme="brand"
             size="lg"
-            mb={{ base: 2, sm: 0 }}
             cursor="pointer"
           >
-            Sign up for free
+            예배안내
           </Button>
           <Button
             as="a"
-            w={{ base: "full", sm: "auto" }}
-            mb={{ base: 2, sm: 0 }}
             size="lg"
             cursor="pointer"
           >
-            Read our blog
+            오시는길
           </Button>
         </HStack>
       </Box>
