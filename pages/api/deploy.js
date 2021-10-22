@@ -22,9 +22,12 @@ function runMiddleware(req, res, fn) {
 async function handler(req, res) {
   // Run the middleware
   await runMiddleware(req, res, cors)
-  console.log(req.body);
   // Rest of the API logic
-  res.json({ message: 'Hello Everyone!' })
+  console.log(req.body);
+  fetch('https://api.vercel.com/v1/integrations/deploy/prj_sEkzsWr1gl1n20SMMn07FUfWkDxK/mZI1kh4i2p', {
+    method: 'POST',
+  })
+    .then(r => res.json({ message: 'Hello Everyone!' }));
 }
 
 export default handler;
