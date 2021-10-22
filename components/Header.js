@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Flex, Box, Image } from "@chakra-ui/react";
+import { Flex, Box, Image, LinkOverlay } from "@chakra-ui/react";
 
 import SearchBar from './SearchBar';
 import Navigation from './Navigation';
@@ -77,16 +77,18 @@ const DesktopHeader = ({ header, logo }) => {
         <Box pos="absolute" top="5px">
           <SearchBar />
         </Box>
-        <Box pos="absolute" bottom="50px">
+        <Box pos="absolute" left="10px" bottom="45px">
+          <LinkOverlay href="/">
+            <Image
+              src={`https:${logo}`}
+              width="95px"
+              height="70px"
+            />
+          </LinkOverlay>
+        </Box>
+        <Box pos="absolute" bottom="45px">
           <Navigation />
           {/* <PopoverNav /> */}
-        </Box>
-        <Box pos="absolute" left="10px" bottom="50px">
-          <Image
-            src={`https:${logo}`}
-            width="95px"
-            height="70px"
-          />
         </Box>
       </Flex>
     </Box>

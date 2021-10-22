@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { createClient } from 'contentful';
 import SecondLayout from '../components/SecondLayout';
 import MainImage from '../components/MainImage';
+import Heros from '../components/Heros';
 
 export const getStaticProps = async () => {
   const client = createClient({
@@ -30,7 +31,8 @@ function Home({ pictures }) {
       <SecondLayout
         pictures={pictures}
       >
-        <MainImage mainImage={mainImage} />
+        {/* <MainImage mainImage={mainImage} /> */}
+        <Heros />
       </SecondLayout>
     </>
   );
