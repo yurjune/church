@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { createClient } from 'contentful';
 import AppLayout from '../../../components/AppLayout';
 import ContentPage from "../../../components/ContentPage";
@@ -49,13 +50,18 @@ const Wednesday = ({ pictures, article, articles }) => {
   const sortedArticles = sortArticles(wednesdayArticles);
 
   return (
-    <AppLayout pictures={pictures}>
-      <ContentPage
-        category="수요예배"
-        article={article}
-        articles={sortedArticles}
-      />
-    </AppLayout>
+    <>
+      <Head>
+        <title>수요예배</title>
+      </Head>
+      <AppLayout pictures={pictures}>
+        <ContentPage
+          category="수요예배"
+          article={article}
+          articles={sortedArticles}
+        />
+      </AppLayout>
+    </>
   );
 };
 

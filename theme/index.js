@@ -19,7 +19,7 @@ const overrides = {
   },
   colors: {
     first: "#469424",
-    // first: "#46A736",
+    // first: "#2B8E1B",
     second: "#9DD84B",
     third: "#9DD84B",
     fourth: "#808000",

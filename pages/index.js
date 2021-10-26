@@ -31,9 +31,7 @@ function Home({ pictures }) {
       <Head>
         <title>디딤돌교회</title>
       </Head>
-      <SecondLayout
-        pictures={pictures}
-      >
+      <SecondLayout pictures={pictures}>
         {/* <MainImage mainImage={mainImage} /> */}
         <Introduction pictures={pictures} />
         <People pictures={pictures} />

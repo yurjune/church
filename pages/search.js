@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { createClient } from 'contentful';
 import AppLayout from '../components/AppLayout';
@@ -33,11 +34,16 @@ const Search = ({ pictures, articles }) => {
   const searchResult = searchArticles(articles, keyword);
   const sortedArticles = sortArticles(searchResult);
   return (
-    <AppLayout pictures={pictures}>
-      <SimplePage title={message}>
-        <SearchPage articles={sortedArticles} />
-      </SimplePage>
-    </AppLayout>
+    <>
+      <Head>
+        <title>검색결과</title>
+      </Head>
+      <AppLayout pictures={pictures}>
+        <SimplePage title={message}>
+          <SearchPage articles={sortedArticles} />
+        </SimplePage>
+      </AppLayout>
+    </>
   );
 };
 

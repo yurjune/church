@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { createClient } from 'contentful';
 import { Image } from '@chakra-ui/react';
 import SimplePage from '../../components/SimplePage';
@@ -24,6 +25,9 @@ const Read = ({ pictures }) => {
     .fields.picture.fields.file.url;
   return (
     <>
+      <Head>
+        <title>성경통독표</title>
+      </Head>
       <AppLayout
         pictures={pictures}
       >

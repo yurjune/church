@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { createClient } from 'contentful';
 import AppLayout from '../../../components/AppLayout';
 import ContentPage from "../../../components/ContentPage";
@@ -48,13 +49,18 @@ const Sunday = ({ pictures, article, articles }) => {
   const sundayArticles = articles.filter(article => article.fields.category === "주일예배");
   const sortedArticles = sortArticles(sundayArticles);
   return (
-    <AppLayout pictures={pictures}>
-      <ContentPage
-        category="주일예배"
-        article={article}
-        articles={sortedArticles}
-      />
-    </AppLayout>
+    <>
+      <Head>
+        <title>주일예배</title>
+      </Head>
+      <AppLayout pictures={pictures}>
+        <ContentPage
+          category="주일예배"
+          article={article}
+          articles={sortedArticles}
+        />
+      </AppLayout>
+    </>
   );
 };
 

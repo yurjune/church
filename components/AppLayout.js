@@ -20,7 +20,7 @@ const AppLayout = ({ children, pictures }) => {
         colEnd={3} 
         rowStart={2} 
         rowEnd={3} 
-        pt={["30px", "30px", "40px", "40px"]}
+        pt={["30px", "30px", "50px", "50px"]}
         pb={["60px", "60px", "80px", "80px"]}
         px={["20px", "30px", "20px", "10px"]}
       >
