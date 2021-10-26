@@ -16,7 +16,7 @@ const WorshipTime = () => {
     >
       <Flex
         m="0 auto"
-        py="40px"
+        py="50px"
         px="20px"
         bgColor="#f5f5dc"
         direction="column"
@@ -25,8 +25,7 @@ const WorshipTime = () => {
         <Heading
           as="h3"
           size="lg"
-          // color="white"
-          mb="40px"
+          mb="50px"
         >
           예배시간 안내
         </Heading>

@@ -10,12 +10,21 @@ import { layoutWidth } from "./AppLayout";
 
 const newWidth = layoutWidth * 2 / 3;
 
-function Introduction(){
+function Introduction({ pictures }){
+  const background = pictures.find(item => item.fields.title === "소개배경")
+    .fields.picture.fields.file.url;
+
   return (
     <Flex
-      p="20px 16px"
+      w="100%"
+      py={{ base: "40px", md: "70px" }}
+      px="16px"
       mx="auto"
       fontFamily="Gowun Dodum"
+      bgImage={`url("http:${background}")`}
+      backgroundPosition="center"
+      bgSize="cover"
+      bgRepeat="no-repeat"
     >
       <Box w={newWidth} mx="auto" textAlign="center">
         <chakra.h1

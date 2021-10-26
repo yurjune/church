@@ -1,6 +1,6 @@
 import { extendTheme } from "@chakra-ui/react";
-import { createBreakpoints } from "@chakra-ui/theme-tools"
-import styles from "./styles"
+import { createBreakpoints } from "@chakra-ui/theme-tools";
+import styles from "./styles";
 import Button from "./components/Button";
 
 // const breakpoints = createBreakpoints({
@@ -19,7 +19,7 @@ const overrides = {
   },
   colors: {
     first: "#469424",
-    // first: "#4DA935",
+    // first: "#46A736",
     second: "#9DD84B",
     third: "#9DD84B",
     fourth: "#808000",

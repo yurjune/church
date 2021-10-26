@@ -20,7 +20,7 @@ export const getStaticProps = async () => {
 }
 
 const Read = ({ pictures }) => {
-  const pic = pictures.find(item => item.fields.picture.fields.title === "readBible")
+  const pic = pictures.find(item => item.fields.title === "성경통독표")
     .fields.picture.fields.file.url;
   return (
     <>

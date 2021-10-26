@@ -8,7 +8,7 @@ const ItemCard = ({ article, pictures }) => {
   const { title, category } = article.fields;
   const { id, createdAt } = article.sys;
   const thumbnail = article.fields.thumbnail?.fields.file.url;
-  const dummyThumbnail = pictures.find(item => item.fields.picture.fields.title === "thumbnail-1")
+  const dummyThumbnail = pictures.find(item => item.fields.title === "더미썸네일")
     .fields.picture.fields.file.url;
 
   const onClickImage = () => {

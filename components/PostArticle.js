@@ -21,7 +21,7 @@ const option = {
       }
     },
     [INLINES.HYPERLINK] : (node, children) => {
-      console.log('node:', node);
+      // console.log('node:', node);
       if (node.data.uri.indexOf("youtube.com") !== -1) {
         return (
           <AspectRatio ratio={16 / 9}>

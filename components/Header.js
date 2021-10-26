@@ -96,9 +96,9 @@ const DesktopHeader = ({ header, logo }) => {
 };
 
 const Header = ({ pictures }) => {
-  const header = pictures.find(item => item.fields.picture.fields.title === "header")
+  const header = pictures.find(item => item.fields.title === "헤더이미지")
     .fields.picture.fields.file.url;
-  const logo = pictures.find(item => item.fields.picture.fields.title === "로고")
+  const logo = pictures.find(item => item.fields.title === "로고이미지")
     .fields.picture.fields.file.url;
   return (
     <>

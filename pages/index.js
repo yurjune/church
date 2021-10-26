@@ -6,6 +6,7 @@ import SecondLayout from '../components/SecondLayout';
 import MainImage from '../components/MainImage';
 import Introduction from '../components/Introduction';
 import WorshipTime from '../components/WorshipTime';
+import People from '../components/People';
 
 export const getStaticProps = async () => {
   const client = createClient({
@@ -23,7 +24,7 @@ export const getStaticProps = async () => {
 }
 
 function Home({ pictures }) {
-  const mainImage = pictures.find(item => item.fields.picture.fields.title === "mainImage")
+  const mainImage = pictures.find(item => item.fields.title === "메인이미지")
     .fields.picture.fields.file.url;
   return (
     <>
@@ -34,9 +35,8 @@ function Home({ pictures }) {
         pictures={pictures}
       >
         {/* <MainImage mainImage={mainImage} /> */}
-        <Box mt="30px" mb="50px">
-          <Introduction />
-        </Box>
+        <Introduction pictures={pictures} />
+        <People pictures={pictures} />
         <WorshipTime />
       </SecondLayout>
     </>

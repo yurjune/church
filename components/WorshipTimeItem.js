@@ -4,7 +4,7 @@ import { Flex, Box, Text } from '@chakra-ui/react';
 const WorshipTimeItem = ({ title, schedule }) => {
   return (
     <Flex
-      w={["97%", "97%", "90%", "85%"]}
+      w={["97%", "97%", "90%", "80%"]}
       direction="row"
       mb="20px"
       fontSize={{ base: "16px", sm: "17px", md: "18px" }}
