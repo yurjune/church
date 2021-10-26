@@ -10,18 +10,14 @@ import { layoutWidth } from "./AppLayout";
 
 const newWidth = layoutWidth * 2 / 3;
 
-function Heros(){
+function Introduction(){
   return (
-    <Flex px={4} pt={4} pb={10} mx="auto" fontFamily="Gowun Dodum">
+    <Flex
+      p="20px 16px"
+      mx="auto"
+      fontFamily="Gowun Dodum"
+    >
       <Box w={newWidth} mx="auto" textAlign="center">
-        <chakra.p
-          mb={2}
-          fontSize="md"
-          // fontWeight="semibold"
-          color="gray.400"
-        >
-          의왕디딤돌교회 소개
-        </chakra.p>
         <chakra.h1
           mb={8}
           fontSize={{ base: "2xl", md: "3xl" }}
@@ -32,14 +28,6 @@ function Heros(){
         >
           "너희가 서로 사랑하면 이로써 모든 사람이 너희가 내 제자인 줄 알리라"<br/> (요 13:15)
         </chakra.h1>
-        <chakra.p
-          mb={10}
-          color="gray.500"
-          fontSize={{ md: "lg" }}
-          lineHeight="160%"
-        >
-          디딤돌교회는 하나님을 주체적으로 섬기며 예수님을 모르시는 분들에게 복된 소식을 전하기 위해 세워진 교회입니다
-        </chakra.p>
         <chakra.p
           mb={5}
           // color="gray.500"
@@ -79,4 +67,4 @@ function Heros(){
   );
 };
 
-export default Heros;
+export default Introduction;

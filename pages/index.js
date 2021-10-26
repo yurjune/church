@@ -1,9 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
 import { createClient } from 'contentful';
+import { Box } from "@chakra-ui/react";
 import SecondLayout from '../components/SecondLayout';
 import MainImage from '../components/MainImage';
-import Heros from '../components/Heros';
+import Introduction from '../components/Introduction';
+import WorshipTime from '../components/WorshipTime';
 
 export const getStaticProps = async () => {
   const client = createClient({
@@ -32,7 +34,10 @@ function Home({ pictures }) {
         pictures={pictures}
       >
         {/* <MainImage mainImage={mainImage} /> */}
-        <Heros />
+        <Box mt="30px" mb="50px">
+          <Introduction />
+        </Box>
+        <WorshipTime />
       </SecondLayout>
     </>
   );
