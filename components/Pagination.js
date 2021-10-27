@@ -13,29 +13,22 @@ const Pagination = ({ articles }) => {
     currentPage,
     setCurrentPage,
     currentPageGroup,
-    getCurrentPageGroup,
+    memorizedCurrentPageGroup,
     setCurrentPageGroup,
     firstPageGroup,
     lastPageGroup,
     firstPage,
     lastPage,
-    totalPages,
   } = usePagination(articles);
 
   useEffect(() => {
-    console.log('여기 실행1')
-    console.log(currentPage)
-    console.log(currentPageGroup)
-    setCurrentPage(router.query.page || 1);
+    const page = parseInt(router.query.page, 10);
+    setCurrentPage(page || 1);
   }, [router.query.page]);
 
   useEffect(() => {
-    console.log('여기 실행2')
-    console.log(currentPage)
-    console.log(currentPageGroup)
-    const result = getCurrentPageGroup(currentPage, totalPages)
-    setCurrentPageGroup(result)
-  }, [currentPage]);
+    setCurrentPageGroup(memorizedCurrentPageGroup);
+  }, [memorizedCurrentPageGroup]);
 
   const movePage = (page) => {
     const url = `${router.pathname}?page=${page}`
