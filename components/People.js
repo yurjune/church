@@ -12,11 +12,11 @@ const People = ({ pictures }) => {
       bgColor="#EDE7E3"
     >
       <Flex
-        direction="column"
         maxW={layoutWidth}
-        mx="auto"
-        py="50px"
+        py={{ base: "40px", md: "50px" }}
         px="20px"
+        mx="auto"
+        direction="column"
         align="center"
       >
         <Heading

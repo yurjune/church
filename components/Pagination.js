@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Flex, Icon } from "@chakra-ui/react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -7,23 +7,42 @@ import { PageButton, ArrowButton } from './PageButton';
 import usePagination from '../hooks/usePagination';
 
 const Pagination = ({ articles }) => {
+  console.log('Pagination')
   const router = useRouter();
   const {
     currentPage,
     setCurrentPage,
     currentPageGroup,
+    getCurrentPageGroup,
+    setCurrentPageGroup,
     firstPageGroup,
     lastPageGroup,
     firstPage,
     lastPage,
+    totalPages,
   } = usePagination(articles);
 
+  useEffect(() => {
+    console.log('여기 실행1')
+    console.log(currentPage)
+    console.log(currentPageGroup)
+    setCurrentPage(router.query.page || 1);
+  }, [router.query.page]);
+
+  useEffect(() => {
+    console.log('여기 실행2')
+    console.log(currentPage)
+    console.log(currentPageGroup)
+    const result = getCurrentPageGroup(currentPage, totalPages)
+    setCurrentPageGroup(result)
+  }, [currentPage]);
+
   const movePage = (page) => {
-    setCurrentPage(page);
+    const url = `${router.pathname}?page=${page}`
     if (router.query.v) {
-      return router.push(`${router.pathname}?page=${page}&v=${router.query.v}`);
+      return router.push(`${url}&v=${router.query.v}`);
     }
-    return router.push(`${router.pathname}?page=${page}`);
+    return router.push(url);
   };
 
   const onClickButton = (children) => (e) => {
@@ -50,7 +69,7 @@ const Pagination = ({ articles }) => {
         ? (<Flex>
           {firstPageGroup[0] === currentPageGroup[0] ? "" : (
             <>
-              <PageButton onClickButton={onClickButton}>{firstPage}</PageButton>
+              <PageButton onClickButton={onClickButton} currentPage={currentPage}>{firstPage}</PageButton>
               <ArrowButton onClickButton={onClickPrevArrow}>
                 <Icon as={IoIosArrowBack} boxSize={3} />
               </ArrowButton>
@@ -72,7 +91,7 @@ const Pagination = ({ articles }) => {
               <ArrowButton onClickButton={onClickNextArrow}>
                 <Icon as={IoIosArrowForward} boxSize={3} />
               </ArrowButton>
-              <PageButton onClickButton={onClickButton}>{lastPage}</PageButton>
+              <PageButton onClickButton={onClickButton} currentPage={currentPage}>{lastPage}</PageButton>
             </>
           )}
         </Flex>)

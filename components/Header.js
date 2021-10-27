@@ -36,7 +36,7 @@ const MobileHeader = ({ header }) => {
       height="40px"
       justify="space-between"
       bgImage={`url('https:${header}')`}
-      bgSize="contain"
+      bgSize="cover"
     >
       <Box
         ml="10px"
@@ -46,10 +46,10 @@ const MobileHeader = ({ header }) => {
         color="white"
       >
         <Box display={{ base: "none", sm: "block" }} >
-          Didimdol Church
+          <Link href="/">Didimdol Church</Link>
         </Box>
         <Box display={{ base: "block", sm: "none" }} >
-          DidimdolCh
+          <Link href="/">DidimdolCh</Link>
         </Box>
       </Box>
       <SearchBar />

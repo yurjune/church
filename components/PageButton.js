@@ -8,6 +8,7 @@ const activeStyle = {
 
 export const PageButton = (props) => {
   const [isActive, setIsActive] = useState(false);
+
   useEffect(() => {
     props.currentPage === props.children ? setIsActive(true) : setIsActive(false);
   }, [props.currentPage]);

@@ -6,7 +6,8 @@ export const postNumberPerOnePage = 12;
 const getTotalPages = (articles) => {
   const totalPosts = articles.length;
   const totalPages = Math.ceil(totalPosts / postNumberPerOnePage);
-  const pageList = new Array(totalPages).fill().map((value, index) => index + 1);
+  const pageList = new Array(3).fill().map((value, index) => index + 1);
+  // const pageList = new Array(totalPages).fill().map((value, index) => index + 1);
   const result = [];
   for (let i = 0; i < pageList.length; i += 5) {
     result.push(pageList.slice(i, i + 5));
@@ -15,18 +16,21 @@ const getTotalPages = (articles) => {
 };
 
 const getCurrentPageGroup = (currentPage, totalPages) => {
-  const result = totalPages?.find(element => element.find(value => value === currentPage));
+  console.log('currentPage:', currentPage)
+  console.log('totalPages:', totalPages)
+  const result = totalPages.find(element => element.find(value => value === currentPage));
+  console.log('result:', result)
   return result;
 };
 
 const usePagination = (articles) => {
+  console.log('usePagination')
   const router = useRouter();
-  const initialPage = parseInt(router.query.page, 10) || 1;
+  const initialPage = router.query.page || 1;
   const [currentPage, setCurrentPage] = useState(initialPage);
 
-  const totalPages = useMemo(() => getTotalPages(articles), [articles]);
-  const memorizedCurrentPageGroup = useMemo(() => getCurrentPageGroup(currentPage, totalPages), [currentPage, totalPages]);
-  const [currentPageGroup, setCurrentPageGroup] = useState(memorizedCurrentPageGroup);
+  const totalPages = getTotalPages(articles);
+  const [currentPageGroup, setCurrentPageGroup] = useState('');
 
   const firstPageGroup = totalPages[0];
   const firstPage = firstPageGroup[0];
@@ -41,18 +45,17 @@ const usePagination = (articles) => {
   lastPage = 12 이다.
   */
 
-  useEffect(() => {
-    setCurrentPageGroup(memorizedCurrentPageGroup);
-  }, [memorizedCurrentPageGroup]);
-
   return {
     currentPage,
     setCurrentPage,
     currentPageGroup,
+    getCurrentPageGroup,
+    setCurrentPageGroup,
     firstPageGroup,
     lastPageGroup,
     firstPage,
     lastPage,
+    totalPages,
   }
 };
 

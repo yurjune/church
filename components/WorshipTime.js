@@ -11,15 +11,13 @@ const schedule = [
 ];
 const WorshipTime = () => {
   return (
-    <Box
-      width="100%"
-    >
+    <Box width="100%">
       <Flex
-        m="0 auto"
-        py="50px"
+        py={{ base: "40px", md: "50px" }}
         px="20px"
-        bgColor="#f5f5dc"
+        m="0 auto"
         direction="column"
+        bgColor="#f5f5dc"
         align="center"
       >
         <Heading
