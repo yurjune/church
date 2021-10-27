@@ -25,7 +25,7 @@ const WorshipTime = () => {
           size="lg"
           mb="50px"
         >
-          예배시간 안내
+          <div id="worship-time">예배시간 안내</div>
         </Heading>
         <Box
           w="100%"

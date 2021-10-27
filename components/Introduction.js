@@ -7,6 +7,7 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { layoutWidth } from "./AppLayout";
+import { categoryToUrl } from "../utils/categoryConverter";
 
 const newWidth = layoutWidth * 2 / 3;
 
@@ -57,6 +58,7 @@ function Introduction({ pictures }){
         >
           <Button
             as="a"
+            href="#worship-time"
             colorScheme="brand"
             size="lg"
             cursor="pointer"
@@ -65,6 +67,7 @@ function Introduction({ pictures }){
           </Button>
           <Button
             as="a"
+            href={categoryToUrl('오시는길')}
             size="lg"
             cursor="pointer"
           >

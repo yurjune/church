@@ -7,7 +7,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 const option = {
   renderNode: {
     [BLOCKS.DOCUMENT]: (node, children) => (
-      <Box fontSize="17px" lineHeight="180%">{children}</Box>
+      <Box fontSize="16px" lineHeight="180%">{children}</Box>
     ),
     [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
       // console.log(node)
