@@ -34,10 +34,6 @@ const Map = ({ pictures }) => {
           .customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
         `}</style>
       </Head>
-      <Script
-        src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAOMAP_ACCESS_KEY}&autoload=false`}
-        strategy="beforeInteractive"
-      />
       <AppLayout pictures={pictures}>
         <SimplePage title="찾아오시는 길">
           <KakaoMap />

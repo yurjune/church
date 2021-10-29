@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  chakra,
-  Box,
-  Flex,
-  Button,
-  HStack,
-} from "@chakra-ui/react";
+import { chakra, Box, Flex, Button, HStack, Text } from "@chakra-ui/react";
 import { layoutWidth } from "./AppLayout";
 import { categoryToUrl } from "../utils/categoryConverter";
 
@@ -27,19 +21,27 @@ function Introduction({ pictures }){
       bgSize="cover"
       bgRepeat="no-repeat"
     >
-      <Box w={newWidth} mx="auto" textAlign="center">
+      <Box
+        w={newWidth}
+        mx="auto"
+        // textAlign="center"
+      >
         <chakra.h1
-          mb={8}
-          fontSize={{ base: "2xl", md: "3xl" }}
+          mb={{ base: "40px", md: "60px" }}
+          fontSize={{ base: "26px", md: "3xl" }}
           fontWeight="bold"
           lineHeight="shorter"
           color="gray.900"
+          textAlign="center"
           lineHeight="150%"
         >
-          "너희가 서로 사랑하면 이로써 모든 사람이 너희가 내 제자인 줄 알리라"<br/> (요 13:15)
+          "너희가 서로 사랑하면 이로써 모든 사람이 너희가 내 제자인 줄 알리라"
+          <Text
+            fontSize={{ base: "xl", md: "2xl" }}
+          >(요 13:15)</Text>
         </chakra.h1>
         <chakra.p
-          mb={5}
+          mb="40px"
           // color="gray.500"
           fontSize={{ md: "lg" }}
           lineHeight="160%"

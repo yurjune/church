@@ -4,7 +4,7 @@ import WorshipTimeItem from "./WorshipTimeItem";
 import { layoutWidth } from "./AppLayout";
 
 const schedule = [
-  { title: '주일예배', schedule: '매주 일요일 아침 10:50' },
+  { title: '주일예배', schedule: '매주 일요일 아침 11:00' },
   { title: '오후모임', schedule: '매주 일요일 점심 14:00' },
   { title: '주일학교', schedule: '매주 일요일 아침 10:00' },
   { title: '수요모임', schedule: '매주 수요일 저녁 20:00, ZOOM 모임' },
