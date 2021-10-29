@@ -77,12 +77,12 @@ const DesktopHeader = ({ header, logo }) => {
         <Box pos="absolute" top="5px">
           <SearchBar />
         </Box>
-        <Box pos="absolute" left="10px" bottom="40px">
+        <Box pos="absolute" left="0" bottom="40px">
           <LinkOverlay href="/">
             <Image
               src={`https:${logo}`}
-              width="120px"
-              height="90px"
+              width="130px"
+              height="100px"
             />
           </LinkOverlay>
         </Box>
