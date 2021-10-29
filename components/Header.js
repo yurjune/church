@@ -77,15 +77,15 @@ const DesktopHeader = ({ header, logo }) => {
         <Box pos="absolute" top="5px">
           <SearchBar />
         </Box>
-        {/* <Box pos="absolute" left="10px" bottom="45px">
+        <Box pos="absolute" left="10px" bottom="45px">
           <LinkOverlay href="/">
             <Image
               src={`https:${logo}`}
-              width="95px"
+              width="90px"
               height="70px"
             />
           </LinkOverlay>
-        </Box> */}
+        </Box>
         <Box pos="absolute" bottom="45px">
           <Navigation />
           {/* <PopoverNav /> */}
@@ -98,7 +98,7 @@ const DesktopHeader = ({ header, logo }) => {
 const Header = ({ pictures }) => {
   const header = pictures.find(item => item.fields.title === "헤더이미지2")
     .fields.picture.fields.file.url;
-  const logo = pictures.find(item => item.fields.title === "로고이미지")
+  const logo = pictures.find(item => item.fields.title === "로고이미지2")
     .fields.picture.fields.file.url;
   return (
     <>
