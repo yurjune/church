@@ -81,8 +81,8 @@ const DesktopHeader = ({ header, logo }) => {
           <LinkOverlay href="/">
             <Image
               src={`https:${logo}`}
-              width="130px"
-              height="100px"
+              width="120px"
+              height="90px"
             />
           </LinkOverlay>
         </Box>
