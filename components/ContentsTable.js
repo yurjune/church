@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Box } from "@chakra-ui/react";
 import {
   Table,
@@ -12,6 +13,7 @@ import {
   TableCaption,
 } from "@chakra-ui/react";
 import { categoryToContents } from '../utils/categoryConverter';
+import { getLimitedArticles } from '../hooks/useArticle';
 
 const noWrap = {
   overflow: "hidden",
@@ -82,10 +84,14 @@ const MobileTable = ({ articles, tableStyle }) => {
 };
 
 const ContentsTable = ({ articles, tableStyle }) => {
+  const router = useRouter();
+  const page = router.query.page || 1;
+  const limitedArticles = getLimitedArticles(articles, page);
+
   return (
     <>
-      <DesktopTable articles={articles} tableStyle={tableStyle} />
-      <MobileTable articles={articles} tableStyle={tableStyle} />
+      <DesktopTable articles={limitedArticles} tableStyle={tableStyle} />
+      <MobileTable articles={limitedArticles} tableStyle={tableStyle} />
     </>
   )
 }

@@ -20,7 +20,7 @@ const getCurrentPageGroup = (currentPage, totalPages) => {
 };
 
 const usePagination = (articles) => {
-  console.log('usePagination')
+  // console.log('usePagination')
   const router = useRouter();
   const initialPage = router.query.page || 1;
   const [currentPage, setCurrentPage] = useState(initialPage);

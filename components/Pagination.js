@@ -7,7 +7,7 @@ import { PageButton, ArrowButton } from './PageButton';
 import usePagination from '../hooks/usePagination';
 
 const Pagination = ({ articles }) => {
-  console.log('Pagination')
+  // console.log('Pagination')
   const router = useRouter();
   const {
     currentPage,

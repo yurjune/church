@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link, Grid, GridItem } from '@chakra-ui/react'
+import NextLink from 'next/link';
+import { Link, Grid } from '@chakra-ui/react';
 import { categoryToUrl } from '../utils/categoryConverter';
 
-const BibleTag = ({ bible, category }) => {
+const BibleTag = ({ bible, category, onClose }) => {
   return (
     <Grid
       templateColumns={{
@@ -14,12 +15,12 @@ const BibleTag = ({ bible, category }) => {
       rowGap={3}
     >
       {bible.map(item => (
-        <Link
-          key={Object.keys(item)}
-          href={`${categoryToUrl(category)}?v=${Object.values(item)}`}
+        <NextLink
+          key={item}
+          href={`${categoryToUrl(category)}?v=${item}`}
         >
-          {Object.keys(item)}
-        </Link>
+          <Link onClick={onClose}>{item}</Link>
+        </NextLink>
       ))}
     </Grid>
   );

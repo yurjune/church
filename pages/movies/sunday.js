@@ -1,10 +1,10 @@
-import React from 'react';
-import Head from 'next/head';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { createClient } from 'contentful';
 import AppLayout from '../../components/AppLayout';
 import ContentsListPage from '../../components/ContentsListPage';
-import { sortArticles } from '../../hooks/useArticle';
+import { sortArticles, filterByTag } from '../../hooks/useArticle';
 
 export const getStaticProps = async () => {
   const client = createClient({
@@ -17,18 +17,27 @@ export const getStaticProps = async () => {
   const articles = await client.getEntries({
     content_type: 'article',
   });
+  const filteredArticles = articles.items.filter(article => article.fields.category === "주일예배");
+  const sortedArticles = sortArticles(filteredArticles);
   return {
     props: {
       pictures: pictures.items,
-      articles: articles.items,
+      articles: sortedArticles,
     }
   }
 }
 
 const Sunday = ({ pictures, articles }) => {
   const router = useRouter();
-  const sundayArticles = articles.filter(article => article.fields.category === "주일예배");
-  const sortedArticles = sortArticles(sundayArticles, router.query.v);
+  const [posts, setPosts] = useState(articles);
+  
+  useEffect(() => {
+    if (router.isReady) setPosts(filterByTag(articles, router.query.v));
+  }, [router.isReady, router.query.v])
+
+  if (!router.isReady) {
+    return <div>로딩중...</div>
+  }
   return (
     <>
       <Head>
@@ -37,7 +46,7 @@ const Sunday = ({ pictures, articles }) => {
       <AppLayout pictures={pictures}>
         <ContentsListPage
           category="주일예배"
-          articles={sortedArticles}
+          articles={posts}
           pictures={pictures}
         />
       </AppLayout>

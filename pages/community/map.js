@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import Script from 'next/script';
 import { createClient } from 'contentful';
 import AppLayout from "../../components/AppLayout";
 import KakaoMap from '../../components/KakaoMap';

@@ -17,9 +17,6 @@ export const categoryToUrl = (category) => {
   if (category === '교회소식') {
     return '/community/news';
   }
-  if (category === '성경통독표') {
-    return '/community/read';
-  }
   if (category === '오시는길') {
     return '/community/map';
   }
@@ -38,3 +35,15 @@ export const categoryToContents = (category) => {
   }
   return '/#';
 };
+
+export const findBible = (category, bible) => {
+  if (category === '예배와 말씀') {
+    return `/movies/${bible}}`;
+  }
+  if (category === '주일예배') {
+    return `/movies/sunday/${bible}}`;
+  }
+  if (category === '수요예배') {
+    return `/movies/wednesday/${bible}}`;
+  }
+}

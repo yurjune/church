@@ -4,7 +4,7 @@ import { Collapse } from '@chakra-ui/transition';
 import BibleTag from './BibleTag';
 import { oldBible, newBible } from './Bible';
 
-const TagList = ({ category, isOpen }) => {
+const TagList = ({ category, isOpen, onClose }) => {
   return (
     <Collapse in={isOpen}>
       <Box
@@ -17,9 +17,9 @@ const TagList = ({ category, isOpen }) => {
       >
         <Box>성경별</Box>
         <Divider my="20px" />
-        <BibleTag bible={oldBible} category={category} />
+        <BibleTag bible={oldBible} category={category} onClose={onClose} />
         <Divider my="20px" />
-        <BibleTag bible={newBible} category={category} />
+        <BibleTag bible={newBible} category={category} onClose={onClose} />
       </Box>
     </Collapse>
   );

@@ -19,7 +19,6 @@ export const movieList = [
 ];
 export const communityList = [
   '교회소식',
-  '성경통독표',
   '오시는길',
 ];
 export const schoolList = [

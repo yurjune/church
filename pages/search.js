@@ -18,10 +18,11 @@ export const getStaticProps = async () => {
   const articles = await client.getEntries({
     content_type: 'article',
   });
+  const sortedArticles = sortArticles(articles.items);
   return {
     props: {
       pictures: pictures.items,
-      articles: articles.items,
+      articles: sortedArticles,
     }
   }
 }
@@ -32,7 +33,6 @@ const Search = ({ pictures, articles }) => {
   const message = `'${keyword}' 에 대한 검색 결과 입니다.`;
   // 검색기능: 알골랴, fulltextsearch
   const searchResult = searchArticles(articles, keyword);
-  const sortedArticles = sortArticles(searchResult);
   return (
     <>
       <Head>
@@ -40,7 +40,7 @@ const Search = ({ pictures, articles }) => {
       </Head>
       <AppLayout pictures={pictures}>
         <SimplePage title={message}>
-          <SearchPage articles={sortedArticles} />
+          <SearchPage articles={searchResult} />
         </SimplePage>
       </AppLayout>
     </>

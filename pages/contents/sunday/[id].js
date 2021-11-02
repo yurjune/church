@@ -19,6 +19,7 @@ export const getStaticPaths = async () => {
       params: { id: item.sys.id }
     }
   });
+  console.log(paths)
   return {
     paths,
     fallback: false
@@ -36,18 +37,18 @@ export const getStaticProps = async ({ params }) => {
   const articles = await client.getEntries({
     content_type: 'article',
   });
+  const filteredArticles = articles.items.filter(article => article.fields.category === "주일예배");
+  const sortedArticles = sortArticles(filteredArticles);
   return {
     props: {
       pictures: pictures.items,
       article: article.items[0],
-      articles: articles.items,
+      articles: sortedArticles,
     }
   }
 }
 
 const Sunday = ({ pictures, article, articles }) => {
-  const sundayArticles = articles.filter(article => article.fields.category === "주일예배");
-  const sortedArticles = sortArticles(sundayArticles);
   return (
     <>
       <Head>
@@ -57,7 +58,7 @@ const Sunday = ({ pictures, article, articles }) => {
         <ContentPage
           category="주일예배"
           article={article}
-          articles={sortedArticles}
+          articles={articles}
         />
       </AppLayout>
     </>
