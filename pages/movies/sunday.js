@@ -36,7 +36,11 @@ const Sunday = ({ pictures, articles }) => {
   }, [router.isReady, router.query.v])
 
   if (!router.isReady) {
-    return <div>로딩중...</div>
+    return (
+      <AppLayout pictures={pictures}>
+        <div>로딩중...</div>
+      </AppLayout>
+    );
   }
   return (
     <>
