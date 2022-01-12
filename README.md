@@ -22,12 +22,18 @@
 <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=Next.js&logoColor=white"/><a/>
 <img src="https://img.shields.io/badge/Chakra UI-319795?style=flat-square&logo=Chakra UI&logoColor=white"/><a/>
 + React와 Next.js를 사용하여 화면단을 구성하였습니다.
-+ Next.js에서 제공하는 getStaticProps와 getStaticProps를 사용하여 정적 페이지를 생성합니다.
++ Next.js에서 제공하는 getStaticProps와 getStaticPaths를 사용하여 정적 페이지를 생성합니다.
 + CSS Framework로 Bootstrap이나 Material UI 대신 Chakra UI를 사용해 보았습니다.
 <br/>
 
 배포:
 + 프론트단을 vercel을 통하여 배포하였습니다.
+<br/>
+
+### :bulb: 기술 사용 배경
++ 홈페이지 특성상 관리자만 컨텐츠를 작성하므로 headless CMS를 이용하여 컨텐츠와 서비스를 분리하였습니다.  
++ 관리자만 CMS에 주기적으로 글을 작성하고 이외에 페이지를 업데이트할 필요가 없으므로 정적 페이지로 만들고 이를 위해 Next.js 프레임워크를 선택하였습니다.
+<br/>
 <br/>
 
 ## :sunny: 주요 페이지
