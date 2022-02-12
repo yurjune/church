@@ -28,6 +28,7 @@ export const getStaticProps = async () => {
 }
 
 const Sunday = ({ pictures, articles }) => {
+  console.log(articles)
   const router = useRouter();
   const [posts, setPosts] = useState(articles);
   

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
 import Head from 'next/head';
 import { createClient } from 'contentful';
 import AppLayout from '../../components/AppLayout';
@@ -17,7 +16,7 @@ export const getStaticProps = async () => {
   const articles = await client.getEntries({
     content_type: 'article',
   });
-  const filteredArticles = articles.items.filter(article => article.fields.category === "수요예배");
+  const filteredArticles = articles.items.filter(article => article.fields.category === "주일예배");
   const sortedArticles = sortArticles(filteredArticles);
   return {
     props: {
@@ -27,21 +26,9 @@ export const getStaticProps = async () => {
   }
 }
 
-const Sunday = ({ pictures, articles }) => {
-  const router = useRouter();
-  const [posts, setPosts] = useState(articles);
-  
-  useEffect(() => {
-    if (router.isReady) setPosts(filterByTag(articles, router.query.v));
-  }, [router.isReady, router.query.v])
+const Friday = ({ pictures, articles: temp }) => {
+  const articles = new Array(205).fill(temp[0]);
 
-  if (!router.isReady) {
-    return (
-      <AppLayout pictures={pictures}>
-        <div>로딩중...</div>
-      </AppLayout>
-    );
-  }
   return (
     <>
       <Head>
@@ -50,12 +37,12 @@ const Sunday = ({ pictures, articles }) => {
       <AppLayout pictures={pictures}>
         <ContentsListPage
           category="수요예배"
-          articles={posts}
           pictures={pictures}
+          articles={articles}
         />
       </AppLayout>
     </>
   );
 };
 
-export default Sunday;
+export default Friday;
